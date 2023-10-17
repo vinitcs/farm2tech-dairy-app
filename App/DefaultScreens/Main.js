@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import TabNavigation from '../Navigation/TabNavigation'
 
-const Main = ({ navigation }) => {
+const Main = () => {
      // console.log("main", navigation);
      return (
           <View style={{ flex: 1, paddingTop: 20 }}>

@@ -8,11 +8,12 @@ import CustomDrawer from './CustomDrawer';
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigation = () => {
-    
+
      return (
-          <Drawer.Navigator drawerContent={(props)=> <CustomDrawer{...props}/>}
+          <Drawer.Navigator drawerContent={(props) => <CustomDrawer{...props} />}
                screenOptions={{
                     headerShown: false,
+                    
                }}
           >
                <Drawer.Screen name="Main" component={Main} />

@@ -4,7 +4,11 @@ import {createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native';
 import Splash from '../DefaultScreens/Splash';
 import MainParent from '../DefaultScreens/MainParent';
-// import Delivery from '../Screens/Delivery';
+import Delivery from '../Screens/Delivery';
+import Notification from '../Screens/Notification';
+
+
+
 // import Header from '../components/Header';
 
 const Stack = createStackNavigator();
@@ -21,6 +25,16 @@ const AppNavigation = () => {
                     <Stack.Screen
                          name='MainParent'
                          component={MainParent}
+                         options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                         name='Notification'
+                         component={Notification}
+                         options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                         name='Delivery'
+                         component={Delivery}
                          options={{ headerShown: false }}
                     />
                    

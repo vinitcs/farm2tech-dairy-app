@@ -1,6 +1,5 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text,Image, View } from 'react-native'
 import React, { useEffect } from 'react';
-import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 
 const Splash = ({navigation}) => {
      useEffect(() => {
@@ -10,7 +9,7 @@ const Splash = ({navigation}) => {
      }, [navigation]);
      return (
           <View style={styles.info}>
-               <ActivityIndicator animating={true} color='#4B8E71' size='large'/>
+              <Image source={require('./../../assets/logo.png')} style={styles.logo} />
           </View>
      )
 }
@@ -24,5 +23,13 @@ const styles = StyleSheet.create({
           alignContent:'center',
           textAlign:'center',
           justifyContent:'center',
-     }
+     },
+
+     logo: {
+          resizeMode: 'contain',
+          width: 120,
+          height: 50,
+          alignSelf:'center',
+      
+        }
 })

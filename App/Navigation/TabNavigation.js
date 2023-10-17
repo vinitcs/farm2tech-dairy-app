@@ -30,6 +30,7 @@ const TabNavigation = () => {
                     tabBarShowLabel: true,
                     tabBarInactiveTintColor: 'black',
                     tabBarActiveTintColor: '#4B8E71',
+                    tabBarHideOnKeyboard: true,
 
 
 

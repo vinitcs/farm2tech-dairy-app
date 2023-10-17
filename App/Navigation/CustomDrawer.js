@@ -51,7 +51,7 @@ const CustomDrawer = ({navigation, props }) => {
                                         onPress={() => navigation.navigate('Home')}
                                    />
                                    <Drawer.Item
-                                        label="Catrgory"
+                                        label="Category"
                                         onPress={() => navigation.navigate('Category')}
                                    />
                                    <Drawer.Item
@@ -62,9 +62,13 @@ const CustomDrawer = ({navigation, props }) => {
                                         label="My Cart"
                                         onPress={() => navigation.navigate('Cart')}
                                    />
+                                    <Drawer.Item
+                                        label="Notification"
+                                        onPress={() => navigation.navigate('Notification')}
+                                   />
                                    <Drawer.Item
                                         label="Delivery"
-                                        // onPress={() => navigation.navigate('Delivery')}
+                                        onPress={() => navigation.navigate('Delivery')}
                                    />
                               </Drawer.Section>
                          </View>
