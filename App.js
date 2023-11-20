@@ -1,19 +1,19 @@
 
 import { StyleSheet, Text, View } from 'react-native';
-import AppNavigation from './App/Navigation/AppNavigation';
+import { NavigationContainer } from '@react-navigation/native';
+import Navigation from './App/Navigation/Navigation';
 
 const App = () => {
-  return <AppNavigation/>;
+  console.log("main")
+  return (
+    <NavigationContainer>
+      <Navigation/>
+    </NavigationContainer>
+  )
 }
 
 export default App;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding:12,
-    backgroundColor: '#fff',
 
-
-  },
 });

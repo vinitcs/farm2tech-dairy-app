@@ -4,40 +4,40 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const ProductDisplayPrice = () => {
   return (
-    <View style={{ padding: 10, flex:1, flexDirection:'row', columnGap:20,}}>
-      <TouchableOpacity>
-        <View style={{
-          backgroundColor: '#ffff',
-          padding: 10,
-          margin: 4,
-         
-          borderRadius: 20,
-          justifyContent: 'center',
-          alignItems: 'center',
-          width:150,
-        }}>
-          <Image source={require('./../../assets/milk.png')} style={styles.logo} />
-          <Text style={styles.text}>Farm2Tech Milk</Text>
-          <Text style={styles.priceText}>{'\u20B9'} 80</Text>
-        </View>
-      </TouchableOpacity>
-      
-      <TouchableOpacity>
-        <View style={{
-          backgroundColor: '#ffff',
-          padding: 10,
-          margin: 4,
-          borderRadius: 20,
-          justifyContent: 'center',
-          alignItems: 'center',
-          width:150,
-        }}>
-          <Image source={require('./../../assets/ghee.png')} style={styles.logo} />
-          <Text style={styles.text}>Farm2Tech Ghee</Text>
-          <Text style={styles.priceText}>{'\u20B9'} 50</Text>
-        </View>
-      </TouchableOpacity>
-      
+    <View style={styles.container}>
+      <View style={styles.boxContainer}>
+        <TouchableOpacity>
+          <View style={styles.box}>
+            <Image source={require('./../../assets/milk.png')} style={styles.logo} />
+            <Text style={styles.text}>Farm2Tech Milk</Text>
+            <Text style={styles.priceText}>{'\u20B9'} 80</Text>
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <View style={styles.box}>
+            <Image source={require('./../../assets/ghee.png')} style={styles.logo} />
+            <Text style={styles.text}>Farm2Tech Ghee</Text>
+            <Text style={styles.priceText}>{'\u20B9'} 50</Text>
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <View style={styles.box}>
+            <Image source={require('./../../assets/tofu.png')} style={styles.logo} />
+            <Text style={styles.text}>Farm2Tech Tofu</Text>
+            <Text style={styles.priceText}>{'\u20B9'} 120</Text>
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <View style={styles.box}>
+            <Image source={require('./../../assets/yogurt.png')} style={styles.logo} />
+            <Text style={styles.text}>Farm2Tech Yogurt</Text>
+            <Text style={styles.priceText}>{'\u20B9'} 100</Text>
+          </View>
+        </TouchableOpacity>
+      </View >
     </View>
   )
 }
@@ -45,6 +45,28 @@ const ProductDisplayPrice = () => {
 export default ProductDisplayPrice;
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+
+  boxContainer: {
+    // backgroundColor: 'red',
+    width: '100%',
+    padding: 2,
+    flexDirection: 'row',
+    flexWrap: 'wrap'
+  },
+
+  box:{
+    backgroundColor: '#F0F8FF',
+    padding: 10,
+    margin: 12,
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 150,
+  },
+
   logo: {
     // backgroundColor:'yellow',
     resizeMode: 'contain',
@@ -59,15 +81,15 @@ const styles = StyleSheet.create({
     // backgroundColor:'blue',
     width: 100,
     paddingTop: 10,
-    textAlign:'left',
-    fontSize:18
+    textAlign: 'left',
+    fontSize: 18
   },
 
-  priceText:{
+  priceText: {
     width: 100,
     paddingTop: 10,
-    textAlign:'left',
-    fontSize:16,
-    color:'#4B8E71'
+    textAlign: 'left',
+    fontSize: 16,
+    color: '#4B8E71'
   }
 })

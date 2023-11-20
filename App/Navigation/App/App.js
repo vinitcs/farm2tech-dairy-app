@@ -1,11 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import {createStackNavigator } from '@react-navigation/stack'
-import { NavigationContainer } from '@react-navigation/native';
-import Splash from '../DefaultScreens/Splash';
-import MainParent from '../DefaultScreens/MainParent';
-import Delivery from '../Screens/Delivery';
-import Notification from '../Screens/Notification';
+import {CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack'
+import Splash from '../../DefaultScreens/Splash';
+import MainParent from '../../DefaultScreens/MainParent';
+import Delivery from '../../Screens/Delivery';
+import Notification from '../../Screens/Notification';
 
 
 
@@ -15,32 +14,37 @@ const Stack = createStackNavigator();
 
 const AppNavigation = () => {
      return (
-          <NavigationContainer>
-               <Stack.Navigator>
-                    <Stack.Screen
+               <Stack.Navigator
+               screenOptions={{
+                    headerShown:false,
+                    gestureEnabled:true,
+                    cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+               }}
+               >
+                    
+                    
+                    {/* <Stack.Screen
                          name='Splash'
                          component={Splash}
                          options={{ headerShown: false }}
-                    />
+                    /> */}
+
+
                     <Stack.Screen
                          name='MainParent'
                          component={MainParent}
-                         options={{ headerShown: false }}
                     />
                     <Stack.Screen
                          name='Notification'
                          component={Notification}
-                         options={{ headerShown: false }}
                     />
                     <Stack.Screen
                          name='Delivery'
                          component={Delivery}
-                         options={{ headerShown: false }}
                     />
                    
                </Stack.Navigator>
 
-          </NavigationContainer>
      )
 }
 
