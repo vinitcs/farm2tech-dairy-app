@@ -2,8 +2,8 @@ import { StyleSheet, View } from 'react-native'
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Ionicons } from '@expo/vector-icons';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
+import { Icon } from '@rneui/themed';
 import {
      Avatar,
      Title,
@@ -16,9 +16,9 @@ import {
      Button,
 } from 'react-native-paper';
 
-const CustomDrawer = ({navigation, props }) => {
+const CustomDrawer = ({ navigation, props }) => {
      // const navigation = useNavigation();
-     
+
      return (
           <View style={{ flex: 1 }}>
                <DrawerContentScrollView {...props}>
@@ -34,12 +34,17 @@ const CustomDrawer = ({navigation, props }) => {
 
                                    </View>
                                    <View style={{ marginLeft: 9, marginLeft: -4 }}>
-                                        <Button icon="account" mode="text" textColor='#DA7650'  onPress={() => navigation.navigate('Profile')} >My Account</Button>
+                                        <Button icon="account" mode="text" textColor='#DA7650' onPress={() => navigation.navigate('Profile')} >My Account</Button>
                                    </View>
                               </View>
-                              <View style={{ marginLeft: 30, marginTop: -5 }}>
+                              <View style={{ marginLeft: 26, marginTop: -5 }}>
                                    <TouchableOpacity>
-                                        <Ionicons name="close-circle-outline" size={30} color="black" onPress={() => { navigation.closeDrawer(); }} />
+                                        <Icon
+                                             name='close-outline'
+                                             type='ionicon'
+                                             size={35}
+                                             onPress={() => { navigation.closeDrawer(); }}
+                                        />
                                    </TouchableOpacity>
                               </View>
                          </View>
@@ -62,7 +67,7 @@ const CustomDrawer = ({navigation, props }) => {
                                         label="My Cart"
                                         onPress={() => navigation.navigate('Cart')}
                                    />
-                                    <Drawer.Item
+                                   <Drawer.Item
                                         label="Notification"
                                         onPress={() => navigation.navigate('Notification')}
                                    />

@@ -8,17 +8,24 @@ import { ScrollView } from 'react-native-gesture-handler';
 import About from '../components/About';
 import Speciality from '../components/Speciality';
 import Contact from '../components/Contact';
+import {fonts} from './../../theme/fonts/fonts';
+
+
 // import ProductDisplayFlatList from '../components/ProductDisplayFlatList';
 
 
-const Home = () => {
+const Home = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = React.useState('');
   const onChangeSearch = query => setSearchQuery(query);
 
   return (
-    <KeyboardAvoidingView style={{ flex: 1 }}>
-      <ScrollView contentContainerStyle={styles.scrollViewContent} bounces={false} showsVerticalScrollIndicator={false}>
-        <View style={{ padding: 20 }}>
+    <View>
+      <ScrollView 
+      contentContainerStyle={styles.scrollViewContent}
+      bounces={false} 
+      showsVerticalScrollIndicator={false}>
+      
+        <View style={{ paddingHorizontal: 15 }}>
           <Header />
 
           <View style={styles.imageContainer}>
@@ -73,7 +80,7 @@ const Home = () => {
 
         </View>
       </ScrollView>
-    </KeyboardAvoidingView>
+    </View>
   );
 }
 
@@ -107,7 +114,8 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 12,
     textAlign: 'center',
-    // fontWeight: 'bold',
+    // fontFamily: fonts.Medium,
+
   },
 
   organizationName: {
@@ -115,6 +123,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     color: '#4B8E71',
+    // fontFamily: fonts.Bold,
   },
 
   description: {
@@ -178,10 +187,3 @@ const styles = StyleSheet.create({
 
 
 
-// Colors
-//   --main-color: #4B8E71;
-//   --primary-color: #6B9080;
-//   --button-background: #DA7650;
-//   --primary-button-background: #fe7649;
-//   --background-color: #CCE3DE;
-//   --hover-color: #5c9ceb;

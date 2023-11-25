@@ -1,44 +1,52 @@
 import { View, Text, Image, StyleSheet } from 'react-native';
 import React from 'react';
-import { Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
+import { Icon } from '@rneui/themed';
 
 const Header = () => {
   const navigation = useNavigation();
   return (
 
-    <View style={styles.header}>
-      <View style={{ justifyContent: 'center' }}>
+    <View style={styles.headerContainer}>
+      <View style={styles.headerContent}>
         <TouchableOpacity>
-          <Ionicons name="reorder-three" size={35} color="black"
+          <Icon
+            name='menu-outline'
+            type= 'ionicon'
+            size={35}
             onPress={() => { navigation.openDrawer(); }}
           />
         </TouchableOpacity>
+        <Image source={require('./../../assets/logo.png')} style={styles.logo} />
       </View>
-
-      <Image source={require('./../../assets/logo.png')} style={styles.logo} />
-
     </View>
-  )
-}
+  );
+};
 
 export default Header;
 
 
 const styles = StyleSheet.create({
-  header: {
-    display: 'flex',
+  headerContainer: {
+    // backgroundColor:colors.white,
+    marginTop: 10,
+    width: '100%',
+    height: 'auto'
+  },
+
+  headerContent: {
+    // backgroundColor:'red',
     flexDirection: 'row',
-    paddingTop: 10,
+    alignItems: "center",
   },
 
   logo: {
+    // backgroundColor:'yellow',
     resizeMode: 'contain',
     width: 120,
     height: 50,
-    marginLeft: 80,
+    marginLeft: 82,
 
-  }
-
-})
+  },
+});

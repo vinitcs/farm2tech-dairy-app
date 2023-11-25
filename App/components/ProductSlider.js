@@ -12,7 +12,7 @@ const ProductSlider = () => {
                          <Text style={styles.text}>Milk</Text>
                     </View>
                </TouchableOpacity>
-
+             
                <TouchableOpacity>
                     <View style={styles.box}>
                          <Image source={require('./../../assets/ghee.png')} style={styles.logo} />
@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
           borderRadius: 12,
           justifyContent: 'center',
           alignItems: 'center',
+          
      },
      logo: {
           resizeMode: 'contain',
