@@ -1,7 +1,9 @@
 import { StyleSheet, Text, View, Image } from 'react-native';
 import React from 'react';
 import { TextInput, Button } from 'react-native-paper';
-import { SocialIcon } from 'react-native-elements';
+// import { SocialIcon } from 'react-native-elements';
+import { fonts } from './../../theme/fonts/fonts';
+import { colors } from './../../theme/colors/colors';
 
 const Contact = () => {
      const [text, setText] = React.useState("");
@@ -9,28 +11,27 @@ const Contact = () => {
      return (
           <View>
                <View style={styles.container}>
-                    <View style={styles.aboutContainer}>
-                         <Text style={styles.aboutUs}>Contact us</Text>
-                         {/* <Image source={require('./../../assets/contact.png')} style={styles.homeImg} /> */}
+                    <View style={styles.contactContainer}>
+                         <Text style={styles.contactUs}>Contact us</Text>
                          <TextInput style={styles.Input}
                               label="Full Name"
                               value={text}
                               mode='outlined'
-                              activeOutlineColor='#4B8E71'
+                              activeOutlineColor={colors.lightText}
                               onChangeText={text => setText(text)}
                          />
                          <TextInput style={styles.Input}
                               label="Mobile Number"
                               value={number}
                               mode='outlined'
-                              activeOutlineColor='#4B8E71'
+                              activeOutlineColor={colors.lightText}
                               onChangeText={text => setNumber(text)}
                          />
                          <TextInput style={styles.Input}
                               label="Email"
                               value={text}
                               mode='outlined'
-                              activeOutlineColor='#4B8E71'
+                              activeOutlineColor={colors.lightText}
                               onChangeText={text => setText(text)}
                          />
                          <TextInput style={styles.Input}
@@ -38,7 +39,7 @@ const Contact = () => {
                               value={text}
                               mode='outlined'
                               multiline
-                              activeOutlineColor='#4B8E71'
+                              activeOutlineColor={colors.lightText}
                               onChangeText={text => setText(text)}
                          />
                          <View style={styles.buttonContainer}>
@@ -46,27 +47,31 @@ const Contact = () => {
                               <Button style={styles.button} mode="contained" onPress={() => console.log('Submit')}>
                                    Submit
                               </Button>
-                              <Button style={styles.button} mode="contained" onPress={() => console.log('Clear')}>
-                                   Clear
-                              </Button>
                          </View>
                     </View>
                </View>
-               <Text style={{ fontSize: 12, fontWeight:'800'}}>Address</Text>
-               <Text style={{ fontSize: 14 }}>Farm2Tech, Khed, Ratnagiri, 415605</Text>
-               <Text style={{ fontSize: 14 }}>farm2tech@git-india.edu.in</Text>
-               <Text style={{ fontSize: 14, fontStyle: 'italic' }}>+91-0000000000</Text>
-               <Text style={{ fontSize: 14 }}>Time: Mon - Sat  09:00 AM - 09:00 PM </Text>
-
-               <Text style={{ marginTop: 30, fontSize: 12, fontWeight:'800' }}>Connect us</Text>
-
-               <View style={styles.connectContainer}>
-                    <SocialIcon type='twitter' light />
-                    <SocialIcon type='linkedin' light />
-                    <SocialIcon type='instagram' light />
+               <View style={{
+                    marginTop: 30,
+                    justifyContent: 'flex-start',
+                    // left:12,
+               }}>
+                    <Text style={{ fontSize: 14, fontFamily: fonts.Bold }}>Address</Text>
+                    <Text style={{ fontSize: 16, fontFamily: fonts.Medium }}>Farm2Tech, Khed, Ratnagiri, 415605</Text>
+                    <Text style={{ fontSize: 16, fontFamily: fonts.Medium }}>farm2tech@gmail.com</Text>
+                    <Text style={{ fontSize: 16, fontFamily: fonts.Medium, fontStyle: 'italic' }}>+91-0000000000</Text>
+                    <Text style={{ fontSize: 16, fontFamily: fonts.Regular }}>Time: Mon - Sat  09:00 AM - 09:00 PM </Text>
                </View>
 
-               <Text style={{ marginTop: 30, fontSize: 10, }}>  Copyrights 2023. Farm2Tech. All Rights Reserved.</Text>
+               <Text style={{
+                    // backgroundColor:'orange',
+                    marginTop: 30,
+                    fontSize: 10,
+                    position: 'relative',
+                    bottom: 4,
+                    color: colors.lightText
+               }}>
+                    Copyrights 2023. Farm2Tech. All Rights Reserved.
+               </Text>
           </View>
      )
 }
@@ -77,40 +82,26 @@ const styles = StyleSheet.create({
      container: {
           // backgroundColor: 'yellow',
           flex: 1,
-          width: '100%',
-          height: 450,
      },
 
-     aboutContainer: {
+     contactContainer: {
           // backgroundColor: 'purple',
-          flexDirection: 'column',
           width: '100%',
-          justifyContent: 'center',
+          height: 'auto',
+          justifyContent: 'space-between',
           alignItems: 'center',
      },
 
-     aboutUs: {
+     contactUs: {
           fontSize: 16,
           textAlign: 'center',
-          marginTop: 10,
-          // height:100,
-     },
-
-     homeImg: {
-          resizeMode: 'cover',
-          width: '100%',
-          height: '50%',
-
-     },
-
-     aboutUsDescription: {
-          paddingHorizontal: 20,
-          textAlign: 'justify',
+          marginTop: 15,
+          fontFamily: fonts.Bold,
      },
 
      Input: {
           width: '100%',
-          marginTop: 20,
+          marginTop: 10,
      },
 
      buttonContainer: {
@@ -118,14 +109,10 @@ const styles = StyleSheet.create({
      },
 
      button: {
-          margin: 24,
-          width: '40%',
-          backgroundColor: '#6B9080',
+          marginTop: 10,
+          width: '100%',
+          backgroundColor: colors.lightText,
           borderRadius: 12,
 
-     },
-
-     connectContainer: {
-          flexDirection: 'row',
      },
 })

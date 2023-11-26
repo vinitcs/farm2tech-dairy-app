@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import { Icon } from '@rneui/themed';
+import { colors } from './../../theme/colors/colors';
 import {
      Avatar,
      Title,
@@ -34,7 +35,7 @@ const CustomDrawer = ({ navigation, props }) => {
 
                                    </View>
                                    <View style={{ marginLeft: 9, marginLeft: -4 }}>
-                                        <Button icon="account" mode="text" textColor='#DA7650' onPress={() => navigation.navigate('Profile')} >My Account</Button>
+                                        <Button icon="account" mode="text" textColor={colors.primary2} onPress={() => navigation.navigate('Profile')} >My Account</Button>
                                    </View>
                               </View>
                               <View style={{ marginLeft: 26, marginTop: -5 }}>

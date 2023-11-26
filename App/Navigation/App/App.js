@@ -27,6 +27,12 @@ const AppNavigation = () => {
                />
                <Stack.Screen
                     name='Notification'
+                    // options={{
+                    //      headerShown: false,
+                    //      gestureEnabled: true,
+                    //      gestureDirection: "vertical",
+                    //      cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS
+                    //    }}
                     component={Notification}
                />
                <Stack.Screen

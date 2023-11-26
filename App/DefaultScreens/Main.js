@@ -6,7 +6,7 @@ const Main = () => {
      // console.log("main", navigation);
      return (
           <View style={{ flex: 1, paddingTop: 20 }}>
-               <TabNavigation />
+               <TabNavigation/>
           </View>
      )
 }

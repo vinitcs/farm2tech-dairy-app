@@ -9,7 +9,7 @@ import { colors } from '../../theme/colors/colors';
 import { NavigationContainer } from '@react-navigation/native';
 
 const Navigation = () => {
-     const [isLogin, isLoading] = useContext(AuthContext);
+     const {isLogin, isLoading} = useContext(AuthContext);
      console.log("navigation")
      const { fontsLoaded } = useCustomFonts();
      console.log(fontsLoaded);

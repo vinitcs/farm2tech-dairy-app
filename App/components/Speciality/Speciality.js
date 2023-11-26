@@ -1,6 +1,9 @@
 import { StyleSheet, Text, View, Image } from 'react-native';
 import React from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { specialityData } from './SpecialityContent';
+import { fonts } from './../../../theme/fonts/fonts';
+import { colors } from './../../../theme/colors/colors';
 
 const Speciality = () => {
      return (
@@ -8,21 +11,16 @@ const Speciality = () => {
                <Text style={styles.specialityTitle}>Cow and Buffalo Milk</Text>
                <Text style={styles.specialityDescription}>We provide cow and buffalo milk that cater to consumers who put a premium on taste, nutrition, health, craftmanship and sheer indulgence.</Text>
                {/* <Text style={styles.specialityDescription}>Price depends on custom </Text> */}
- 
-               <View style={styles.boxContainer}>
-                    <TouchableOpacity>
-                         <View style={styles.box}>
-                              <Image source={require('./../../assets/cow-milk.png')} style={styles.logo} />
-                              <Text style={styles.text}>Cow milk</Text>
-                         </View>
-                    </TouchableOpacity>
 
-                    <TouchableOpacity>
-                         <View style={styles.box}>
-                              <Image source={require('./../../assets/buffalo-milk.png')} style={styles.logo} />
-                              <Text style={styles.text}>Buffalo milk</Text>
-                         </View>
-                    </TouchableOpacity>
+               <View style={styles.boxContainer}>
+                    {specialityData.map((item, idx) => (
+                         <TouchableOpacity>
+                              <View style={styles.box} key={idx}>
+                                   <Image source={item.uri} style={styles.logo} />
+                                   <Text style={styles.text}>{item.name}</Text>
+                              </View>
+                         </TouchableOpacity>
+                    ))}
                </View>
           </View>
      )
@@ -34,45 +32,47 @@ const styles = StyleSheet.create({
      container: {
           // backgroundColor: 'brown',
           flex: 1,
-          width: '100%',
-          height: 400,
-          marginTop: 20,
      },
 
      specialityTitle: {
-          fontSize: 20,
+          fontSize: 16,
           textAlign: 'center',
-          marginTop: 10,
-          color: '#4B8E71',
+          marginTop: 15,
+          color: colors.black,
+          fontFamily: fonts.Bold,
      },
 
      specialityDescription: {
-          fontSize: 10,
+          // backgroundColor:'cyan',
+          fontSize: 12,
           textAlign: 'center',
           marginTop: 5,
-          fontWeight: '500',
-          paddingHorizontal: 35,
+          paddingHorizontal: 4,
+          fontFamily: fonts.Medium
      },
 
 
      boxContainer: {
           // backgroundColor: 'red',
           width: '100%',
+          height: 'auto',
           padding: 2,
           flexDirection: 'row',
           flexWrap: 'wrap',
+          justifyContent: 'space-around',
           marginTop: 10,
      },
 
      box: {
-          backgroundColor: '#F0F8FF',
-          padding: 10,
-          margin: 12,
+          // backgroundColor: 'red',
+          // padding: 10,
           borderRadius: 12,
-          justifyContent: 'center',
+          borderWidth: 1,
+          borderColor: colors.outline,
+          justifyContent: 'space-between',
           alignItems: 'center',
           width: 150,
-          height: 250,
+          height: 'auto',
      },
 
      logo: {
@@ -80,17 +80,14 @@ const styles = StyleSheet.create({
           resizeMode: 'cover',
           width: 100,
           height: 180,
-          justifyContent: 'center',
-          alignItems: 'center',
 
 
      },
      text: {
           // backgroundColor:'blue',
-          width: 100,
-          paddingTop: 5,
           textAlign: 'center',
           fontSize: 16,
+          fontFamily: fonts.Medium,
      },
 
 })

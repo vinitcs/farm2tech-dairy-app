@@ -1,18 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet, KeyboardAvoidingView, Image, Animated } from 'react-native';
 import Header from '../components/Header';
-import ProductSlider from '../components/ProductSlider';
-import ProductDisplayPrice from '../components/ProductDisplayPrice';
-import { Searchbar } from 'react-native-paper';
+import ProductSlider from '../components/ProductSlider/ProductSlider';
+import ProductDisplayPrice from '../components/ProductDisplayInfo/ProductDisplayPrice';
 import { ScrollView } from 'react-native-gesture-handler';
 import About from '../components/About';
-import Speciality from '../components/Speciality';
 import Contact from '../components/Contact';
-import {fonts} from './../../theme/fonts/fonts';
-
-
-// import ProductDisplayFlatList from '../components/ProductDisplayFlatList';
-
+import DummySearch from '../components/Search/DummySearch';
+import Speciality from '../components/Speciality/Speciality';
+import { fonts } from './../../theme/fonts/fonts';
+// import { colors } from './../../theme/colors/colors';
 
 const Home = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = React.useState('');
@@ -20,71 +17,44 @@ const Home = ({ navigation }) => {
 
   return (
     <View>
-      <ScrollView 
-      contentContainerStyle={styles.scrollViewContent}
-      bounces={false} 
-      showsVerticalScrollIndicator={false}>
-      
+      <ScrollView
+        contentContainerStyle={styles.scrollViewContent}
+        bounces={false}
+        showsVerticalScrollIndicator={false}
+      >
         <View style={{ paddingHorizontal: 15 }}>
           <Header />
-
           <View style={styles.imageContainer}>
             <Image source={require('./../../assets/home.png')} style={styles.homeImg} />
           </View>
-
           <View style={styles.welcomeContainer}>
             <Text style={styles.welcomeText}>Welcome To,</Text>
             <Text style={styles.organizationName}>Farm2Tech</Text>
             <Text style={styles.description}>Digitalization Of Dairy in Rural</Text>
           </View>
-
-          <View style={styles.searchContainer}>
-            <Searchbar
-              placeholder="Search for item..."
-              onChangeText={onChangeSearch}
-              value={searchQuery}
-              theme={{ colors: { primary: 'green' } }}
-              iconColor="#6B9080"
-              // elevation={2}
-            />
+          <View style={{ marginTop: 10, }}>
+            <DummySearch />
           </View>
-
-
-          <Text style={styles.dairyDisplayContainerText}>Dairy Products</Text>
-
-          <View style={styles.productSliderContainer}>
+          <View style={{ marginTop: 10, }}>
             <ProductSlider />
           </View>
-
-
-
-          <View style={styles.specialityContainer}>
+          <View style={{ marginTop: 10, }}>
             <Speciality />
           </View>
-
-
-          <Text style={styles.dairyDisplayContainerText}>Products</Text>
-
-          <View style={styles.productDisplayContainer}>
+          <View style={{ marginTop: 10, }}>
             <ProductDisplayPrice />
           </View>
-
-          <View style={styles.aboutContainer}>
+          <View style={{ marginTop: 10, }}>
             <About />
           </View>
-
-          <View style={styles.contactContainer}>
+          <View style={{ marginTop: 10, }}>
             <Contact />
           </View>
-
-
         </View>
       </ScrollView>
     </View>
   );
 }
-
-export default Home;
 
 const styles = StyleSheet.create({
 
@@ -93,97 +63,48 @@ const styles = StyleSheet.create({
   },
 
   imageContainer: {
+    // backgroundColor:'pink',
     width: '100%',
-    height: 200, // Adjust the height as needed
-    marginTop: 10,
-    justifyContent: 'center',
+    height: 'auto',
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
 
   homeImg: {
     resizeMode: 'contain',
-    width: '100%',
-    height: '100%',
+    width: 360,
+    height: 200,
   },
 
   welcomeContainer: {
-    marginTop: 10,
+    // backgroundColor:'green',
+    // marginTop: 10,
+    height: 'auto'
   },
 
   welcomeText: {
     color: 'black',
     fontSize: 12,
     textAlign: 'center',
-    // fontFamily: fonts.Medium,
+    fontFamily: fonts.Bold,
 
   },
 
   organizationName: {
+    // backgroundColor:'red',
     fontSize: 50,
-    fontWeight: 'bold',
     textAlign: 'center',
     color: '#4B8E71',
-    // fontFamily: fonts.Bold,
+    fontFamily: fonts.Bold,
   },
 
   description: {
     fontSize: 12,
     textAlign: 'center',
-    fontWeight: '600',
+    fontFamily: fonts.Medium,
   },
-
-  searchContainer: {
-    // backgroundColor:'blue',
-    paddingTop: 10,
-
-  },
-
-
-  specialityContainer: {
-    marginTop: 20,
-  },
-
-  dairyDisplayContainerText: {
-    fontSize: 16,
-    textAlign: 'center',
-    marginTop: 20,
-    // fontWeight: '700',
-  },
-
-  productSliderContainer: {
-    paddingTop: 20,
-  },
-
-  productDisplayContainer: {
-    paddingTop: 20,
-    // backgroundColor: 'brown',
-  },
-
-  // productDisplayContainerFlatList: {
-  //   paddingTop: 20,
-  //   backgroundColor: 'brown',
-  //   // width: '100%',
-  // },
-
-  aboutContainer: {
-    paddingTop: 20,
-    // backgroundColor: 'red',
-    // width: '100%',
-    // height: '10%',
-
-  },
-
-  contactContainer: {
-    paddingTop: 20,
-    padding:10,
-    // backgroundColor: 'red',
-    // width: '100%',
-    // height: '10%',
-
-  },
-
 })
 
 
-
+export default Home;
 

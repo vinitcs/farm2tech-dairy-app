@@ -1,5 +1,7 @@
 import { StyleSheet, Image, Text, View } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { fonts } from './../../theme/fonts/fonts';
+import { colors } from './../../theme/colors/colors';
 
 const About = () => {
      return (
@@ -21,34 +23,34 @@ const styles = StyleSheet.create({
      container: {
           // backgroundColor: 'yellow',
           flex: 1,
-          width: '100%',
-          height: 700,
      },
 
      aboutContainer: {
           // backgroundColor: 'purple',
-          flexDirection: 'column',
           width: '100%',
-          justifyContent: 'center',
+          height:'auto',
+          justifyContent:'space-between',
           alignItems: 'center',
      },
 
      aboutUs: {
           fontSize: 16,
           textAlign: 'center',
-          marginTop: 10,
-          // height:100,
+          marginTop: 15,
+          fontFamily: fonts.Bold,
      },
 
      homeImg: {
-          resizeMode: 'contain',
-          width: '100%',
-          height: '40%',
+          // backgroundColor:'red',
+          resizeMode: 'cover',
+          width: 400,
+          height: 220,
      },
 
      aboutUsDescription: {
-          paddingHorizontal: 20,
+          fontSize: 12,
+          lineHeight:16,
           textAlign: 'justify',
-          fontWeight:'400'
+          fontFamily: fonts.Medium,
      },
 })
