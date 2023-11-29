@@ -20,59 +20,70 @@ const Tab = createBottomTabNavigator();
 const TabNavigation = () => {
      return (
           <Tab.Navigator
-
                initialRouteName={homeName}
                screenOptions={({ route }) => ({
                     tabBarStyle: {
                          height: 55,
                     },
                     tabBarLabelStyle: {
-                         // backgroundColor:'pink',
                          fontSize: 12,
-                         fontFamily:fonts.Bold,
-                         marginTop:-10,
-                       },
+                         fontFamily: fonts.Bold,
+                         marginTop: -10,
+                    },
                     headerShown: false,
                     tabBarShowLabel: true,
                     tabBarInactiveTintColor: colors.lightText,
                     tabBarActiveTintColor: colors.primary,
                     tabBarHideOnKeyboard: true,
-
                     tabBarIcon: ({ focused, color, size }) => {
                          let iconName;
                          let rn = route.name;
 
                          if (rn === homeName) {
-                              iconName = focused ? 'home' : 'home-outline', size = 30
-                         }
-                         else if (rn === categoryName) {
-                              iconName = focused ? 'grid' : 'grid-outline', size = 30
-                         }
-                         else if (rn === searchName) {
-                              iconName = focused ? 'search' : 'search-outline', size = 30
-                         }
-                         else if (rn === cartName) {
-                              iconName = focused ? 'cart' : 'cart-outline', size = 30
-                         }
-                         else if (rn === profileName) {
-                              iconName = focused ? 'person-circle' : 'person-circle-outline', size = 30
+                              iconName = focused ? 'home' : 'home-outline';
+                              size = 28;
+                         } else if (rn === categoryName) {
+                              iconName = focused ? 'grid' : 'grid-outline';
+                              size = 28;
+                         } else if (rn === searchName) {
+                              iconName = focused ? 'search' : 'search-outline';
+                              size = 28;
+                         } else if (rn === cartName) {
+                              iconName = focused ? 'cart' : 'cart-outline';
+                              size = 28;
+                         } else if (rn === profileName) {
+                              iconName = focused ? 'person-circle' : 'person-circle-outline';
+                              size = 28;
                          }
 
-                         return <Icon
-                              name={iconName}
-                              type='ionicon'
-                              size={size}
-                              color={color}
-                         />
+                         return (
+                              <Icon name={iconName} type="ionicon" size={size} color={color} />
+                         );
                     },
                })}
           >
                <Tab.Screen name={homeName} component={Home} />
-               <Tab.Screen name={categoryName} component={Category} />
-               <Tab.Screen name={searchName} component={Search} />
-               <Tab.Screen name={cartName} component={Cart} />
-               <Tab.Screen name={profileName} component={Profile} />
-          </Tab.Navigator >
+               <Tab.Screen
+                    name={categoryName}
+                    component={Category}
+                    // options={{ tabBarStyle: { display: 'none' } }}
+               />
+               <Tab.Screen
+                    name={searchName}
+                    component={Search}
+                    options={{ tabBarStyle: { display: 'none' } }}
+               />
+               <Tab.Screen
+                    name={cartName}
+                    component={Cart}
+                    // options={{ tabBarStyle: { display: 'none' } }}
+               />
+               <Tab.Screen
+                    name={profileName}
+                    component={Profile}
+                    // options={{ tabBarStyle: { display: 'none' } }}
+               />
+          </Tab.Navigator>
      );
 };
 

@@ -9,21 +9,33 @@ import Contact from '../components/Contact';
 import DummySearch from '../components/Search/DummySearch';
 import Speciality from '../components/Speciality/Speciality';
 import { fonts } from './../../theme/fonts/fonts';
-// import { colors } from './../../theme/colors/colors';
+import { colors } from './../../theme/colors/colors';
 
 const Home = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = React.useState('');
   const onChangeSearch = query => setSearchQuery(query);
 
   return (
-    <View>
+    <View style={{marginBottom:20}}>
+      <View style={{
+        // backgroundColor:colors.outline,
+        borderBottomWidth:0.5,
+        borderColor:colors.outline,
+        paddingHorizontal:15,
+      }}>
+        <Header />
+      </View>
+
       <ScrollView
         contentContainerStyle={styles.scrollViewContent}
         bounces={false}
         showsVerticalScrollIndicator={false}
       >
-        <View style={{ paddingHorizontal: 15 }}>
-          <Header />
+        <View style={{
+          // backgroundColor: 'orange',
+          paddingHorizontal: 15,
+        }}>
+
           <View style={styles.imageContainer}>
             <Image source={require('./../../assets/home.png')} style={styles.homeImg} />
           </View>

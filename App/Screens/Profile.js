@@ -1,11 +1,11 @@
 import { View, Text } from 'react-native';
 import React from 'react';
-import Header from '../components/Header';
+import GoBackIcon from '../components/GoBackIcon/GoBackIcon';
 
 export default function Profile() {
   return (
-    <View style={{ padding: 20 }}>
-      <Header />
+    <View style={{ paddingHorizontal: 15 }}>
+      <GoBackIcon />
       <Text>Profile</Text>
     </View>
   )

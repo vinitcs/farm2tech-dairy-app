@@ -1,6 +1,5 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image,TouchableOpacity } from 'react-native';
 import React from 'react';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { productDisplayInfoData } from './ProductDisplayInfoContent';
 import { fonts } from './../../../theme/fonts/fonts';
 import { colors } from './../../../theme/colors/colors';
@@ -17,7 +16,11 @@ const ProductDisplayPrice = () => {
 
       <View style={styles.boxContainer}>
         {productDisplayInfoData.map((item, idx) => (
-          <TouchableOpacity onPress={() => { navigation.navigate('Search') }}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('ProductDisplayInfo');
+              console.log('productDisplayInfo')
+            }}>
             <View style={styles.box} key={idx} >
               <View>
                 <Image source={item.uri} style={styles.logo} />
@@ -37,9 +40,9 @@ const ProductDisplayPrice = () => {
               <View style={{
                 // backgroundColor:'yellow',
                 // justifyContent: 'flex-start'
-                position:'absolute',
-                right:6,
-                top:6,
+                position: 'absolute',
+                right: 6,
+                top: 6,
               }}>
                 <TouchableOpacity>
                   <Icon
@@ -82,8 +85,8 @@ const styles = StyleSheet.create({
     padding: 2,
     flexDirection: 'column',
     justifyContent: 'space-between',
-    rowGap:16,
-    marginTop:10,
+    rowGap: 16,
+    marginTop: 10,
   },
 
   box: {

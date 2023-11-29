@@ -4,6 +4,9 @@ import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/
 import MainParent from '../../DefaultScreens/MainParent';
 import Delivery from '../../Screens/Delivery';
 import Notification from '../../Screens/Notification';
+import Profile from '../../Screens/Profile';
+import ProductDisplayInfo from '../../Screens/ProductDisplayInfo';
+import SelectPlan from '../../Screens/SelectPlan';
 
 
 
@@ -38,6 +41,17 @@ const AppNavigation = () => {
                <Stack.Screen
                     name='Delivery'
                     component={Delivery}
+               />
+               <Stack.Screen
+                    name='ProductDisplayInfo'
+                    component={ProductDisplayInfo}
+                    // options={{
+                    //      cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS,
+                    // }}
+               />
+               <Stack.Screen
+                    name='SelectPlan'
+                    component={SelectPlan}
                />
 
           </Stack.Navigator>

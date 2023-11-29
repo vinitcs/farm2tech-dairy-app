@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+// import { TouchableOpacity } from 'react-native-gesture-handler';
 import { specialityData } from './SpecialityContent';
 import { fonts } from './../../../theme/fonts/fonts';
 import { colors } from './../../../theme/colors/colors';

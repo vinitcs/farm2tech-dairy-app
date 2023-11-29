@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Image } from 'react-native';
 import React from 'react';
 import { TextInput, Button } from 'react-native-paper';
-// import { SocialIcon } from 'react-native-elements';
+import { Icon } from '@rneui/themed';
 import { fonts } from './../../theme/fonts/fonts';
 import { colors } from './../../theme/colors/colors';
 
@@ -11,67 +11,64 @@ const Contact = () => {
      return (
           <View>
                <View style={styles.container}>
-                    <View style={styles.contactContainer}>
-                         <Text style={styles.contactUs}>Contact us</Text>
-                         <TextInput style={styles.Input}
-                              label="Full Name"
-                              value={text}
-                              mode='outlined'
-                              activeOutlineColor={colors.lightText}
-                              onChangeText={text => setText(text)}
-                         />
-                         <TextInput style={styles.Input}
-                              label="Mobile Number"
-                              value={number}
-                              mode='outlined'
-                              activeOutlineColor={colors.lightText}
-                              onChangeText={text => setNumber(text)}
-                         />
-                         <TextInput style={styles.Input}
-                              label="Email"
-                              value={text}
-                              mode='outlined'
-                              activeOutlineColor={colors.lightText}
-                              onChangeText={text => setText(text)}
-                         />
-                         <TextInput style={styles.Input}
-                              label="Message"
-                              value={text}
-                              mode='outlined'
-                              multiline
-                              activeOutlineColor={colors.lightText}
-                              onChangeText={text => setText(text)}
-                         />
-                         <View style={styles.buttonContainer}>
+                    <Text style={styles.contactUs}>Contact us</Text>
+                    <View style={styles.contactMail}>
+                         <Text style={{ fontSize: 14, fontFamily: fonts.Medium }}>You can contact us through Email:</Text>
+                         <Text style={{ fontSize: 14, fontFamily: fonts.Bold, }} selectable={true}>farm2tech@gmail.com <Text style={{ fontSize: 14, fontFamily: fonts.Medium, }}>, we will reply in 2-3 working days</Text></Text>
+                    </View>
 
-                              <Button style={styles.button} mode="contained" onPress={() => console.log('Submit')}>
-                                   Submit
-                              </Button>
+                    <View style={styles.addressContainer}>
+                         <View style={styles.addressContent}>
+
+                              <Icon
+                                   name='location-outline'
+                                   type='ionicon'
+                                   // size={20}
+                                   color={colors.primary}
+                              />
+                              <Text style={{ fontSize: 16, fontFamily: fonts.Medium }}>Address: Farm2Tech, Khed, Ratnagiri, 415605</Text>
+                         </View>
+                         <View style={styles.addressContent}>
+
+                              <Icon
+                                   name='call-outline'
+                                   type='ionicon'
+                                   // size={20}
+                                   color={colors.primary}
+                              />
+                              <Text style={{ fontSize: 16, fontFamily: fonts.Medium, }}>Phone: +91-0000000000</Text>
+                         </View>
+                         <View style={styles.addressContent}>
+
+                              <Icon
+                                   name='time-outline'
+                                   type='ionicon'
+                                   // size={20}
+                                   color={colors.primary}
+                              />
+                              {/* <Text style={{ fontSize: 16, fontFamily: fonts.Regular }}>Time: Mon - Sat  09:00 AM - 09:00 PM </Text> */}
+                              <Text style={{ fontSize: 16, fontFamily: fonts.Regular }}>Open: 24 hours</Text>
                          </View>
                     </View>
-               </View>
-               <View style={{
-                    marginTop: 30,
-                    justifyContent: 'flex-start',
-                    // left:12,
-               }}>
-                    <Text style={{ fontSize: 14, fontFamily: fonts.Bold }}>Address</Text>
-                    <Text style={{ fontSize: 16, fontFamily: fonts.Medium }}>Farm2Tech, Khed, Ratnagiri, 415605</Text>
-                    <Text style={{ fontSize: 16, fontFamily: fonts.Medium }}>farm2tech@gmail.com</Text>
-                    <Text style={{ fontSize: 16, fontFamily: fonts.Medium, fontStyle: 'italic' }}>+91-0000000000</Text>
-                    <Text style={{ fontSize: 16, fontFamily: fonts.Regular }}>Time: Mon - Sat  09:00 AM - 09:00 PM </Text>
-               </View>
 
-               <Text style={{
-                    // backgroundColor:'orange',
-                    marginTop: 30,
-                    fontSize: 10,
-                    position: 'relative',
-                    bottom: 4,
-                    color: colors.lightText
-               }}>
-                    Copyrights 2023. Farm2Tech. All Rights Reserved.
-               </Text>
+                    <View style={{
+                         // backgroundColor:'orange',
+                         position: 'relative',
+                         bottom:1,
+                         width: '100%',
+                         height: 'auto',
+                         marginTop: 20,
+                         marginBottom: 5,
+                    }}>
+
+                         <Text style={{
+                              fontSize: 10,
+                              color: colors.lightText
+                         }}>
+                              Copyrights 2023. Farm2Tech. All Rights Reserved.
+                         </Text>
+                    </View>
+               </View>
           </View>
      )
 }
@@ -82,37 +79,47 @@ const styles = StyleSheet.create({
      container: {
           // backgroundColor: 'yellow',
           flex: 1,
-     },
-
-     contactContainer: {
-          // backgroundColor: 'purple',
           width: '100%',
           height: 'auto',
-          justifyContent: 'space-between',
-          alignItems: 'center',
+          marginBottom:30,
+
      },
 
      contactUs: {
           fontSize: 16,
           textAlign: 'center',
-          marginTop: 15,
           fontFamily: fonts.Bold,
      },
 
-     Input: {
-          width: '100%',
-          marginTop: 10,
-     },
-
-     buttonContainer: {
-          flexDirection: 'row',
-     },
-
-     button: {
+     contactMail: {
+          // backgroundColor:'green',
           marginTop: 10,
           width: '100%',
-          backgroundColor: colors.lightText,
+          height: 'auto',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+     },
+
+     addressContainer: {
+          // backgroundColor: 'orange',
+          width: '100%',
+          height: 'auto',
+          // justifyContent: 'space-between',
+          // alignItems: 'center',
           borderRadius: 12,
-
+          borderWidth: 1,
+          borderColor: colors.lightText,
+          marginTop: 10,
      },
+     addressContent: {
+          justifyContent: 'flex-start',
+          width: '100%',
+          height: 'auto',
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          gap: 8,
+          paddingHorizontal: 6,
+          paddingVertical: 6,
+     }
 })

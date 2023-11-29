@@ -1,9 +1,9 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { fonts } from './../../../theme/fonts/fonts';
 import { colors } from './../../../theme/colors/colors';
 import { useNavigation } from "@react-navigation/core";
-import { TouchableOpacity } from 'react-native-gesture-handler';
+// import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Icon } from "@rneui/themed";
 // import Search from '../Screens/Search';
 

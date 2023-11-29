@@ -76,6 +76,10 @@ const CustomDrawer = ({ navigation, props }) => {
                                         label="Delivery"
                                         onPress={() => navigation.navigate('Delivery')}
                                    />
+                                   {/* <Drawer.Item
+                                        label="Contact"
+                                        onPress={() => navigation.navigate('Contact')}
+                                   /> */}
                               </Drawer.Section>
                          </View>
 

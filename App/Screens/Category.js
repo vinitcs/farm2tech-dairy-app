@@ -4,8 +4,14 @@ import ProductSlider from '../components/ProductSlider/ProductSlider';
 import { ScrollView } from 'react-native-gesture-handler';
 import { fonts } from './../../theme/fonts/fonts';
 import ProductDisplayPrice from '../components/ProductDisplayInfo/ProductDisplayPrice';
+import { Icon } from '@rneui/themed';
+import { colors } from './../../theme/colors/colors';
+import { useNavigation } from '@react-navigation/native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import GoBackIcon from '../components/GoBackIcon/GoBackIcon';
 
 const Category = () => {
+     const navigation = useNavigation();
      return (
           <View>
                <ScrollView
@@ -13,9 +19,10 @@ const Category = () => {
                     bounces={false}
                     showsVerticalScrollIndicator={false}
                >
-                    <View style={{ padding: 15 }}>
+                    <View style={{ paddingHorizontal: 15 }}>
+                         <GoBackIcon />
                          <ProductSlider />
-                         <ProductDisplayPrice/>
+                         <ProductDisplayPrice />
                     </View>
                </ScrollView>
           </View>
