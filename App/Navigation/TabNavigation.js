@@ -23,12 +23,14 @@ const TabNavigation = () => {
                initialRouteName={homeName}
                screenOptions={({ route }) => ({
                     tabBarStyle: {
-                         height: 55,
+                         // backgroundColor: colors.outline,
+                         height: 60,
                     },
                     tabBarLabelStyle: {
                          fontSize: 12,
                          fontFamily: fonts.Bold,
-                         marginTop: -10,
+                         position: 'relative',
+                         bottom: 6,
                     },
                     headerShown: false,
                     tabBarShowLabel: true,
@@ -66,7 +68,7 @@ const TabNavigation = () => {
                <Tab.Screen
                     name={categoryName}
                     component={Category}
-                    // options={{ tabBarStyle: { display: 'none' } }}
+               // options={{ tabBarStyle: { display: 'none' } }}
                />
                <Tab.Screen
                     name={searchName}
@@ -76,12 +78,12 @@ const TabNavigation = () => {
                <Tab.Screen
                     name={cartName}
                     component={Cart}
-                    // options={{ tabBarStyle: { display: 'none' } }}
+               // options={{ tabBarStyle: { display: 'none' } }}
                />
                <Tab.Screen
                     name={profileName}
                     component={Profile}
-                    // options={{ tabBarStyle: { display: 'none' } }}
+               // options={{ tabBarStyle: { display: 'none' } }}
                />
           </Tab.Navigator>
      );

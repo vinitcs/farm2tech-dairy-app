@@ -1,18 +1,25 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { React, useState } from 'react';
 import { fonts } from '../../../theme/fonts/fonts';
 import { colors } from '../../../theme/colors/colors';
 import { productData } from './productInfoMonthly';
 import CountQuantity from '../Count/CountQuantity';
-
+import MonthlySelectCalendar from '../Calendar/MonthlySelectCalendar';
+import SingleProductPriceInfo from '../ProductInfo/SingleProductPriceInfo';
+import { useNavigation } from '@react-navigation/native';
 
 const Monthly = () => {
+  const navigation = useNavigation();
+
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
 
   return (
     <View style={{
       flexDirection: 'column',
-      gap: 14,
-      marginVertical: 10
+      gap: 30,
+      marginBottom: 20,
+
     }}>
       <View style={{
         // position:'absolute'
@@ -27,44 +34,81 @@ const Monthly = () => {
           fontSize: 14,
           fontSize: 14,
           textAlign: 'center',
-          // marginTop: 10,
           fontFamily: fonts.Bold,
         }}>Monthly</Text>
       </View>
 
-      {productData.map((item, idx) => (
-        <View style={styles.box} key={idx} >
-          <View>
-            <Image source={item.uri} style={styles.logo} />
-          </View>
-          <View
-          // style={{backgroundColor:'pink'}}
-          >
-            <Text style={styles.text}>{item.name}</Text>
-            <Text style={styles.litreText}>{item.litre}/L</Text>
-            <View style={{ flexDirection: 'row', gap: 6, marginTop: 6, }}>
-              <Text style={styles.priceText}>{'\u20B9'} {item.price}/L</Text>
-              <Text style={styles.priceStrikeThroughText}>{'\u20B9'} {item.price}/L</Text>
-              <Text style={styles.priceOffText}>{item.price}% off</Text>
-            </View>
-            <Text style={styles.priceSubscribeText}>Subscribe to save {item.price}Rs in per unit</Text>
-          </View>
-        </View>
-      ))}
+      <SingleProductPriceInfo />
 
       <View style={{
+        // backgroundColor:'cyan',
+        width: '100%',
+        height: 'auto',
         flexDirection: 'column',
         gap: 4,
-        marginTop:10,
+        // marginTop:10,
       }}>
         <Text style={{
           textAlign: 'center',
-          fontSize:12,
+          fontSize: 12,
           fontFamily: fonts.Medium
         }}>
           Select Per Day Quantity
         </Text>
         <CountQuantity />
+      </View>
+
+      <View style={{
+        // backgroundColor:'orange',
+        width: '100%',
+        height: 'auto',
+        flexDirection: 'column',
+        gap: 4,
+        // marginTop:20,
+      }}>
+        <Text style={{
+          textAlign: 'center',
+          fontSize: 12,
+          fontFamily: fonts.Medium
+        }}>
+          Select start day
+        </Text>
+        <MonthlySelectCalendar onDateChange={(startDate, endDate) => {
+          setStartDate(startDate);
+          setEndDate(endDate);
+        }}
+        />
+        <Text style={{ fontFamily: fonts.Regular }}>Start Date:
+          <Text style={{ color: colors.primary, fontFamily:fonts.Semibold  }}> {startDate ? startDate.toDateString() : ''}</Text>
+        </Text>
+        <Text style={{ fontFamily: fonts.Regular }}>End Date:
+          <Text style={{ color: colors.primary, fontFamily:fonts.Bold }}> {endDate ? endDate.toDateString() : ''}</Text>
+        </Text>
+      </View>
+      <View style={{
+        justifyContent: 'space-between',
+        alignItems: 'center'
+      }}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Cart')}
+          style={{
+            width: '100%',
+            backgroundColor: colors.primary,
+            borderRadius: 12,
+            paddingVertical: 10,
+            // alignItems:'center'
+          }}>
+          <Text
+            style={{
+              // backgroundColor:'pink',
+              fontFamily: fonts.Medium,
+              fontSize: 17.5,
+              color: colors.white,
+              textAlign: 'center',
+            }}>
+            Next
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   )
@@ -72,71 +116,4 @@ const Monthly = () => {
 
 export default Monthly
 
-const styles = StyleSheet.create({
-
-  box: {
-    // backgroundColor: 'blue',
-    padding: 10,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: colors.outline,
-    justifyContent: 'flex-start',
-    width: '100%',
-    height: 'auto',
-    flexDirection: 'row',
-    gap: 10,
-  },
-
-  logo: {
-    // backgroundColor: 'yellow',
-    resizeMode: 'contain',
-    width: 90,
-    height: 90,
-
-
-  },
-  text: {
-    // backgroundColor:'blue',
-    fontSize: 16,
-    color: colors.text,
-    fontFamily: fonts.Semibold,
-
-  },
-
-  litreText: {
-    // backgroundColor:'violet',
-    fontSize: 14,
-    color: colors.lightText,
-    fontFamily: fonts.Medium,
-  },
-
-  priceText: {
-    // backgroundColor:'magenta',
-    fontSize: 18,
-    color: colors.black,
-    fontFamily: fonts.Semibold,
-  },
-
-  priceStrikeThroughText: {
-    // backgroundColor:'magenta',
-    fontSize: 14,
-    color: colors.lightText,
-    fontFamily: fonts.Semibold,
-    textDecorationLine: 'line-through'
-  },
-
-  priceOffText: {
-    // backgroundColor:'magenta',
-    fontSize: 14,
-    color: colors.primary,
-    fontFamily: fonts.Semibold,
-  },
-
-  priceSubscribeText: {
-    // backgroundColor:'magenta',
-    fontSize: 12,
-    color: colors.primary,
-    fontFamily: fonts.Semibold,
-  },
-
-})
+const styles = StyleSheet.create({})

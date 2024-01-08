@@ -6,7 +6,7 @@ import OneTimeOrder from '../components/SelectPlan/OneTimeOrder';
 import Weekly from '../components/SelectPlan/Weekly';
 import Monthly from '../components/SelectPlan/Monthly';
 import AlternativeDays from '../components/SelectPlan/AlternativeDays';
-
+import { ScrollView } from 'react-native-gesture-handler';
 
 const SelectPlan = () => {
      const route = useRoute();
@@ -15,13 +15,13 @@ const SelectPlan = () => {
      let displayComponent;
 
      if (selectedPlanType === 'One Time Order') {
-          displayComponent = <OneTimeOrder/>;
+          displayComponent = <OneTimeOrder />;
      } else if (selectedPlanType === 'Weekly') {
-          displayComponent = <Weekly/> ;
+          displayComponent = <Weekly />;
      } else if (selectedPlanType === 'Monthly') {
-          displayComponent = <Monthly/>;
+          displayComponent = <Monthly />;
      } else if (selectedPlanType === 'Alternative Days') {
-          displayComponent = <AlternativeDays/>;
+          displayComponent = <AlternativeDays />;
      } else {
           displayComponent = <Text>Default Component</Text>;
      }
@@ -31,8 +31,14 @@ const SelectPlan = () => {
                // backgroundColor: "orange",
                paddingHorizontal: 15,
           }}>
-               <GoBackIcon />
-               {displayComponent}
+               <ScrollView
+                    contentContainerStyle={styles.scrollViewContent}
+                    bounces={false}
+                    showsVerticalScrollIndicator={false}
+               >
+                    <GoBackIcon />
+                    {displayComponent}
+               </ScrollView>
           </View>
      )
 }

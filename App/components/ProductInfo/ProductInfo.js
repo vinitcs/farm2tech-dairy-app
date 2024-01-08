@@ -8,6 +8,7 @@ import { fonts } from '../../../theme/fonts/fonts';
 import { productData } from './ProductInfoData';
 import { useNavigation } from '@react-navigation/native';
 import Modal from "react-native-modal";
+import SingleProductPriceInfo from './SingleProductPriceInfo';
 
 
 const ProductInfo = () => {
@@ -35,7 +36,7 @@ const ProductInfo = () => {
                          // animationInTiming={400}
                          useNativeDriverForBackdrop={true}
                          style={{
-                              backgroundColor: colors.outline,
+                              backgroundColor: colors.white,
                               flex: 1,
                               width: '100%',
                               height:'auto',
@@ -131,25 +132,7 @@ const ProductInfo = () => {
                     <Text style={styles.dairyDisplayContainerText}>Products Info</Text>
 
                     <View style={styles.boxContainer}>
-                         {productData.map((item, idx) => (
-                              <View style={styles.box} key={idx} >
-                                   <View>
-                                        <Image source={item.uri} style={styles.logo} />
-                                   </View>
-                                   <View
-                                   // style={{backgroundColor:'pink'}}
-                                   >
-                                        <Text style={styles.text}>{item.name}</Text>
-                                        <Text style={styles.litreText}>{item.litre}/L</Text>
-                                        <View style={{ flexDirection: 'row', gap: 6, marginTop: 6, }}>
-                                             <Text style={styles.priceText}>{'\u20B9'} {item.price}/L</Text>
-                                             <Text style={styles.priceStrikeThroughText}>{'\u20B9'} {item.price}/L</Text>
-                                             <Text style={styles.priceOffText}>{item.price}% off</Text>
-                                        </View>
-                                        <Text style={styles.priceSubscribeText}>Subscribe to save {item.price}Rs in per unit</Text>
-                                   </View>
-                              </View>
-                         ))}
+                         <SingleProductPriceInfo/>
 
                          <View style={styles.productDescription}>
                               <Text style={{ fontFamily: fonts.Semibold, fontSize: 16 }}>Description</Text>
@@ -172,7 +155,7 @@ const ProductInfo = () => {
                               <TouchableOpacity
                                    onPress={() => setVisible(true)}
                                    style={{
-                                        width: 340,
+                                        width: '100%',
                                         backgroundColor: colors.primary,
                                         borderRadius: 12,
                                         paddingVertical: 10,
@@ -221,72 +204,7 @@ const styles = StyleSheet.create({
           flexDirection: 'column',
           justifyContent: 'space-between',
           rowGap: 20,
-          marginTop: 10,
-     },
-
-     box: {
-          // backgroundColor: 'blue',
-          padding: 10,
-          borderRadius: 12,
-          borderWidth: 1,
-          borderColor: colors.outline,
-          justifyContent: 'flex-start',
-          width: '100%',
-          height: 'auto',
-          flexDirection: 'row',
-          gap: 10,
-     },
-
-     logo: {
-          // backgroundColor: 'yellow',
-          resizeMode: 'contain',
-          width: 90,
-          height: 90,
-
-
-     },
-     text: {
-          // backgroundColor:'blue',
-          fontSize: 16,
-          color: colors.text,
-          fontFamily: fonts.Semibold,
-
-     },
-
-     litreText: {
-          // backgroundColor:'violet',
-          fontSize: 14,
-          color: colors.lightText,
-          fontFamily: fonts.Medium,
-     },
-
-     priceText: {
-          // backgroundColor:'magenta',
-          fontSize: 18,
-          color: colors.black,
-          fontFamily: fonts.Semibold,
-     },
-
-     priceStrikeThroughText: {
-          // backgroundColor:'magenta',
-          fontSize: 14,
-          color: colors.lightText,
-          fontFamily: fonts.Semibold,
-          textDecorationLine: 'line-through'
-     },
-
-     priceOffText: {
-          // backgroundColor:'magenta',
-          fontSize: 14,
-          color: colors.primary,
-          fontFamily: fonts.Semibold,
-     },
-
-     priceSubscribeText: {
-          // backgroundColor:'magenta',
-          fontSize: 12,
-          color: colors.primary,
-          fontFamily: fonts.Semibold,
+          marginTop: 10,  
      },
 
      productDescription: {

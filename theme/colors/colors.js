@@ -9,7 +9,8 @@ export const colors = {
   error: "#ba4e61",
   outline: "#dadce0",
   white: "#ffffff",
-  black: "#000000"
+  black: "#000000",
+  endDate: "#5c9ceb",
 };
 
 
