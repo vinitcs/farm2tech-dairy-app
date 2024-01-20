@@ -15,7 +15,7 @@ const Category = () => {
      return (
           <View>
                <ScrollView
-                    contentContainerStyle={styles.scrollViewContent}
+                    // contentContainerStyle={styles.scrollViewContent}
                     bounces={false}
                     showsVerticalScrollIndicator={false}
                >

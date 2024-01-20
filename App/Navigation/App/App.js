@@ -7,6 +7,9 @@ import Notification from '../../Screens/Notification';
 import Profile from '../../Screens/Profile';
 import ProductDisplayInfo from '../../Screens/ProductDisplayInfo';
 import SelectPlan from '../../Screens/SelectPlan';
+import Address from '../../Screens/Address';
+import NewAddress from '../../Screens/NewAddress';
+import BookedItem from '../../Screens/BookedItem';
 
 
 
@@ -52,6 +55,18 @@ const AppNavigation = () => {
                <Stack.Screen
                     name='SelectPlan'
                     component={SelectPlan}
+               />
+               <Stack.Screen
+                    name='Address'
+                    component={Address}
+               />
+               <Stack.Screen
+                    name='NewAddress'
+                    component={NewAddress}
+               />
+               <Stack.Screen
+                    name='BookedItem'
+                    component={BookedItem}
                />
 
           </Stack.Navigator>

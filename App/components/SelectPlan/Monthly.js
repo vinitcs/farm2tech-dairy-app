@@ -17,26 +17,16 @@ const Monthly = () => {
   return (
     <View style={{
       flexDirection: 'column',
-      gap: 30,
+      gap: 25,
       marginBottom: 20,
 
     }}>
-      <View style={{
-        // position:'absolute'
-        // backgroundColor: 'red',
-        width: '100%',
-        height: 'auto',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-
-      }}>
-        <Text style={{
-          fontSize: 14,
-          fontSize: 14,
-          textAlign: 'center',
-          fontFamily: fonts.Bold,
-        }}>Monthly</Text>
-      </View>
+      <Text style={{
+        fontSize: 14,
+        fontSize: 14,
+        textAlign: 'center',
+        fontFamily: fonts.Bold,
+      }}>Monthly</Text>
 
       <SingleProductPriceInfo />
 
@@ -79,10 +69,10 @@ const Monthly = () => {
         }}
         />
         <Text style={{ fontFamily: fonts.Regular }}>Start Date:
-          <Text style={{ color: colors.primary, fontFamily:fonts.Semibold  }}> {startDate ? startDate.toDateString() : ''}</Text>
+          <Text style={{ color: colors.primary, fontFamily: fonts.Semibold }}> {startDate ? startDate.toDateString() : ''}</Text>
         </Text>
         <Text style={{ fontFamily: fonts.Regular }}>End Date:
-          <Text style={{ color: colors.primary, fontFamily:fonts.Bold }}> {endDate ? endDate.toDateString() : ''}</Text>
+          <Text style={{ color: colors.primary, fontFamily: fonts.Bold }}> {endDate ? endDate.toDateString() : ''}</Text>
         </Text>
       </View>
       <View style={{
@@ -90,7 +80,7 @@ const Monthly = () => {
         alignItems: 'center'
       }}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Cart')}
+          onPress={() => navigation.navigate('Address')}
           style={{
             width: '100%',
             backgroundColor: colors.primary,
