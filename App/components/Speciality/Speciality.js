@@ -14,12 +14,12 @@ const Speciality = () => {
 
                <View style={styles.boxContainer}>
                     {specialityData.map((item, idx) => (
-                         <TouchableOpacity>
+                         <View>
                               <View style={styles.box} key={idx}>
                                    <Image source={item.uri} style={styles.logo} />
                                    <Text style={styles.text}>{item.name}</Text>
                               </View>
-                         </TouchableOpacity>
+                         </View>
                     ))}
                </View>
           </View>
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
           // backgroundColor: 'red',
           width: '100%',
           height: 'auto',
-          padding: 2,
+          // padding: 2,
           flexDirection: 'row',
           flexWrap: 'wrap',
           justifyContent: 'space-around',
@@ -77,16 +77,17 @@ const styles = StyleSheet.create({
 
      logo: {
           // backgroundColor: 'yellow',
-          resizeMode: 'cover',
+          resizeMode:'cover',
           width: 100,
-          height: 180,
+          height: 160,
 
 
      },
      text: {
           // backgroundColor:'blue',
           textAlign: 'center',
-          fontSize: 16,
+          fontSize: 14,
+          padding:6,
           fontFamily: fonts.Medium,
      },
 

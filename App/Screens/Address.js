@@ -6,6 +6,7 @@ import GoBackIcon from '../components/GoBackIcon/GoBackIcon';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Icon } from '@rneui/themed';
 import { useNavigation } from '@react-navigation/native';
+import AddressList from '../components/Address/AddressList';
 
 const Address = () => {
      const navigation = useNavigation();
@@ -29,79 +30,21 @@ const Address = () => {
                               fontFamily: fonts.Bold,
                          }}>Address</Text>
 
-                         <View style={{
+                         <ScrollView style={{
+                              // backgroundColor:colors.lightText,
                               marginTop: 15,
                               marginBottom: 15,
-                              borderRadius: 12,
-                              borderWidth: 1,
-                              borderColor: colors.outline,
+                              // borderRadius: 12,
+                              // borderWidth: 1,
+                              // borderColor: colors.outline,
                               width: '100%',
-                              height: 600,
-                              alignItems: 'center',
-                              padding: 6,
-                         }}>
-
-                              <TouchableOpacity style={{
-
-                                   backgroundColor: colors.outline,
-                                   width: 350,
-                                   height: 'auto',
-                                   display: 'flex',
-                                   flexDirection: 'column',
-                                   gap: 4,
-                                   borderRadius: 12,
-                                   borderWidth: 1,
-                                   borderColor: colors.outline,
-                                   paddingHorizontal: 8,
-                                   paddingVertical:4,
-                              }}
-                              onPress={() => console.log('added address')}>
-                                   <View style={{
-                                        position: 'absolute',
-                                        right: 1,
-                                   }}>
-                                        <Icon
-                                             name='close-outline'
-                                             type='ionicon'
-                                             size={30}
-                                             color={colors.lightText}
-                                             onPress={() => console.log('delete address')}
-                                        />
-                                   </View>
-                                   <View style={{
-                                        // backgroundColor:colors.lightText,
-                                        width: '92%',
-                                        display: 'flex',
-                                        flexDirection: 'row',
-                                        flexWrap: 'wrap',
-                                   }}>
-
-                                        <Text style={{
-                                             fontSize: 16,
-                                             color: colors.text,
-                                             fontFamily: fonts.Medium
-                                        }}>xyz plaza B257 Sundarland housing society Nagar xxxxxxxxxx Chiplun 415605</Text>
-                                   </View>
-
-                                   <View style={{
-                                        display: 'flex',
-                                        flexDirection: 'row',
-                                        gap: 4,
-                                   }}>
-                                        <Icon
-                                             name='call-outline'
-                                             type='ionicon'
-                                             size={20}
-                                             color={colors.lightText}
-                                        />
-                                        <Text selectable style={{
-                                             fontSize: 16,
-                                             color: colors.text,
-                                             fontFamily: fonts.Semibold,
-                                        }}>91+ 98219210288</Text>
-                                   </View>
-                              </TouchableOpacity>
-                         </View>
+                              height: 590,
+                         }}
+                         nestedScrollEnabled={true}
+                         showsVerticalScrollIndicator={true}
+                         >
+                              <AddressList />
+                         </ScrollView>
 
                          <View style={{
                               flexDirection: 'column',

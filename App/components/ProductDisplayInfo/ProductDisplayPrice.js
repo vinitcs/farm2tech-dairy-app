@@ -44,15 +44,15 @@ const ProductDisplayPrice = () => {
                 right: 6,
                 top: 6,
               }}>
-                <TouchableOpacity>
+                <View>
                   <Icon
                     name='calendar'
                     type='ionicon'
                     size={28}
                     color={colors.lightText}
-                    onPress={() => { navigation.navigate('Cart') }}
+                    // onPress={() => { navigation.navigate('Cart') }}
                   />
-                </TouchableOpacity>
+                </View>
               </View>
             </View>
           </TouchableOpacity>

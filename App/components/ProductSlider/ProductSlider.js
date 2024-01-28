@@ -3,7 +3,8 @@ import React from 'react';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 import { fonts } from './../../../theme/fonts/fonts';
 import { colors } from './../../../theme/colors/colors';
-import { productSliderData } from './ProductSliderContent';
+// import { productSliderData } from './ProductSliderContent';
+import { productDisplayInfoData } from '../ProductDisplayInfo/ProductDisplayInfoContent';
 
 const ProductSlider = () => {
      return (
@@ -13,7 +14,7 @@ const ProductSlider = () => {
                     nestedScrollEnabled={true}
                     showsHorizontalScrollIndicator={false}
                     horizontal>
-                    {productSliderData.map((item, idx) => (
+                    {productDisplayInfoData.map((item, idx) => (
                          <TouchableOpacity>
                               <View style={styles.box} key={idx}>
                                    <Image source={item.uri} style={styles.logo} />
@@ -51,14 +52,15 @@ const styles = StyleSheet.create({
           // backgroundColor:'red',
           resizeMode: 'contain',
           width: 120,
-          height: 100,
-          marginTop: 10
+          height: 80,
+          marginTop: 10,
 
      },
      text: {
           // backgroundColor:'brown',
           textAlign: 'center',
-          paddingTop: 10,
-          fontFamily: fonts.Medium,
+          padding: 6,
+          fontSize:14,
+          fontFamily: fonts.Semibold,
      }
 })

@@ -33,7 +33,7 @@ export default SingleProductPriceAndQuantity
 
 const styles = StyleSheet.create({
      box: {
-          // backgroundColor: 'blue',
+          backgroundColor: colors.background,
           padding: 10,
           borderRadius: 12,
           borderWidth: 0.6,
@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
           height: 'auto',
           flexDirection: 'row',
           gap: 10,
+          zIndex:1,
      },
 
      logo: {

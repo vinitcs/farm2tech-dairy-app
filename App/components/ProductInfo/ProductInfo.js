@@ -71,7 +71,7 @@ const ProductInfo = () => {
                                    </TouchableOpacity>
                                    <Text style={{
                                         // backgroundColor:'blue',
-                                        fontSize: 14,
+                                        fontSize: 16,
                                         fontFamily: fonts.Bold,
                                         marginVertical: 6,
                                         marginLeft: 6,
@@ -86,11 +86,11 @@ const ProductInfo = () => {
                                    }}>
                                         {selectPlanType.map((name, idx) => (
                                              <TouchableOpacity key={idx} style={{
-                                                  // backgroundColor: colors.lightText,
+                                                  // backgroundColor: colors.outline,
                                                   padding: 10,
                                                   borderRadius: 12,
                                                   borderWidth: 0.5,
-                                                  borderColor: colors.lightText,
+                                                  borderColor: colors.outline,
                                                   justifyContent: 'flex-start',
                                                   width: '100%',
                                                   height: 'auto',

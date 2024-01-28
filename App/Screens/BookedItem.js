@@ -27,11 +27,13 @@ const BookedItem = () => {
 
                     }}>
                          <GoBackIcon />
-                         <Text style={{
-                              fontSize: 14,
-                              textAlign: 'center',
-                              fontFamily: fonts.Bold,
-                         }}>BookedItem</Text>
+                         <View>
+                              <Text style={{
+                                   fontSize: 14,
+                                   textAlign: 'center',
+                                   fontFamily: fonts.Bold,
+                              }}>BookedItem</Text>
+                         </View>
                          <SingleProductPriceAndQuantity />
 
 
