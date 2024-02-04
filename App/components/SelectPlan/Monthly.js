@@ -7,6 +7,7 @@ import CountQuantity from '../Count/CountQuantity';
 import MonthlySelectCalendar from '../Calendar/MonthlySelectCalendar';
 import SingleProductPriceInfo from '../ProductInfo/SingleProductPriceInfo';
 import { useNavigation } from '@react-navigation/native';
+import DisplayButton from '../Button/DisplayButton';
 
 const Monthly = () => {
   const navigation = useNavigation();
@@ -77,28 +78,11 @@ const Monthly = () => {
       </View>
       <View style={{
         justifyContent: 'space-between',
-        alignItems: 'center'
+        // alignItems: 'center'
       }}>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Address')}
-          style={{
-            width: '100%',
-            backgroundColor: colors.primary,
-            borderRadius: 12,
-            paddingVertical: 10,
-            // alignItems:'center'
-          }}>
-          <Text
-            style={{
-              // backgroundColor:'pink',
-              fontFamily: fonts.Medium,
-              fontSize: 17.5,
-              color: colors.white,
-              textAlign: 'center',
-            }}>
-            Next
-          </Text>
-        </TouchableOpacity>
+        
+        <DisplayButton Title={'Next'} onPressChanges={() => navigation.navigate('Address')} color={'primary'} />
+
       </View>
     </View>
   )

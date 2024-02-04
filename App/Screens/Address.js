@@ -7,6 +7,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { Icon } from '@rneui/themed';
 import { useNavigation } from '@react-navigation/native';
 import AddressList from '../components/Address/AddressList';
+import DisplayButton from '../components/Button/DisplayButton';
 
 const Address = () => {
      const navigation = useNavigation();
@@ -40,8 +41,8 @@ const Address = () => {
                               width: '100%',
                               height: 590,
                          }}
-                         nestedScrollEnabled={true}
-                         showsVerticalScrollIndicator={true}
+                              nestedScrollEnabled={true}
+                              showsVerticalScrollIndicator={true}
                          >
                               <AddressList />
                          </ScrollView>
@@ -50,48 +51,12 @@ const Address = () => {
                               flexDirection: 'column',
                               gap: 10,
                               justifyContent: 'space-between',
-                              alignItems: 'center',
                          }}>
-                              <TouchableOpacity
-                                   onPress={() => navigation.navigate('NewAddress')}
-                                   style={{
-                                        width: '100%',
-                                        backgroundColor: colors.lightText,
-                                        borderRadius: 12,
-                                        paddingVertical: 10,
-                                        // alignItems:'center'
-                                   }}>
-                                   <Text
-                                        style={{
-                                             // backgroundColor:'pink',
-                                             fontFamily: fonts.Medium,
-                                             fontSize: 17.5,
-                                             color: colors.white,
-                                             textAlign: 'center',
-                                        }}>
-                                        Add New address
-                                   </Text>
-                              </TouchableOpacity>
-                              <TouchableOpacity
-                                   onPress={() => navigation.navigate('BookedItem')}
-                                   style={{
-                                        width: '100%',
-                                        backgroundColor: colors.primary,
-                                        borderRadius: 12,
-                                        paddingVertical: 10,
-                                        // alignItems:'center'
-                                   }}>
-                                   <Text
-                                        style={{
-                                             // backgroundColor:'pink',
-                                             fontFamily: fonts.Medium,
-                                             fontSize: 17.5,
-                                             color: colors.white,
-                                             textAlign: 'center',
-                                        }}>
-                                        Next
-                                   </Text>
-                              </TouchableOpacity>
+
+                              <DisplayButton Title={'Add New address'} onPressChanges={() => navigation.navigate('NewAddress')} color={'lightText'} />
+
+                              <DisplayButton Title={'Next'} onPressChanges={() => navigation.navigate('BookedItem')} color={'primary'} />
+
                          </View>
                     </View>
                </ScrollView>

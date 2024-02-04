@@ -6,16 +6,16 @@ import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import { Icon } from '@rneui/themed';
 import { colors } from './../../theme/colors/colors';
 import {
-     Avatar,
      Title,
+     Drawer,
+     Button,
      Caption,
      Paragraph,
-     Drawer,
      Text,
      TouchableRipple,
      Switch,
-     Button,
 } from 'react-native-paper';
+import ProfileAvatar from '../components/Avatar/ProfileAvatar';
 
 const CustomDrawer = ({ navigation, props }) => {
      // const navigation = useNavigation();
@@ -26,7 +26,7 @@ const CustomDrawer = ({ navigation, props }) => {
                     <View Style={styles.DrawerContent}>
                          <View style={[styles.userInfoSection, { flexDirection: 'row', marginTop: 20 }]}>
                               <View style={{ marginLeft: 12, marginTop: 15 }}>
-                                   <Avatar.Image source={require('./../../assets/about.jpg')} />
+                                   <ProfileAvatar />
                               </View>
                               <View style={{ marginLeft: 8 }}>
 

@@ -21,8 +21,7 @@ const ProductDisplayInfo = () => {
                     showsVerticalScrollIndicator={false}
                >
                     <ProductInfo />
-
-
+                    
                </ScrollView>
 
           </View>

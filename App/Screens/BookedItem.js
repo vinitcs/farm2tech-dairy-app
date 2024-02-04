@@ -7,6 +7,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { Icon } from '@rneui/themed';
 import { useNavigation } from '@react-navigation/native';
 import SingleProductPriceAndQuantity from '../components/ProductInfo/SingleProductPriceAndQuantity';
+import DisplayButton from '../components/Button/DisplayButton';
 
 
 const BookedItem = () => {
@@ -239,26 +240,8 @@ const BookedItem = () => {
 
                          </View>
 
-                         <TouchableOpacity
-                              onPress={() => navigation.navigate('Cart')}
-                              style={{
-                                   width: '100%',
-                                   backgroundColor: colors.primary,
-                                   borderRadius: 12,
-                                   paddingVertical: 10,
-                                   // alignItems:'center'
-                              }}>
-                              <Text
-                                   style={{
-                                        // backgroundColor:'pink',
-                                        fontFamily: fonts.Medium,
-                                        fontSize: 17.5,
-                                        color: colors.white,
-                                        textAlign: 'center',
-                                   }}>
-                                   Add to Cart
-                              </Text>
-                         </TouchableOpacity>
+                         <DisplayButton Title={'Add to Cart'} onPressChanges={() => navigation.navigate('Cart')} color={'primary'} />
+
                     </View>
                </ScrollView >
           </View >

@@ -5,7 +5,7 @@ import { Icon } from '@rneui/themed';
 import { colors } from '../../../theme/colors/colors';
 import { useNavigation } from '@react-navigation/native';
 
-const GoBackIcon = () => {
+const GoBackIcon = ({color}) => {
      const navigation = useNavigation();
      return (
           <View style={styles.goBackIcon}>
@@ -15,6 +15,7 @@ const GoBackIcon = () => {
                          type='ionicon'
                          size={30}
                          onPress={() => { navigation.goBack(); }}
+                         color={color}
                     />
                </TouchableOpacity>
           </View>

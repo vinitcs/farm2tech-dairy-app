@@ -9,6 +9,7 @@ import { productData } from './ProductInfoData';
 import { useNavigation } from '@react-navigation/native';
 import Modal from "react-native-modal";
 import SingleProductPriceInfo from './SingleProductPriceInfo';
+import DisplayButton from '../Button/DisplayButton';
 
 
 const ProductInfo = () => {
@@ -39,7 +40,7 @@ const ProductInfo = () => {
                               backgroundColor: colors.white,
                               flex: 1,
                               width: '100%',
-                              height:'auto',
+                              height: 'auto',
                               // height: 200,
                               margin: 0,
                               position: 'absolute',
@@ -132,7 +133,7 @@ const ProductInfo = () => {
                     <Text style={styles.dairyDisplayContainerText}>Products Info</Text>
 
                     <View style={styles.boxContainer}>
-                         <SingleProductPriceInfo/>
+                         <SingleProductPriceInfo />
 
                          <View style={styles.productDescription}>
                               <Text style={{ fontFamily: fonts.Semibold, fontSize: 16 }}>Description</Text>
@@ -149,29 +150,11 @@ const ProductInfo = () => {
                                    width: '100%',
                                    height: 'auto',
                                    justifyContent: 'space-between',
-                                   alignItems: 'center',
 
                               }}>
-                              <TouchableOpacity
-                                   onPress={() => setVisible(true)}
-                                   style={{
-                                        width: '100%',
-                                        backgroundColor: colors.primary,
-                                        borderRadius: 12,
-                                        paddingVertical: 10,
 
-                                   }}>
-                                   <Text
-                                        style={{
-                                             // backgroundColor:'pink',
-                                             fontFamily: fonts.Medium,
-                                             fontSize: 17.5,
-                                             color: colors.white,
-                                             textAlign: 'center',
-                                        }}>
-                                        Subscribe
-                                   </Text>
-                              </TouchableOpacity>
+                              <DisplayButton Title={'Subscribe'} onPressChanges={() => setVisible(true)} color={'primary'}/>
+
                          </View>
                          {renderModal()}
                     </View >
@@ -204,7 +187,7 @@ const styles = StyleSheet.create({
           flexDirection: 'column',
           justifyContent: 'space-between',
           rowGap: 20,
-          marginTop: 10,  
+          marginTop: 10,
      },
 
      productDescription: {
