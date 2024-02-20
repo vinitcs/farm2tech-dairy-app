@@ -53,12 +53,9 @@ const Contact = () => {
 
                     <View style={{
                          // backgroundColor:'orange',
-                         position: 'relative',
-                         bottom:1,
                          width: '100%',
                          height: 'auto',
-                         marginTop: 20,
-                         marginBottom: 5,
+                         marginTop: 10,
                     }}>
 
                          <Text style={{
@@ -78,10 +75,11 @@ export default Contact
 const styles = StyleSheet.create({
      container: {
           // backgroundColor: 'yellow',
-          flex: 1,
+          // flex: 1,
+          display:'flex',
+          flexDirection:'column',
           width: '100%',
-          height: 'auto',
-          marginBottom:30,
+          height: 300,
 
      },
 

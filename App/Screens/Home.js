@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, KeyboardAvoidingView, Image, Animated } from 'react-native';
+import { View, Text, StyleSheet, KeyboardAvoidingView, Image, ScrollView, SafeAreaView } from 'react-native';
 import Header from '../components/Header';
 import ProductSlider from '../components/ProductSlider/ProductSlider';
 import ProductDisplayPrice from '../components/ProductDisplayInfo/ProductDisplayPrice';
-import { ScrollView } from 'react-native-gesture-handler';
+// import { ScrollView } from 'react-native-gesture-handler';
 import About from '../components/About';
 import Contact from '../components/Contact';
 import DummySearch from '../components/Search/DummySearch';
@@ -16,55 +16,58 @@ const Home = ({ navigation }) => {
   const onChangeSearch = query => setSearchQuery(query);
 
   return (
-    <View style={{marginBottom:20}}>
+    <SafeAreaView>
       <View style={{
-        // backgroundColor:colors.outline,
-        borderBottomWidth:0.5,
-        borderColor:colors.outline,
-        paddingHorizontal:15,
+        marginBottom: 20,
+        paddingHorizontal: 15,
       }}>
-        <Header />
-      </View>
-
-      <ScrollView
-        contentContainerStyle={styles.scrollViewContent}
-        bounces={false}
-        showsVerticalScrollIndicator={false}
-      >
         <View style={{
-          // backgroundColor: 'orange',
-          paddingHorizontal: 15,
+          // backgroundColor:colors.outline,
+          borderBottomWidth: 0.5,
+          borderColor: colors.outline,
         }}>
-
-          <View style={styles.imageContainer}>
-            <Image source={require('./../../assets/home.png')} style={styles.homeImg} />
-          </View>
-          <View style={styles.welcomeContainer}>
-            <Text style={styles.welcomeText}>Welcome To,</Text>
-            <Text style={styles.organizationName}>Farm2Tech</Text>
-            <Text style={styles.description}>Digitalization Of Dairy in Rural</Text>
-          </View>
-          <View style={{ marginTop: 10, }}>
-            <DummySearch />
-          </View>
-          <View style={{ marginTop: 10, }}>
-            <ProductSlider />
-          </View>
-          <View style={{ marginTop: 10, }}>
-            <Speciality />
-          </View>
-          <View style={{ marginTop: 10, }}>
-            <ProductDisplayPrice />
-          </View>
-          <View style={{ marginTop: 10, }}>
-            <About />
-          </View>
-          <View style={{ marginTop: 10, }}>
-            <Contact />
-          </View>
+          <Header />
         </View>
-      </ScrollView>
-    </View>
+
+        <ScrollView
+          contentContainerStyle={styles.scrollViewContent}
+          bounces={false}
+          showsVerticalScrollIndicator={false}
+        >
+          <View style={{
+            // backgroundColor: 'orange',
+          }}>
+
+            <View style={styles.imageContainer}>
+              <Image source={require('./../../assets/home.png')} style={styles.homeImg} />
+            </View>
+            <View style={styles.welcomeContainer}>
+              <Text style={styles.welcomeText}>Welcome To,</Text>
+              <Text style={styles.organizationName}>Farm2Tech</Text>
+              <Text style={styles.description}>Digitalization of dairy in rural</Text>
+            </View>
+            <View style={{ marginTop: 10, }}>
+              <DummySearch />
+            </View>
+            <View style={{ marginTop: 10, }}>
+              <ProductSlider />
+            </View>
+            <View style={{ marginTop: 10, }}>
+              <Speciality />
+            </View>
+            <View style={{ marginTop: 10, }}>
+              <ProductDisplayPrice />
+            </View>
+            <View style={{ marginTop: 10, }}>
+              <About />
+            </View>
+            <View style={{ marginTop: 10, }}>
+              <Contact />
+            </View>
+          </View>
+        </ScrollView>
+      </View>
+    </SafeAreaView>
   );
 }
 

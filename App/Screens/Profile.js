@@ -64,7 +64,7 @@ export default function Profile() {
               Member since 20 Sep, 2023
             </Text>
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>console.log('Edit')}>
               <View style={{
                 marginTop: 20,
                 backgroundColor: colors.primary,

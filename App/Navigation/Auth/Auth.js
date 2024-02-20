@@ -2,6 +2,10 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import {createStackNavigator } from '@react-navigation/stack'
 import Login from '../../Screens/Auth/Login';
+import Register from '../../Screens/Auth/Register';
+import ForgotPassword from '../../Screens/Auth/ForgotPassword';
+import PasswordOtpVerification from '../../Screens/Auth/PasswordOtpVerification';
+import NewPassword from '../../Screens/Auth/NewPassword';
 
 
 
@@ -18,6 +22,30 @@ const AppNavigation = () => {
                     <Stack.Screen
                          name='Login'
                          component={Login}
+                         options={{ headerShown: false }}
+                    />
+                   
+                    <Stack.Screen
+                         name='Register'
+                         component={Register}
+                         options={{ headerShown: false }}
+                    />
+                   
+                    <Stack.Screen
+                         name='ForgotPassword'
+                         component={ForgotPassword}
+                         options={{ headerShown: false }}
+                    />
+                   
+                    <Stack.Screen
+                         name='PasswordOtpVerification'
+                         component={PasswordOtpVerification}
+                         options={{ headerShown: false }}
+                    />
+                   
+                    <Stack.Screen
+                         name='NewPassword'
+                         component={NewPassword}
                          options={{ headerShown: false }}
                     />
                    

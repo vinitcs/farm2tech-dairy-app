@@ -16,7 +16,7 @@ const ProductInfo = () => {
      const navigation = useNavigation();
      const [visible, setVisible] = useState(false);
      // const selectPlanType = ['One Time Order', 'Weekly', 'Monthly', 'Alternative Days'];
-     const selectPlanType = ['One Time Order', 'Monthly'];
+     const selectPlanType = ['One Time Order', 'Monthly','Range'];
 
      const handlePlanTypePress = (selectedPlanType) => {
           setVisible(false); // Close the modal bottom sheet

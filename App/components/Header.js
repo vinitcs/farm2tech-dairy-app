@@ -10,15 +10,29 @@ const Header = () => {
   return (
     <View style={styles.headerContainer}>
       <View style={styles.headerContent}>
-        <TouchableOpacity>
-          <Icon
-            name='menu-outline'
-            type='ionicon'
-            size={35}
-            onPress={() => { navigation.openDrawer(); }}
-          />
-        </TouchableOpacity>
+        <View style={{
+          position:'absolute',
+          zIndex:1,
+        }}>
+          <TouchableOpacity>
+            <Icon
+              name='menu-outline'
+              type='ionicon'
+              size={35}
+              onPress={() => { navigation.openDrawer(); }}
+            />
+          </TouchableOpacity>
+        </View>
+        <View style={{
+          // backgroundColor: colors.black,
+          display:'flex',
+          width: '100%',
+          alignItems: 'center',
+          zIndex:-1,
+
+        }}>
           <Image source={require('./../../assets/logo.png')} style={styles.logo} />
+        </View>
       </View>
     </View>
   );
@@ -29,7 +43,7 @@ export default Header;
 
 const styles = StyleSheet.create({
   headerContainer: {
-    // backgroundColor:colors.lightText,
+    // backgroundColor: colors.lightText,
     // marginTop: 2,
     width: '100%',
     height: 'auto',
@@ -47,7 +61,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     width: 120,
     height: 50,
-    marginLeft: 82,
+    // marginLeft: 82,
 
   },
 });
