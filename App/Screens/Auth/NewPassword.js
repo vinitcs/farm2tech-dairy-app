@@ -15,14 +15,14 @@ const NewPassword = () => {
 
      return (
           <SafeAreaView style={styles.container}>
-               <StatusBar backgroundColor={colors.lightText} barStyle="light-content" />
+               <StatusBar backgroundColor={colors.primary} barStyle="light-content" />
                <View style={{
                     // backgroundColor:'pink',
                     position: 'absolute',
                     top: 30,
                     paddingHorizontal: 15,
                }}>
-                    <GoBackIcon />
+                    <GoBackIcon color={colors.lightText}/>
                </View>
                <View style={{
                     // backgroundColor:'orange',
@@ -37,13 +37,13 @@ const NewPassword = () => {
                     <Text style={{
                          fontFamily: fonts.Bold,
                          fontSize: 24,
-                         color: colors.black
+                         color: colors.lightText
                     }}>Create new password</Text>
                     <Text style={{
-                         fontFamily: fonts.Semibold,
+                         fontFamily: fonts.Medium,
                          fontSize: 12,
-                         paddingLeft:2,
-                         color: colors.lightText,
+                         letterSpacing:0.2,
+                         color: colors.lightText
                     }}>Your new password must be different from previous used passwords.</Text>
                </View>
 
@@ -51,11 +51,20 @@ const NewPassword = () => {
                     display: 'flex',
                     flexDirection: 'column',
                     gap: 18,
-                    marginTop: 10,
                }}>
 
                     <UserInput
-                         placeholder={'NEW PASSWORD'}
+                         placeholder={'PASSWORD'}
+                         leftIcon={'leftIcon'}
+                         rightIcon={'rightIcon'}
+                         leftIconName={'lock-closed'}
+                         rightIconName={'eye'}
+                         useState={password}
+                         onChangeState={text => setPassword(text)}
+                    />
+                    <UserInput
+                         placeholder={'CONFIRM PASSWORD'}
+                         leftIcon={'leftIcon'}
                          rightIcon={'rightIcon'}
                          leftIconName={'lock-closed'}
                          rightIconName={'eye'}
@@ -63,17 +72,7 @@ const NewPassword = () => {
                          onChangeState={text => setPassword(text)}
                     />
 
-                    <UserInput
-                         placeholder={'CONFIRM PASSWORD'}
-                         // rightIcon={'rightIcon'}
-                         leftIconName={'lock-closed'}
-                         rightIconName={'eye'}
-                         useState={password}
-                         onChangeState={text => setPassword(text)}
-                    />
-
-                    <DisplayButton Title={'Reset Password'} color={'lightText'} onPressChanges={() => navigation.navigate('')} />
-
+                    <DisplayButton Title={'Reset Password'} color={'primary'} onPressChanges={() => navigation.navigate('Login')} />
                </View>
           </SafeAreaView>
      )
@@ -83,7 +82,7 @@ export default NewPassword
 
 const styles = StyleSheet.create({
      container: {
-          // backgroundColor: 'yellow',
+          backgroundColor: colors.white,
           paddingHorizontal: 15,
           flex: 1,
           width: '100%',

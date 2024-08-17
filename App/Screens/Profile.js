@@ -10,7 +10,10 @@ import ProfileDisplayCredentials from '../components/Credentials/ProfileDisplayC
 
 export default function Profile() {
   return (
-    <View>
+    <View style={{
+      backgroundColor: colors.white,
+      height:'100%'
+    }}>
       <ScrollView
         contentContainerStyle={styles.scrollViewContent}
         bounces={false}
@@ -67,17 +70,18 @@ export default function Profile() {
             <TouchableOpacity onPress={()=>console.log('Edit')}>
               <View style={{
                 marginTop: 20,
-                backgroundColor: colors.primary,
+                backgroundColor: colors.lightText,
                 width: '100%',
                 height: 'auto',
                 alignItems: 'center',
-                paddingVertical: 16,
-                paddingHorizontal: 20,
-                borderRadius: 16,
+                paddingVertical: 8,
+                paddingHorizontal: 10,
+                borderRadius: 6,
 
               }}>
                 <Text style={{
                   fontSize: 16,
+                  letterSpacing:0.6,
                   color: colors.white,
                   fontFamily: fonts.Medium,
                 }}>Edit Profile</Text>

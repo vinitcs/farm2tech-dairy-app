@@ -15,14 +15,14 @@ const PasswordOtpVerification = () => {
 
      return (
           <SafeAreaView style={styles.container}>
-               <StatusBar backgroundColor={colors.lightText} barStyle="light-content" />
+               <StatusBar backgroundColor={colors.primary} barStyle="light-content" />
                <View style={{
                     // backgroundColor:'pink',
                     position: 'absolute',
                     top: 30,
                     paddingHorizontal: 15,
                }}>
-                    <GoBackIcon />
+                    <GoBackIcon color={colors.lightText} />
                </View>
                <View style={{
                     // backgroundColor:'orange',
@@ -72,17 +72,18 @@ const PasswordOtpVerification = () => {
                          <Text style={{
                               fontFamily: fonts.Semibold,
                               fontSize: 12,
+                              letterSpacing:0.2,
                               color: colors.lightText
                          }}>
                               Did not receive the email? Check your spam filter, or
                               <Text style={{
                                    fontFamily: fonts.Bold,
-                                   fontSize: 12,
+                                   fontSize: 14,
                                    color: colors.primary
                               }}> try again </Text>
                          </Text>
                     </View>
-                    <DisplayButton Title={'Verify'} color={'lightText'} onPressChanges={() => navigation.navigate('NewPassword')} />
+                    <DisplayButton Title={'Verify'} color={'primary'} onPressChanges={() => navigation.navigate('NewPassword')} />
 
                </View>
           </SafeAreaView>
@@ -93,7 +94,7 @@ export default PasswordOtpVerification
 
 const styles = StyleSheet.create({
      container: {
-          // backgroundColor: 'yellow',
+          backgroundColor: colors.white,
           paddingHorizontal: 15,
           flex: 1,
           width: '100%',

@@ -10,7 +10,10 @@ import OrderStatus from '../components/OrderStatus/OrderStatus';
 
 const Cart = () => {
   return (
-    <View>
+    <View style={{
+      backgroundColor:colors.white,
+      height:'100%',
+    }}>
       <ScrollView
         contentContainerStyle={styles.scrollViewContent}
         bounces={false}
@@ -18,13 +21,13 @@ const Cart = () => {
       >
         <View style={{
           paddingHorizontal: 15,
-
         }}>
 
-          <GoBackIcon />
+          <GoBackIcon color={colors.lightText} />
           <View>
             <Text style={{
-              fontSize: 14,
+              color:colors.lightText,
+              fontSize: 16,
               textAlign: 'center',
               fontFamily: fonts.Bold,
             }}>Orders</Text>

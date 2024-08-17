@@ -25,6 +25,7 @@ const TabNavigation = () => {
                     tabBarStyle: {
                          // backgroundColor: colors.outline,
                          height: 60,
+                         borderBlockColor: colors.white,
                     },
                     tabBarLabelStyle: {
                          fontSize: 12,

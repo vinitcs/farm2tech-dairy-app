@@ -38,12 +38,13 @@ const CustomDrawer = ({ navigation, props }) => {
                                         <Button icon="account" mode="text" textColor={colors.primary2} onPress={() => navigation.navigate('Profile')} >My Account</Button>
                                    </View>
                               </View>
-                              <View style={{ marginLeft: 26, marginTop: -5 }}>
+                              <View style={{ marginLeft: 34, marginTop: -5 }}>
                                    <TouchableOpacity>
                                         <Icon
-                                             name='close-outline'
-                                             type='ionicon'
-                                             size={35}
+                                             name='x'
+                                             type='octicon'
+                                             size={25}
+                                             color={colors.lightText}
                                              onPress={() => { navigation.closeDrawer(); }}
                                         />
                                    </TouchableOpacity>
@@ -68,14 +69,14 @@ const CustomDrawer = ({ navigation, props }) => {
                                         label="My Cart"
                                         onPress={() => navigation.navigate('Cart')}
                                    />
-                                   <Drawer.Item
+                                   {/* <Drawer.Item
                                         label="Notification"
                                         onPress={() => navigation.navigate('Notification')}
-                                   />
-                                   <Drawer.Item
+                                   /> */}
+                                   {/* <Drawer.Item
                                         label="Delivery"
                                         onPress={() => navigation.navigate('Delivery')}
-                                   />
+                                   /> */}
                                    {/* <Drawer.Item
                                         label="Contact"
                                         onPress={() => navigation.navigate('Contact')}

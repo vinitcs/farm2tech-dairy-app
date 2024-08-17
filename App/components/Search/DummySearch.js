@@ -15,7 +15,7 @@ const DummySearch = () => {
                     onPress={() => navigation.navigate('Search')}
                     style={{
                          width: "100%",
-                         backgroundColor: colors.outline,
+                         backgroundColor: colors.background,
                          borderRadius: 12,
                          display: "flex",
                          paddingVertical: 10,
@@ -26,7 +26,7 @@ const DummySearch = () => {
                     <Text
                          style={{
                               fontFamily: fonts.Medium,
-                              fontSize: 17.5,
+                              fontSize: 18,
                               color: colors.lightText
                          }}>
                          Search for item...

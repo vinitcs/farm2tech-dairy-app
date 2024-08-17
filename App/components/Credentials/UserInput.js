@@ -1,22 +1,24 @@
 import { StyleSheet, View, TextInput, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { colors } from '../../../theme/colors/colors';
 import { fonts } from '../../../theme/fonts/fonts';
 import { Icon } from '@rneui/themed';
 
-const UserInput = ({ placeholder, leftIcon, rightIcon, leftIconName, rightIconName, useState, onChangeState }) => {
-  const handleChange = (text) => {
-    // Log the text value when it changes
-    console.log("Text value changed:", { placeholder }, text);
+const UserInput = ({ focus, placeholder, leftIcon, leftIconName }) => {
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [inputValue, setInputValue] = useState('');
 
-    // Call the onChangeState function passed as prop
-    onChangeState(text);
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+
+  const handleChange = (text) => {
+    setInputValue(text);
   };
 
   return (
     <View>
       <View style={{
-        // backgroundColor:colors.outline,
         display: 'flex',
         flexDirection: 'row',
         width: '100%',
@@ -40,11 +42,11 @@ const UserInput = ({ placeholder, leftIcon, rightIcon, leftIconName, rightIconNa
         <TextInput
           placeholder={placeholder}
           selectionColor={colors.lightText}
-          autoFocus={true}
-          value={useState}
+          autoFocus={focus}
+          value={inputValue}
           onChangeText={handleChange}
+          secureTextEntry={!passwordVisible && (placeholder === 'PASSWORD' || placeholder === 'CONFIRM PASSWORD')} // Toggle secureTextEntry based on passwordVisible state and placeholder
           style={{
-            // backgroundColor:colors.outline,
             width: '85%',
             color: colors.lightText,
             fontFamily: fonts.Medium,
@@ -52,23 +54,23 @@ const UserInput = ({ placeholder, leftIcon, rightIcon, leftIconName, rightIconNa
             height: 50,
             paddingHorizontal: 10,
           }}
-        ></TextInput>
+        />
 
-        <TouchableOpacity>
-          {rightIcon && (
+        {(placeholder === 'PASSWORD' || placeholder === 'CONFIRM PASSWORD') && ( // Render eye icon only for password input
+          <TouchableOpacity onPress={togglePasswordVisibility}>
             <Icon
-              name={rightIconName}
+              name={passwordVisible ? 'eye' : 'eye-off'}
               type='ionicon'
               size={25}
               color={colors.lightText}
             />
-          )}
-        </TouchableOpacity>
+          </TouchableOpacity>
+        )}
       </View>
     </View>
   )
 }
 
-export default UserInput
+export default UserInput;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});

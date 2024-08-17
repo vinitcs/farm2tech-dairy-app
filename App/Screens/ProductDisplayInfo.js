@@ -13,8 +13,8 @@ import ProductInfo from '../components/ProductInfo/ProductInfo';
 const ProductDisplayInfo = () => {
      const navigation = useNavigation();
      return (
-          <View style={{ paddingHorizontal: 15, }}>
-               <GoBackIcon />
+          <View style={{ paddingHorizontal: 15, backgroundColor:colors.white, height:'100%'}}>
+               <GoBackIcon color={colors.lightText}/>
                <ScrollView
                     contentContainerStyle={styles.scrollViewContent}
                     bounces={false}

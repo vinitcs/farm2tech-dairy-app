@@ -31,6 +31,7 @@ export default ProductSlider
 
 const styles = StyleSheet.create({
      dairyDisplayContainerText: {
+          color:colors.lightText,
           fontSize: 16,
           textAlign: 'center',
           marginTop: 15,
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
           // padding: 10,
           margin: 4,
           borderRadius: 12,
-          borderWidth: 1,
+          borderWidth: 0.4,
           borderColor: colors.outline,
           justifyContent: 'space-between',
           alignItems: 'center',

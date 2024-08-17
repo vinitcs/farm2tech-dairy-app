@@ -7,13 +7,13 @@ import UserInput from '../../components/Credentials/UserInput';
 import { useNavigation } from '@react-navigation/native';
 
 const Login = () => {
-  const [text, setText] = React.useState("");
-  const [password, setPassword] = React.useState("");
   const navigation = useNavigation();
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
 
   return (
     <SafeAreaView style={styles.container}>
- <StatusBar backgroundColor={colors.lightText} barStyle="light-content" />
+      <StatusBar backgroundColor={colors.primary} barStyle="light-content" />
       <View style={{
         // backgroundColor:'orange',
         width: '100%',
@@ -43,7 +43,7 @@ const Login = () => {
           textAlign: 'center',
           // fontWeight: 'bold',
         }}>Welcome To,</Text>
-        
+
         < Image style={{
           resizeMode: 'contain',
           width: '100%',
@@ -52,7 +52,7 @@ const Login = () => {
         }}
           source={require('./../../../assets/logo.png')}
         />
-        
+
         <Text style={{
           fontSize: 12,
           textAlign: 'center',
@@ -69,11 +69,12 @@ const Login = () => {
       }}>
 
         <UserInput
-          placeholder={'USER NAME'}
+          placeholder={'EMAIL'}
           leftIcon={'leftIcon'}
-          leftIconName={'person-circle'}
-          useState={text}
-          onChangeState={text => setText(text)}
+          leftIconName={'mail'}
+          useState={email}
+          focus={true}
+          onChangeState={text => setEmail(text)}
         />
 
         <UserInput
@@ -81,12 +82,12 @@ const Login = () => {
           leftIcon={'leftIcon'}
           rightIcon={'rightIcon'}
           leftIconName={'lock-closed'}
-          rightIconName={'eye'}
+          // rightIconName={['eye','eye-off']}
           useState={password}
           onChangeState={text => setPassword(password)}
         />
 
-        <DisplayButton Title={'Log in'} color={'lightText'} />
+        <DisplayButton Title={'Log in'} color={'primary'} />
 
       </View>
 
@@ -100,10 +101,12 @@ const Login = () => {
         paddingLeft: 6,
 
       }}>
-        <TouchableOpacity onPress={()=> navigation.navigate('ForgotPassword')}>
+        <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
           <Text style={{
-            fontFamily: fonts.Semibold,
-            fontSize: 12,
+            color:colors.lightText,
+            fontFamily: fonts.Medium,
+            fontSize: 14,
+            letterSpacing:0.2
           }}>
             Forgot Password ?
           </Text>
@@ -142,7 +145,7 @@ export default Login;
 
 const styles = StyleSheet.create({
   container: {
-    // backgroundColor: 'yellow',
+    backgroundColor: colors.white,
     paddingHorizontal: 15,
     flex: 1,
     width: '100%',

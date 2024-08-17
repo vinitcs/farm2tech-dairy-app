@@ -14,14 +14,14 @@ const ForgotPassword = () => {
 
      return (
           <SafeAreaView style={styles.container}>
-               <StatusBar backgroundColor={colors.lightText} barStyle="light-content" />
+               <StatusBar backgroundColor={colors.primary} barStyle="light-content" />
                <View style={{
                     // backgroundColor:'pink',
                     position:'absolute',
                     top:30,
                     paddingHorizontal:15,
                }}>
-                    <GoBackIcon />
+                    <GoBackIcon color={colors.lightText}/>
                </View>
                <View style={{
                     // backgroundColor:'orange',
@@ -36,12 +36,12 @@ const ForgotPassword = () => {
                     <Text style={{
                          fontFamily: fonts.Bold,
                          fontSize: 24,
-                         color: colors.black
+                         color: colors.lightText
                     }}>Reset Password</Text>
                     <Text style={{
-                         fontFamily: fonts.Semibold,
+                         fontFamily: fonts.Medium,
                          fontSize: 12,
-                         paddingLeft:2,
+                         letterSpacing:0.2,
                          color: colors.lightText
                     }}>Enter the email associated with your account and we'll send an email with verification code to reset your password.</Text>
                </View>
@@ -50,7 +50,6 @@ const ForgotPassword = () => {
                     display: 'flex',
                     flexDirection: 'column',
                     gap: 18,
-                    marginTop: 10,
                }}>
 
                     <UserInput
@@ -61,7 +60,7 @@ const ForgotPassword = () => {
                          onChangeState={text => setText(text)}
                     />
 
-                    <DisplayButton Title={'Get Code'} color={'lightText'} onPressChanges={()=>navigation.navigate('PasswordOtpVerification')}/>
+                    <DisplayButton Title={'Get Code'} color={'primary'} onPressChanges={()=>navigation.navigate('PasswordOtpVerification')}/>
 
                </View>
           </SafeAreaView>
@@ -72,7 +71,7 @@ export default ForgotPassword
 
 const styles = StyleSheet.create({
      container: {
-          // backgroundColor: 'yellow',
+          backgroundColor: colors.white,
           paddingHorizontal: 15,
           flex: 1,
           width: '100%',

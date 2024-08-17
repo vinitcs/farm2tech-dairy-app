@@ -7,8 +7,9 @@ import UserInput from '../../components/Credentials/UserInput';
 import { useNavigation } from '@react-navigation/native';
 
 const Register = () => {
-  const [text, setText] = React.useState("");
+  const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
+  const [phone, setPhone] = React.useState("");
   const [password, setPassword] = React.useState("");
   const navigation = useNavigation();
 
@@ -70,8 +71,8 @@ const Register = () => {
             placeholder={'USER NAME'}
             leftIcon={'leftIcon'}
             leftIconName={'person-circle'}
-            useState={text}
-            onChangeState={text => setText(text)}
+            useState={name}
+            onChangeState={text => setName(text)}
           />
 
           <UserInput
@@ -83,11 +84,19 @@ const Register = () => {
           />
 
           <UserInput
+            placeholder={'Phone'}
+            leftIcon={'leftIcon'}
+            leftIconName={'call'}
+            useState={phone}
+            onChangeState={text => setPhone(text)}
+          />
+
+          <UserInput
             placeholder={'PASSWORD'}
             leftIcon={'leftIcon'}
             rightIcon={'rightIcon'}
             leftIconName={'lock-closed'}
-            rightIconName={'eye'}
+            // rightIconName={'eye'}
             useState={password}
             onChangeState={text => setPassword(text)}
           />
@@ -97,12 +106,12 @@ const Register = () => {
             leftIcon={'leftIcon'}
             rightIcon={'rightIcon'}
             leftIconName={'lock-closed'}
-            rightIconName={'eye'}
+            // rightIconName={'eye'}
             useState={password}
             onChangeState={text => setPassword(text)}
           />
 
-          <DisplayButton Title={'Log in'} color={'lightText'} />
+          <DisplayButton Title={'Sign Up'} color={'primary'} />
         </View>
       </KeyboardAvoidingView>
 
@@ -136,6 +145,7 @@ export default Register
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor:colors.white,
     paddingHorizontal: 15,
     flex: 1,
     width: '100%',

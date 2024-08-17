@@ -16,9 +16,10 @@ const Header = () => {
         }}>
           <TouchableOpacity>
             <Icon
-              name='menu-outline'
-              type='ionicon'
-              size={35}
+              name='three-bars'
+              type='octicon'
+              size={24}
+              color={colors.lightText}
               onPress={() => { navigation.openDrawer(); }}
             />
           </TouchableOpacity>

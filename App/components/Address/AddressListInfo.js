@@ -4,9 +4,9 @@ export const addressListData = [
 
      { key: 2, address: "chiplun, plaza B257 Sundarland housing society nagar xxxxxxxxxxx, Chiplun 415605", phone: "9867895427" },
 
-     { key: 3, address: "pag naka, plaza B257 Sundarland housing society nagar xxxxxxxxxxx, Chiplun 415605", phone: "9867895427" },
+     // { key: 3, address: "pag naka, plaza B257 Sundarland housing society nagar xxxxxxxxxxx, Chiplun 415605", phone: "9867895427" },
 
-     { key: 4, address: "chinchnaka, plaza B257 Sundarland housing society nagar xxxxxxxxxxx, Chiplun 415605", phone: "9867895427" },
+     // { key: 4, address: "chinchnaka, plaza B257 Sundarland housing society nagar xxxxxxxxxxx, Chiplun 415605", phone: "9867895427" },
 
      // { key: 5, address: "bahadurshek, plaza B257 Sundarland housing society nagar xxxxxxxxxxx, Chiplun 415605", phone: "9867895427" },
 

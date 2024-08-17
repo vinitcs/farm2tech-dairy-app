@@ -20,7 +20,7 @@ const ProductDisplayPrice = () => {
             onPress={() => {
               navigation.navigate('ProductDisplayInfo');
               console.log('productDisplayInfo')
-            }}>
+            }} key={idx}>
             <View style={styles.box} key={idx} >
               <View>
                 <Image source={item.uri} style={styles.logo} />
@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
   },
 
   dairyDisplayContainerText: {
+    color:colors.lightText,
     fontSize: 16,
     textAlign: 'center',
     marginTop: 15,
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
     // backgroundColor: 'blue',
     padding: 10,
     borderRadius: 12,
-    borderWidth: 1,
+    borderWidth: 0.4,
     borderColor: colors.outline,
     justifyContent: 'flex-start',
     width: '100%',

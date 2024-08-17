@@ -19,7 +19,7 @@ const OrderStatus = () => {
                          <SingleProductPriceAndQuantity />
                     </View>
                     <View style={{
-                         backgroundColor: colors.outline,
+                         backgroundColor: colors.background,
                          position: 'relative',
                          top: -12,
                          borderBottomRightRadius: 10,

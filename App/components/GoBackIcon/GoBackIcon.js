@@ -11,9 +11,9 @@ const GoBackIcon = ({color}) => {
           <View style={styles.goBackIcon}>
                <TouchableOpacity>
                     <Icon
-                         name='arrow-back-outline'
-                         type='ionicon'
-                         size={30}
+                         name='arrow-left'
+                         type='octicon'
+                         size={28}
                          onPress={() => { navigation.goBack(); }}
                          color={color}
                     />
