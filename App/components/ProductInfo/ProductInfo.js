@@ -32,11 +32,15 @@ const ProductInfo = () => {
           }}
           animationIn={"slideInUp"}
           backdropColor="blur"
+          onBackdropPress={() => {
+            setVisible(false);
+          }}
           // deviceHeight={'auto'}
           // animationInTiming={400}
           useNativeDriverForBackdrop={true}
           style={{
-            backgroundColor: colors.white,
+            // backgroundColor:'red',
+            // backgroundColor: colors.white,
             flex: 1,
             width: "100%",
             height: "auto",
@@ -46,8 +50,8 @@ const ProductInfo = () => {
             bottom: 0,
             borderTopRightRadius: 20,
             borderTopLeftRadius: 20,
-            borderWidth:0.4,
-            borderColor:colors.outline,
+            borderWidth: 0.4,
+            borderColor: colors.outline,
           }}
         >
           <View

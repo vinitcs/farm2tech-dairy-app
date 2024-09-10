@@ -16,9 +16,9 @@ const Speciality = () => {
       {/* <Text style={styles.specialityDescription}>Price depends on custom </Text> */}
 
       <View style={styles.boxContainer}>
-        {specialityData.map((item, idx) => (
-          <View>
-            <View style={styles.box} key={idx}>
+        {specialityData.map((item) => (
+          <View key={item.id}>
+            <View style={styles.box} key={item.id}>
               <Image source={item.uri} style={styles.logo} />
               <Text style={styles.text}>{item.name}</Text>
             </View>

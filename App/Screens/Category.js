@@ -23,6 +23,7 @@ const Category = () => {
           style={{
             paddingHorizontal: 15,
             backgroundColor: colors.white,
+            height:"100%",
           }}
         >
           <GoBackIcon color={colors.lightText}/>

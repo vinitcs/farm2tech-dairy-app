@@ -29,17 +29,18 @@ const Home = ({ navigation }) => {
         style={{
           marginBottom: 20,
           paddingHorizontal: 15,
-          backgroundColor:colors.white,
+          backgroundColor: colors.white,
         }}
       >
-        <View
+        {/* <View
           style={{
+            // backgroundColor:colors.lightText,
             // borderBottomWidth: 0.5,
             // borderColor: colors.outline,
           }}
-        >
-          <Header />
-        </View>
+        > */}
+        <Header />
+        {/* </View> */}
 
         <ScrollView
           contentContainerStyle={styles.scrollViewContent}
@@ -132,7 +133,7 @@ const styles = StyleSheet.create({
   },
 
   description: {
-    color:colors.lightText,
+    color: colors.lightText,
     fontSize: 12,
     textAlign: "center",
     fontFamily: fonts.Medium,

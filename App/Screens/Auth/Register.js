@@ -15,7 +15,7 @@ const Register = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-       <StatusBar backgroundColor={colors.lightText} barStyle="light-content" />
+       <StatusBar backgroundColor={colors.primary} barStyle="light-content" />
       <KeyboardAvoidingView
         // style={{ flex: 1 }}
         behavior="padding"

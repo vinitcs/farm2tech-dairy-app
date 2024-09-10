@@ -14,9 +14,9 @@ const ProductSlider = () => {
                     nestedScrollEnabled={true}
                     showsHorizontalScrollIndicator={false}
                     horizontal>
-                    {productDisplayInfoData.map((item, idx) => (
+                    {productDisplayInfoData.map((item) => (
                          <TouchableOpacity>
-                              <View style={styles.box} key={idx}>
+                              <View style={styles.box} key={item.id}>
                                    <Image source={item.uri} style={styles.logo} />
                                    <Text style={styles.text}>{item.name}</Text>
                               </View>

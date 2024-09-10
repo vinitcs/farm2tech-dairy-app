@@ -1,7 +1,8 @@
 export const specialityData = [
-
-     { name: "Cow Milk", uri: require("./../../../assets/cow-milk.png") },
-     { name: "Buffalo Milk", uri: require("./../../../assets/buffalo-milk.png") },
-
-
+  { id: 1, name: "Cow Milk", uri: require("./../../../assets/cow-milk.png") },
+  {
+    id: 2,
+    name: "Buffalo Milk",
+    uri: require("./../../../assets/buffalo-milk.png"),
+  },
 ];

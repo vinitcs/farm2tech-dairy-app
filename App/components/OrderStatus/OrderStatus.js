@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { colors } from '../../../theme/colors/colors';
 import { fonts } from '../../../theme/fonts/fonts';
@@ -8,7 +8,7 @@ import SingleProductPriceAndQuantity from '..//ProductInfo/SingleProductPriceAnd
 const OrderStatus = () => {
      return (
           <View>
-               <ScrollView
+               <TouchableOpacity
                     contentContainerStyle={styles.scrollViewContent}
                     bounces={false}
                     showsVerticalScrollIndicator={false}
@@ -52,7 +52,7 @@ const OrderStatus = () => {
                               Order Id: 4
                          </Text>
                     </View>
-               </ScrollView >
+               </TouchableOpacity >
           </View>
      )
 }
