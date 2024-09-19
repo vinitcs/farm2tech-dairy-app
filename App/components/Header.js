@@ -8,44 +8,21 @@ import { colors } from "./../../theme/colors/colors";
 const Header = () => {
   const navigation = useNavigation();
   return (
-    <View style={styles.headerContainer}>
-        <View style={styles.headerContent}>
-          <View
-            style={{
-              position: "absolute",
-              zIndex: 1,
+    <View intensity={90} style={styles.headerContainer}>
+      <View style={styles.menuBar}>
+        <TouchableOpacity>
+          <Icon
+            name="menu"
+            type="ionicons"
+            size={34}
+            color={colors.lightText}
+            onPress={() => {
+              navigation.openDrawer();
             }}
-          >
-            <TouchableOpacity>
-              <Icon
-                name="menu"
-                type="ionicons"
-                size={34}
-                style={{
-                  marginLeft: 4,
-                }}
-                color={colors.lightText}
-                onPress={() => {
-                  navigation.openDrawer();
-                }}
-              />
-            </TouchableOpacity>
-          </View>
-          <View
-            style={{
-              // backgroundColor: colors.black,
-              display: "flex",
-              width: "100%",
-              alignItems: "center",
-              zIndex: -1,
-            }}
-          >
-            <Image
-              source={require("./../../assets/logo.png")}
-              style={styles.logo}
-            />
-          </View>
-        </View>
+          />
+        </TouchableOpacity>
+      </View>
+      <Image source={require("./../../assets/logo.png")} style={styles.logo} />
     </View>
   );
 };
@@ -54,23 +31,27 @@ export default Header;
 
 const styles = StyleSheet.create({
   headerContainer: {
-    // backgroundColor: colors.lightText,
-    // marginTop: 2,
+    backgroundColor: colors.white,
     width: "100%",
     height: "auto",
-  },
-  
-  headerContent: {
-    // backgroundColor:'red',
-    flexDirection: "row",
+    borderBottomWidth: 0.5,
+    borderColor: colors.outline,
+    display: "flex",
     alignItems: "center",
+    position: "relative",
+  },
+
+  menuBar: {
+    position: "absolute",
+    top: 12,
+    left: 12,
+    zIndex: 1,
   },
 
   logo: {
     // backgroundColor: 'yellow',
     resizeMode: "contain",
     width: 120,
-    height: 50,
-    // marginLeft: 82,
+    height: 60,
   },
 });

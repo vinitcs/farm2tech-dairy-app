@@ -1,91 +1,89 @@
-import { StyleSheet, Text, View, Image,TouchableOpacity } from 'react-native';
-import React from 'react';
-import { productDisplayInfoData } from './ProductDisplayInfoContent';
-import { fonts } from './../../../theme/fonts/fonts';
-import { colors } from './../../../theme/colors/colors';
-import { Icon } from '@rneui/themed';
-import { useNavigation } from '@react-navigation/native';
-
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import React from "react";
+import { productDisplayInfoData } from "./ProductDisplayInfoContent";
+import { fonts } from "./../../../theme/fonts/fonts";
+import { colors } from "./../../../theme/colors/colors";
+import { Icon } from "@rneui/themed";
+import { useNavigation } from "@react-navigation/native";
 
 const ProductDisplayPrice = () => {
   const navigation = useNavigation();
 
   return (
-    <View style={styles.container}>
+    <View style={styles.productDisplayPriceContainer}>
       <Text style={styles.dairyDisplayContainerText}>Products</Text>
-
       <View style={styles.boxContainer}>
         {productDisplayInfoData.map((item, idx) => (
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('ProductDisplayInfo');
-              console.log('productDisplayInfo')
-            }} key={idx}>
-            <View style={styles.box} key={idx} >
+              navigation.navigate("ProductDisplayInfo");
+              console.log("productDisplayInfo");
+            }}
+            key={idx}
+          >
+            <View style={styles.box} key={idx}>
+              <Image source={item.uri} style={styles.logo} />
+
               <View>
-                <Image source={item.uri} style={styles.logo} />
-              </View>
-              <View
-              // style={{backgroundColor:'pink'}}
-              >
                 <Text style={styles.text}>{item.name}</Text>
                 <Text style={styles.litreText}>{item.litre}/L</Text>
-                <View style={{ flexDirection: 'row', gap: 6, marginTop: 6, }}>
-                  <Text style={styles.priceText}>{'\u20B9'} {item.price}/L</Text>
-                  <Text style={styles.priceStrikeThroughText}>{'\u20B9'} {item.price}/L</Text>
+
+                <View style={styles.priceSection}>
+                  <Text style={styles.priceText}>
+                    {"\u20B9"} {item.price}/L
+                  </Text>
+                  <Text style={styles.priceStrikeThroughText}>
+                    {"\u20B9"} {item.price}/L
+                  </Text>
                   <Text style={styles.priceOffText}>{item.price}% off</Text>
                 </View>
-                <Text style={styles.priceSubscribeText}>Subscribe to save {item.price}Rs in per unit</Text>
+
+                <Text style={styles.priceSubscribeText}>
+                  Subscribe to save {item.price}Rs in per unit
+                </Text>
               </View>
-              <View style={{
-                // backgroundColor:'yellow',
-                // justifyContent: 'flex-start'
-                position: 'absolute',
-                right: 6,
-                top: 6,
-              }}>
-                <View>
-                  <Icon
-                    name='calendar'
-                    type='ionicon'
-                    size={28}
-                    color={colors.lightText}
-                    // onPress={() => { navigation.navigate('Cart') }}
-                  />
-                </View>
-              </View>
+
+              {/* <View style={styles.calendarIcon}>
+                <Icon
+                  name="calendar"
+                  type="ionicon"
+                  size={28}
+                  color={colors.lightText}
+                  // onPress={() => { navigation.navigate('Cart') }}
+                />
+              </View> */}
             </View>
           </TouchableOpacity>
         ))}
-      </View >
+      </View>
     </View>
-  )
-}
+  );
+};
 
 export default ProductDisplayPrice;
 
 const styles = StyleSheet.create({
-  container: {
+  productDisplayPriceContainer: {
     // backgroundColor:'purple',
     flex: 1,
-    height: 'auto',
+    height: "auto",
   },
 
   dairyDisplayContainerText: {
-    color:colors.lightText,
+    color: colors.lightText,
     fontSize: 16,
-    textAlign: 'center',
+    textAlign: "center",
     marginTop: 15,
     fontFamily: fonts.Bold,
   },
 
   boxContainer: {
     // backgroundColor: 'red',
-    width: '100%',
-    height: 'auto',
+    width: "100%",
+    height: "auto",
     padding: 2,
-    flexDirection: 'column',
-    justifyContent: 'space-between',
+    flexDirection: "column",
+    justifyContent: "space-between",
     rowGap: 16,
     marginTop: 10,
   },
@@ -96,27 +94,24 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     borderWidth: 0.4,
     borderColor: colors.outline,
-    justifyContent: 'flex-start',
-    width: '100%',
-    height: 'auto',
-    flexDirection: 'row',
+    justifyContent: "flex-start",
+    width: "100%",
+    height: "auto",
+    flexDirection: "row",
     gap: 10,
   },
 
   logo: {
     // backgroundColor: 'yellow',
-    resizeMode: 'contain',
+    resizeMode: "contain",
     width: 90,
     height: 90,
-
-
   },
   text: {
     // backgroundColor:'blue',
     fontSize: 16,
     color: colors.text,
     fontFamily: fonts.Semibold,
-
   },
 
   litreText: {
@@ -124,6 +119,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: colors.lightText,
     fontFamily: fonts.Medium,
+  },
+
+  priceSection: {
+    flexDirection: "row",
+    gap: 6,
+    marginTop: 6,
   },
 
   priceText: {
@@ -138,7 +139,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: colors.lightText,
     fontFamily: fonts.Semibold,
-    textDecorationLine: 'line-through'
+    textDecorationLine: "line-through",
   },
 
   priceOffText: {
@@ -154,4 +155,12 @@ const styles = StyleSheet.create({
     color: colors.primary,
     fontFamily: fonts.Semibold,
   },
-})
+
+  calendarIcon: {
+    // backgroundColor: "yellow",
+    position: "absolute",
+    right: 6,
+    top: 6,
+    zIndex: 3,
+  },
+});

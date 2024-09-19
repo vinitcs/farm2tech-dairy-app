@@ -13,28 +13,27 @@ import GoBackIcon from "../components/GoBackIcon/GoBackIcon";
 const Category = () => {
   const navigation = useNavigation();
   return (
-    <View>
-      <ScrollView
-        // contentContainerStyle={styles.scrollViewContent}
-        bounces={false}
-        showsVerticalScrollIndicator={false}
-      >
-        <View
-          style={{
-            paddingHorizontal: 15,
-            backgroundColor: colors.white,
-            height:"100%",
-          }}
-        >
-          <GoBackIcon color={colors.lightText}/>
-          <ProductSlider />
-          <ProductDisplayPrice />
-        </View>
-      </ScrollView>
-    </View>
+    <ScrollView
+      // contentContainerStyle={styles.scrollViewContent}
+      bounces={false}
+      showsVerticalScrollIndicator={false}
+    >
+      <View style={styles.categoryContainer}>
+        <GoBackIcon color={colors.lightText} />
+        <ProductSlider />
+        <ProductDisplayPrice />
+      </View>
+    </ScrollView>
   );
 };
 
 export default Category;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  categoryContainer: {
+    paddingHorizontal: 15,
+    backgroundColor: colors.white,
+    height: "100%",
+    marginBottom:15,
+  },
+});

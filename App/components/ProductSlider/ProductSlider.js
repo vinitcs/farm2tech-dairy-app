@@ -14,9 +14,9 @@ const ProductSlider = () => {
                     nestedScrollEnabled={true}
                     showsHorizontalScrollIndicator={false}
                     horizontal>
-                    {productDisplayInfoData.map((item) => (
+                    {productDisplayInfoData.map((item, idx) => (
                          <TouchableOpacity>
-                              <View style={styles.box} key={item.id}>
+                              <View style={styles.box} key={item.idx}>
                                    <Image source={item.uri} style={styles.logo} />
                                    <Text style={styles.text}>{item.name}</Text>
                               </View>
@@ -39,12 +39,14 @@ const styles = StyleSheet.create({
      },
 
      box: {
-          // padding: 10,
+          paddingVertical: 14,
+          width:135,
+          height:135,
           margin: 4,
           borderRadius: 12,
           borderWidth: 0.4,
           borderColor: colors.outline,
-          justifyContent: 'space-between',
+          justifyContent: 'space-around',
           alignItems: 'center',
           marginTop: 12,
 
@@ -54,7 +56,7 @@ const styles = StyleSheet.create({
           resizeMode: 'contain',
           width: 120,
           height: 80,
-          marginTop: 10,
+          // marginTop: 10,
 
      },
      text: {

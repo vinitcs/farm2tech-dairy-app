@@ -15,79 +15,44 @@ import ProductDisplayPrice from "../components/ProductDisplayInfo/ProductDisplay
 import About from "../components/About";
 import Contact from "../components/Contact";
 import DummySearch from "../components/Search/DummySearch";
-import Speciality from "../components/Speciality/Speciality";
+// import Speciality from "../components/Speciality/Speciality";
 import { fonts } from "./../../theme/fonts/fonts";
 import { colors } from "./../../theme/colors/colors";
 
 const Home = ({ navigation }) => {
-  const [searchQuery, setSearchQuery] = React.useState("");
-  const onChangeSearch = (query) => setSearchQuery(query);
 
   return (
     <SafeAreaView>
-      <View
-        style={{
-          marginBottom: 20,
-          paddingHorizontal: 15,
-          backgroundColor: colors.white,
-        }}
+      <Header />
+      <ScrollView
+        contentContainerStyle={styles.scrollViewContent}
+        bounces={false}
+        showsVerticalScrollIndicator={false}
       >
-        {/* <View
-          style={{
-            // backgroundColor:colors.lightText,
-            // borderBottomWidth: 0.5,
-            // borderColor: colors.outline,
-          }}
-        > */}
-        <Header />
-        {/* </View> */}
-
-        <ScrollView
-          contentContainerStyle={styles.scrollViewContent}
-          bounces={false}
-          showsVerticalScrollIndicator={false}
-        >
-          <View
-            style={
-              {
-                // backgroundColor: 'orange',
-              }
-            }
-          >
-            <View style={styles.imageContainer}>
-              <Image
-                source={require("./../../assets/home.png")}
-                style={styles.homeImg}
-              />
-            </View>
-            <View style={styles.welcomeContainer}>
-              <Text style={styles.welcomeText}>Welcome To,</Text>
-              <Text style={styles.organizationName}>Farm2Tech</Text>
-              <Text style={styles.description}>
-                Digitalization of dairy in rural
-              </Text>
-            </View>
-            <View style={{ marginTop: 10 }}>
-              <DummySearch />
-            </View>
-            <View style={{ marginTop: 10 }}>
-              <ProductSlider />
-            </View>
-            <View style={{ marginTop: 10 }}>
-              <Speciality />
-            </View>
-            <View style={{ marginTop: 10 }}>
-              <ProductDisplayPrice />
-            </View>
-            <View style={{ marginTop: 10 }}>
-              <About />
-            </View>
-            <View style={{ marginTop: 10 }}>
-              <Contact />
-            </View>
+        <View style={styles.homeContainer}>
+          <View style={styles.imageContainer}>
+            <Image
+              source={require("./../../assets/home.png")}
+              style={styles.homeImg}
+            />
           </View>
-        </ScrollView>
-      </View>
+          <View style={styles.welcomeContainer}>
+            <Text style={styles.welcomeText}>Welcome To,</Text>
+            <Text style={styles.organizationName}>Farm2Tech</Text>
+            <Text style={styles.description}>
+              Digitalization of dairy in rural
+            </Text>
+          </View>
+          <View style={styles.sectionContainer}>
+            <DummySearch />
+            <ProductSlider />
+            {/* <Speciality /> */}
+            <ProductDisplayPrice />
+            <About />
+            <Contact />
+          </View>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -95,6 +60,12 @@ const Home = ({ navigation }) => {
 const styles = StyleSheet.create({
   scrollViewContent: {
     flexGrow: 1,
+  },
+
+  homeContainer: {
+    paddingHorizontal: 15,
+    backgroundColor: colors.white,
+    height: "auto",
   },
 
   imageContainer: {
@@ -113,7 +84,6 @@ const styles = StyleSheet.create({
 
   welcomeContainer: {
     // backgroundColor:'green',
-    // marginTop: 10,
     height: "auto",
   },
 
@@ -137,6 +107,13 @@ const styles = StyleSheet.create({
     fontSize: 12,
     textAlign: "center",
     fontFamily: fonts.Medium,
+  },
+
+  sectionContainer: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 20,
+    marginTop:30,
   },
 });
 

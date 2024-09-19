@@ -10,30 +10,22 @@ const Contact = () => {
   const [number, setNumber] = React.useState("");
   return (
     <View>
-      <View style={styles.container}>
+      <View style={styles.contactContainer}>
         <Text style={styles.contactUs}>Contact Us</Text>
         <View style={styles.contactMail}>
-          <Text style={{ fontSize: 14, fontFamily: fonts.Medium }}>
+          <Text style={styles.contactMailTitle}>
             You can contact us through Email:
           </Text>
-          <Text
-            style={{
-              fontSize: 14,
-              fontFamily: fonts.Bold,
-              color: colors.primary2,
-            }}
-            selectable={true}
-          >
+          {/* <Text style={[styles.contactMailTitle, {opacity:0.4}]}>
+            (click on email)
+          </Text> */}
+
+          <Text style={styles.mailId} selectable={true}>
             farm2tech@gmail.com
-            <Text
-              style={{
-                fontSize: 14,
-                fontFamily: fonts.Medium,
-                color: colors.lightText,
-              }}
-            >
-              , we will reply in 2-3 working days
-            </Text>
+          </Text>
+
+          <Text style={styles.mailDescription}>
+            we will reply in 2-3 working days
           </Text>
         </View>
 
@@ -45,7 +37,7 @@ const Contact = () => {
               size={20}
               color={colors.primary}
             />
-            <Text style={{ fontSize: 14, fontFamily: fonts.Medium }}>
+            <Text style={styles.addressText}>
               Address: Farm2Tech, Khed, Ratnagiri, 415605
             </Text>
           </View>
@@ -56,9 +48,7 @@ const Contact = () => {
               size={20}
               color={colors.primary}
             />
-            <Text style={{ fontSize: 14, fontFamily: fonts.Medium }}>
-              Phone: +91-0000000000
-            </Text>
+            <Text style={styles.addressText}>Phone: +91-0000000000</Text>
           </View>
           <View style={styles.addressContent}>
             <Icon
@@ -67,31 +57,18 @@ const Contact = () => {
               size={20}
               color={colors.primary}
             />
-            {/* <Text style={{ fontSize: 16, fontFamily: fonts.Regular }}>Time: Mon - Sat  09:00 AM - 09:00 PM </Text> */}
-            <Text style={{ fontSize: 14, fontFamily: fonts.Regular }}>
-              Open: 24 hours
+            <Text style={styles.addressText}>
+              Time: Mon - Sat 09:00 AM - 04:00 PM
             </Text>
+            {/* <Text style={{ fontSize: 16, fontFamily: fonts.Regular }}>
+              Open: 24 hours
+            </Text> */}
           </View>
         </View>
 
-        <View
-          style={{
-            // backgroundColor:'orange',
-            width: "100%",
-            height: "auto",
-            marginTop: 10,
-          }}
-        >
-          <Text
-            style={{
-              fontSize: 10,
-              color: colors.lightText,
-              textAlign: "center",
-            }}
-          >
-            Copyrights 2023. Farm2Tech. All Rights Reserved.
-          </Text>
-        </View>
+        <Text style={styles.copyrightText}>
+          Copyrights 2023. Farm2Tech. All Rights Reserved.
+        </Text>
       </View>
     </View>
   );
@@ -100,13 +77,14 @@ const Contact = () => {
 export default Contact;
 
 const styles = StyleSheet.create({
-  container: {
+  contactContainer: {
     // backgroundColor: 'yellow',
     // flex: 1,
     display: "flex",
     flexDirection: "column",
+    gap: 10,
     width: "100%",
-    height: 300,
+    height: 340,
   },
 
   contactUs: {
@@ -126,6 +104,25 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
+  contactMailTitle: {
+    fontSize: 12,
+    fontFamily: fonts.Medium,
+    letterSpacing: 1,
+  },
+
+  mailId: {
+    fontSize: 28,
+    fontFamily: fonts.Bold,
+    color: colors.primary2,
+    letterSpacing: 1,
+  },
+
+  mailDescription: {
+    fontSize: 14,
+    fontFamily: fonts.Medium,
+    color: colors.lightText,
+  },
+
   addressContainer: {
     // backgroundColor: 'orange',
     width: "100%",
@@ -139,7 +136,7 @@ const styles = StyleSheet.create({
   },
   addressContent: {
     justifyContent: "flex-start",
-    alignItems:'center',
+    alignItems: "center",
     width: "100%",
     height: "auto",
     flexDirection: "row",
@@ -147,5 +144,16 @@ const styles = StyleSheet.create({
     gap: 8,
     paddingHorizontal: 6,
     paddingVertical: 6,
+  },
+
+  addressText: {
+    fontSize: 16,
+    fontFamily: fonts.Medium,
+  },
+
+  copyrightText: {
+    fontSize: 10,
+    color: colors.lightText,
+    textAlign: "center",
   },
 });

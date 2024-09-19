@@ -13,20 +13,7 @@ const About = () => {
           style={styles.homeImg}
         />
         <Text style={styles.aboutUsDescription}>
-          Farm2Tech aims to harness digitalization and technological
-          advancements in dairy to foster rural development. The review aims to
-          understand the significance of digital technologies in management of
-          dairy products towards end user, identify the challenges and
-          opportunities associated with implementing such projects, and examine
-          existing studies on the impacts of digitalization in rural
-          communities. By implementing these digitalisation solutions, Farm2Tech
-          aims to bridge the technological gap for rural farmers, improving
-          their access to information, markets, and modern dairy practices.
-          Through this integrated approach, Farm2Tech will support rural
-          development in various sector, empowering farmers and fostering
-          sustainable growth in rural communities. Additionally, the project
-          will work to provide training and support to help farmers and
-          consumers adopt and adapt to digital technologies effectively.
+        Farm2Tech leverages digital technologies in dairy to promote rural development by improving farmers' access to information, markets, and modern practices. The initiative aims to address challenges, explore opportunities, and assess the impact of digitalization on rural communities, while providing training to support technology adoption for sustainable growth.
         </Text>
       </View>
     </View>
@@ -68,7 +55,7 @@ const styles = StyleSheet.create({
     color: colors.lightText,
     fontFamily: fonts.Medium,
     fontSize: 12,
-    letterSpacing: 0.2,
+    letterSpacing: 0.4,
     textAlign: "justify",
   },
 });

@@ -5,9 +5,9 @@ import { Avatar, } from 'react-native-paper';
 
 const ProfileAvatar = ({size}) => {
      return (
-          <View>
-               <Avatar.Image source={require('../../../assets/about.jpg')} size={size} />
-          </View>
+          // <>
+               <Avatar.Image source={require('../../../assets/profile-img.jpg')} size={size} />
+          // </>
      )
 }
 
