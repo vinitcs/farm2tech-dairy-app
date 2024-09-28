@@ -8,8 +8,9 @@ const Main = () => {
      return (
           <View style={{ flex: 1,  }}>
                <StatusBar
-                barStyle="light-content"
-                backgroundColor={colors.primary}
+                barStyle="dark-content"
+                backgroundColor={colors.white}
+                
                />
                <TabNavigation/>
           </View>

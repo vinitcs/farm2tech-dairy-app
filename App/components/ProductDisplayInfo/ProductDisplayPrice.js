@@ -6,14 +6,20 @@ import { colors } from "./../../../theme/colors/colors";
 import { Icon } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
 
-const ProductDisplayPrice = () => {
+const ProductDisplayPrice = ({ selectedProduct }) => {
   const navigation = useNavigation();
+
+  const filteredData = selectedProduct
+    ? productDisplayInfoData.filter(
+        (item) => item.name === selectedProduct.name
+      )
+    : productDisplayInfoData;
 
   return (
     <View style={styles.productDisplayPriceContainer}>
       <Text style={styles.dairyDisplayContainerText}>Products</Text>
       <View style={styles.boxContainer}>
-        {productDisplayInfoData.map((item, idx) => (
+        {filteredData.map((item, idx) => (
           <TouchableOpacity
             onPress={() => {
               navigation.navigate("ProductDisplayInfo");

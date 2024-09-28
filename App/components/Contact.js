@@ -9,67 +9,65 @@ const Contact = () => {
   const [text, setText] = React.useState("");
   const [number, setNumber] = React.useState("");
   return (
-    <View>
-      <View style={styles.contactContainer}>
-        <Text style={styles.contactUs}>Contact Us</Text>
-        <View style={styles.contactMail}>
-          <Text style={styles.contactMailTitle}>
-            You can contact us through Email:
-          </Text>
-          {/* <Text style={[styles.contactMailTitle, {opacity:0.4}]}>
+    <View style={styles.contactContainer}>
+      <Text style={styles.contactUs}>Contact Us</Text>
+      <View style={styles.contactMail}>
+        <Text style={styles.contactMailTitle}>
+          You can contact us through Email:
+        </Text>
+        {/* <Text style={[styles.contactMailTitle, {opacity:0.4}]}>
             (click on email)
           </Text> */}
 
-          <Text style={styles.mailId} selectable={true}>
-            farm2tech@gmail.com
-          </Text>
+        <Text style={styles.mailId} selectable={true}>
+          farm2tech@gmail.com
+        </Text>
 
-          <Text style={styles.mailDescription}>
-            we will reply in 2-3 working days
-          </Text>
-        </View>
-
-        <View style={styles.addressContainer}>
-          <View style={styles.addressContent}>
-            <Icon
-              name="location-outline"
-              type="ionicon"
-              size={20}
-              color={colors.primary}
-            />
-            <Text style={styles.addressText}>
-              Address: Farm2Tech, Khed, Ratnagiri, 415605
-            </Text>
-          </View>
-          <View style={styles.addressContent}>
-            <Icon
-              name="call-outline"
-              type="ionicon"
-              size={20}
-              color={colors.primary}
-            />
-            <Text style={styles.addressText}>Phone: +91-0000000000</Text>
-          </View>
-          <View style={styles.addressContent}>
-            <Icon
-              name="time-outline"
-              type="ionicon"
-              size={20}
-              color={colors.primary}
-            />
-            <Text style={styles.addressText}>
-              Time: Mon - Sat 09:00 AM - 04:00 PM
-            </Text>
-            {/* <Text style={{ fontSize: 16, fontFamily: fonts.Regular }}>
-              Open: 24 hours
-            </Text> */}
-          </View>
-        </View>
-
-        <Text style={styles.copyrightText}>
-          Copyrights 2023. Farm2Tech. All Rights Reserved.
+        <Text style={styles.mailDescription}>
+          we will reply in 2-3 working days
         </Text>
       </View>
+
+      <View style={styles.addressContainer}>
+        <View style={styles.addressContent}>
+          <Icon
+            name="location-outline"
+            type="ionicon"
+            size={20}
+            color={colors.primary}
+          />
+          <Text style={styles.addressText}>
+            Address: Farm2Tech, Khed, Ratnagiri, 415605
+          </Text>
+        </View>
+        <View style={styles.addressContent}>
+          <Icon
+            name="call-outline"
+            type="ionicon"
+            size={20}
+            color={colors.primary}
+          />
+          <Text style={styles.addressText}>Phone: +91-0000000000</Text>
+        </View>
+        <View style={styles.addressContent}>
+          <Icon
+            name="time-outline"
+            type="ionicon"
+            size={20}
+            color={colors.primary}
+          />
+          <Text style={styles.addressText}>
+            Time: Mon - Sat 09:00 AM - 04:00 PM
+          </Text>
+          {/* <Text style={{ fontSize: 16, fontFamily: fonts.Regular }}>
+              Open: 24 hours
+            </Text> */}
+        </View>
+      </View>
+
+      <Text style={styles.copyrightText}>
+        Copyrights 2023. Farm2Tech. All Rights Reserved.
+      </Text>
     </View>
   );
 };
@@ -84,7 +82,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     gap: 10,
     width: "100%",
-    height: 340,
+    height: "auto",
   },
 
   contactUs: {

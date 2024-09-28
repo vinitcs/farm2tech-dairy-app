@@ -6,12 +6,9 @@ import {
   SafeAreaView,
 } from "react-native";
 import React from "react";
-import GoBackIcon from "../components/GoBackIcon/GoBackIcon";
 import { ScrollView } from "react-native-gesture-handler";
 import { colors } from "../../theme/colors/colors";
 import { fonts } from "../../theme/fonts/fonts";
-import { Icon } from "@rneui/themed";
-import { useNavigation } from "@react-navigation/native";
 import OrderStatus from "../components/OrderStatus/OrderStatus";
 
 const Cart = () => {
@@ -22,10 +19,9 @@ const Cart = () => {
       showsVerticalScrollIndicator={false}
     >
       <View style={styles.cartContainer}>
-        <GoBackIcon color={colors.lightText} />
-        <View>
+        {/* <View>
           <Text style={styles.cartText}>Orders</Text>
-        </View>
+        </View> */}
 
         <View style={styles.orderList}>
           <OrderStatus />
@@ -47,6 +43,7 @@ const styles = StyleSheet.create({
   cartContainer: {
     backgroundColor: colors.white,
     paddingHorizontal: 15,
+    paddingTop:15,
     height: "100%",
   },
   

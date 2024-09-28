@@ -5,15 +5,15 @@ import { useNavigation } from "@react-navigation/native";
 import { Icon } from "@rneui/themed";
 import { colors } from "./../../theme/colors/colors";
 
-const Header = () => {
+const Header = ({ logo, title }) => {
   const navigation = useNavigation();
   return (
-    <View intensity={90} style={styles.headerContainer}>
-      <View style={styles.menuBar}>
+    <View style={styles.headerContainer}>
+      <View style={styles.actionBtn}>
         <TouchableOpacity>
           <Icon
-            name="menu"
-            type="ionicons"
+            name="menu-outline"
+            type="ionicon"
             size={34}
             color={colors.lightText}
             onPress={() => {
@@ -22,7 +22,11 @@ const Header = () => {
           />
         </TouchableOpacity>
       </View>
-      <Image source={require("./../../assets/logo.png")} style={styles.logo} />
+      {logo ? (
+        <Image source={logo} style={styles.logo} />
+      ) : (
+        <Text style={styles.headerTitle}>{title}</Text>
+      )}
     </View>
   );
 };
@@ -33,19 +37,22 @@ const styles = StyleSheet.create({
   headerContainer: {
     backgroundColor: colors.white,
     width: "100%",
-    height: "auto",
+    height: 60,
     borderBottomWidth: 0.5,
     borderColor: colors.outline,
     display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    paddingHorizontal: 15,
     alignItems: "center",
     position: "relative",
   },
 
-  menuBar: {
+  actionBtn: {
+    marginLeft:15,
+    // backgroundColor: "orange",
     position: "absolute",
-    top: 12,
-    left: 12,
-    zIndex: 1,
+    left: 0,
   },
 
   logo: {
@@ -53,5 +60,12 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     width: 120,
     height: 60,
+  },
+  headerTitle: {
+    // backgroundColor:"red",
+    fontSize: 18,
+    letterSpacing:0.4,
+    // fontWeight: "600",
+    color: colors.primary,
   },
 });

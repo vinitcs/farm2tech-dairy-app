@@ -1,27 +1,28 @@
 import { StyleSheet, Text, View } from "react-native";
-import React from "react";
-import ProductSlider from "../components/ProductSlider/ProductSlider";
+import React, { useState } from "react";
+import MilkProductSlider from "../components/MilkProduct/MilkProductSlider";
 import { ScrollView } from "react-native-gesture-handler";
-import { fonts } from "./../../theme/fonts/fonts";
 import ProductDisplayPrice from "../components/ProductDisplayInfo/ProductDisplayPrice";
-import { Icon } from "@rneui/themed";
 import { colors } from "./../../theme/colors/colors";
-import { useNavigation } from "@react-navigation/native";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import GoBackIcon from "../components/GoBackIcon/GoBackIcon";
 
 const Category = () => {
-  const navigation = useNavigation();
+  const [selectProduct, setSelectProduct] = useState(null);
+
+  const handleProductSelect = (product) => {
+    setSelectProduct(product);
+    console.log("Selected product:", product);
+  };
+
   return (
     <ScrollView
       // contentContainerStyle={styles.scrollViewContent}
       bounces={false}
       showsVerticalScrollIndicator={false}
+      style={styles.scrollViewContent}
     >
       <View style={styles.categoryContainer}>
-        <GoBackIcon color={colors.lightText} />
-        <ProductSlider />
-        <ProductDisplayPrice />
+        <MilkProductSlider onProductSelect={handleProductSelect} />
+        <ProductDisplayPrice selectedProduct={selectProduct} />
       </View>
     </ScrollView>
   );
@@ -30,10 +31,13 @@ const Category = () => {
 export default Category;
 
 const styles = StyleSheet.create({
+  scrollViewContent: {
+    flexGrow: 1,
+  },
   categoryContainer: {
     paddingHorizontal: 15,
     backgroundColor: colors.white,
     height: "100%",
-    marginBottom:15,
+    paddingBottom: 15,
   },
 });

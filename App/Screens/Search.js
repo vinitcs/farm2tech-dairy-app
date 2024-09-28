@@ -16,7 +16,7 @@ const Search = () => {
         paddingHorizontal: 15,
       }}
     >
-      <GoBackIcon color={colors.lightText}/>
+      {/* <GoBackIcon color={colors.lightText}/> */}
       <View
         style={{
           width: "100%",

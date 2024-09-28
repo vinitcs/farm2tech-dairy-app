@@ -27,4 +27,32 @@ export const productDisplayInfoData = [
     litre: 2,
     price: 100,
   },
+  {
+    id: 5,
+    name: "Milk",
+    uri: require("./../../../assets/milk.png"),
+    litre: 2,
+    price: 200,
+  },
+  {
+    id: 6,
+    name: "Yougurt",
+    uri: require("./../../../assets/yogurt.png"),
+    litre: 1.2,
+    price: 50,
+  },
+  {
+    id: 7,
+    name: "Ghee",
+    uri: require("./../../../assets/ghee.png"),
+    litre: 1,
+    price: 150,
+  },
+  {
+    id: 8,
+    name: "Paneer",
+    uri: require("./../../../assets/paneer.png"),
+    litre: 2,
+    price: 200,
+  },
 ];

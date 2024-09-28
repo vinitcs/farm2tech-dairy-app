@@ -2,11 +2,9 @@ import {
   StyleSheet,
   View,
   Text,
-  TextInput,
   TouchableOpacity,
 } from "react-native";
 import React from "react";
-import GoBackIcon from "../components/GoBackIcon/GoBackIcon";
 import { ScrollView } from "react-native-gesture-handler";
 import { colors } from "../../theme/colors/colors";
 import { fonts } from "../../theme/fonts/fonts";
@@ -22,21 +20,6 @@ export default function Profile() {
         bounces={false}
         showsVerticalScrollIndicator={false}
       >
-        {/* <View style={{
-          backgroundColor: colors.primary,
-          width: '100%',
-          height: 200,
-          borderBottomLeftRadius: 40,
-          borderBottomRightRadius: 40,
-          // position: 'relative',
-          paddingHorizontal: 15,
-
-
-        }}> */}
-        <GoBackIcon color={colors.lightText} />
-
-        {/* </View> */}
-
         <View style={styles.profileContent}>
           <View style={styles.profileHeader}>
             <ProfileAvatar size={130} />
@@ -96,6 +79,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     height: "100%",
     paddingHorizontal: 15,
+    paddingTop:15,
   },
   profileContent: {
     // backgroundColor: 'pink',

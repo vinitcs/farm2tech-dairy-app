@@ -32,6 +32,7 @@ const AppNavigation = () => {
                <Stack.Screen
                     name='MainParent'
                     component={MainParent}
+                    // options={{headerShown:false}}
                />
                <Stack.Screen
                     name='Notification'
