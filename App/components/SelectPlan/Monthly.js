@@ -1,8 +1,7 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { React, useState } from "react";
 import { fonts } from "../../../theme/fonts/fonts";
 import { colors } from "../../../theme/colors/colors";
-import { productData } from "./productInfoMonthly";
 import CountQuantity from "../Count/CountQuantity";
 import MonthlySelectCalendar from "../Calendar/MonthlySelectCalendar";
 import SingleProductPriceInfo from "../ProductInfo/SingleProductPriceInfo";
@@ -16,118 +15,66 @@ const Monthly = () => {
   const [endDate, setEndDate] = useState(null);
 
   return (
-    <View
-      style={{
-        flexDirection: "column",
-        gap: 25,
-        marginBottom: 20,
-      }}
-    >
-      <Text
-        style={{
-          color: colors.lightText,
-          fontSize: 16,
-          textAlign: "center",
-          fontFamily: fonts.Bold,
-        }}
-      >
-        Monthly
-      </Text>
-
+    <View style={styles.monthlyContainer}>
       <SingleProductPriceInfo />
-
-      <View
-        style={{
-          // backgroundColor:'cyan',
-          width: "100%",
-          height: "auto",
-          flexDirection: "column",
-          gap: 4,
-          // marginTop:10,
-        }}
-      >
-        <Text
-          style={{
-            color: colors.lightText,
-            textAlign: "center",
-            fontSize: 12,
-            fontFamily: fonts.Semibold,
-          }}
-        >
-          Select Per Day Quantity
-        </Text>
-        <CountQuantity />
-      </View>
-
-      <View
-        style={{
-          // backgroundColor:'orange',
-          width: "100%",
-          height: "auto",
-          flexDirection: "column",
-          gap: 4,
-          // marginTop:20,
-        }}
-      >
-        <Text
-          style={{
-            color: colors.lightText,
-            textAlign: "center",
-            fontSize: 12,
-            fontFamily: fonts.Semibold,
-          }}
-        >
-          Select start day
-        </Text>
+      <CountQuantity title={"Select Per Day Quantity"} />
+      <View style={styles.calendarSection}>
         <MonthlySelectCalendar
           onDateChange={(startDate, endDate) => {
             setStartDate(startDate);
             setEndDate(endDate);
           }}
         />
-        <Text
-          style={{
-            color: colors.lightText,
-            fontFamily: fonts.Semibold,
-            fontSize: 14,
-          }}
-        >
+        <Text style={styles.dateDisplayTitle}>
           Start Date:
-          <Text style={{ color: colors.primary, fontFamily: fonts.Semibold }}>
-            {" "}
+          <Text style={styles.startDateValue}>
             {startDate ? startDate.toDateString() : ""}
           </Text>
         </Text>
-        <Text
-          style={{
-            color: colors.lightText,
-            fontFamily: fonts.Semibold,
-            fontSize: 14,
-          }}
-        >
+        <Text style={styles.dateDisplayTitle}>
           End Date:
-          <Text style={{ color: colors.primary, fontFamily: fonts.Bold }}>
-            {" "}
+          <Text style={styles.endDateValue}>
             {endDate ? endDate.toDateString() : ""}
           </Text>
         </Text>
       </View>
-      <View
-        style={{
-          justifyContent: "space-between",
-          // alignItems: 'center'
-        }}
-      >
-        <DisplayButton
-          Title={"Next"}
-          onPressChanges={() => navigation.navigate("Address")}
-          color={"primary"}
-        />
-      </View>
+
+      <DisplayButton
+        Title={"Next"}
+        onPressChanges={() => navigation.navigate("Address")}
+        color={"primary"}
+      />
     </View>
   );
 };
 
 export default Monthly;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  monthlyContainer: {
+    gap: 25,
+    marginBottom: 20,
+  },
+  calendarSection: {
+    // backgroundColor:'orange',
+    width: "100%",
+    height: "auto",
+    flexDirection: "column",
+    gap: 4,
+    // marginTop:20,
+  },
+  dateDisplayTitle: {
+    color: colors.lightText,
+    fontFamily: fonts.Semibold,
+    fontSize: 14,
+    letterSpacing:1,
+  },
+  startDateValue: {
+    color: colors.primary,
+    fontFamily: fonts.Semibold,
+  },
+  endDateValue: {
+    color: colors.primary,
+    fontFamily: fonts.Bold,
+  },
+});

@@ -71,31 +71,31 @@ const TabNavigation = () => {
       <Tab.Screen
         name={homeName}
         component={Home}
-        options={{ headerShown: true, header: () => <Header logo={logo} /> }}
+        options={{ headerShown: true, header: () => <Header menuIcon={true} logo={logo} /> }}
       />
       <Tab.Screen
         name={categoryName}
         component={Category}
         options={{
           headerShown: true,
-          header: () => <Header title="Category" />,
+          header: () => <Header menuIcon={true} title="Category" />,
         }}
       />
       <Tab.Screen
         name={searchName}
         component={Search}
-        options={{ headerShown: true, header: () => <Header title="Search" /> }}
+        options={{ headerShown: true, header: () => <Header menuIcon={true} title="Search" /> }}
       />
       <Tab.Screen
         name={cartName}
         component={Cart}
-        options={{ headerShown: true, header: () => <Header title="Cart" /> }}
+        options={{ headerShown: true, header: () => <Header menuIcon={true} title="Cart" /> }}
       />
       <Tab.Screen
         name={profileName}
         component={Profile}
         options={{ headerShown: true,
-          header: () => <Header title="Profile" /> 
+          header: () => <Header menuIcon={true} title="Profile" /> 
          }}
       />
     </Tab.Navigator>

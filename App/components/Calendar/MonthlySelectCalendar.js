@@ -1,11 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import CalendarPicker from 'react-native-calendar-picker';
-import { colors } from '../../../theme/colors/colors';
+import React, { useState } from "react";
+import { StyleSheet, View, Text } from "react-native";
+import CalendarPicker from "react-native-calendar-picker";
+import { colors } from "../../../theme/colors/colors";
+import { fonts } from "../../../theme/fonts/fonts";
 
-const MonthlySelectCalendar = ({ onDateChange }) => {
-  const minDate = new Date(); // Today
-  const maxDate = new Date(2030, 1, 3);
+const MonthlySelectCalendar = (onDateChange) => {
+  const minDate = new Date(); // Today's date
+  // console.log(minDate);
+
+  const nextMonth = new Date(minDate.getFullYear(), minDate.getMonth() + 1, 1);
+  // console.log(nextMonth);
+
+  const maxDate = new Date(
+    nextMonth.getFullYear(),
+    nextMonth.getMonth() + 1,
+    0
+  );
 
   const [selectedStartDate, setSelectedStartDate] = useState(null);
   const [selectedEndDate, setSelectedEndDate] = useState(null);
@@ -41,9 +51,10 @@ const MonthlySelectCalendar = ({ onDateChange }) => {
 
   return (
     <View>
+      <Text style={styles.calendarPickerTitle}>Select start day</Text>
       <CalendarPicker
-        previousTitle='Prev'
-        nextTitle='Next'
+        previousTitle="Prev"
+        nextTitle="Next"
         enableDateChange
         minDate={minDate}
         maxDate={maxDate}
@@ -52,6 +63,7 @@ const MonthlySelectCalendar = ({ onDateChange }) => {
         selectedDayTextColor={colors.white}
         onDateChange={handleDateChange}
         customDatesStyles={customDatesStyles}
+        restrictMonthNavigation={true}
       />
     </View>
   );
@@ -60,8 +72,11 @@ const MonthlySelectCalendar = ({ onDateChange }) => {
 export default MonthlySelectCalendar;
 
 const styles = StyleSheet.create({
-  dateText: {
-    fontSize: 16,
-    marginTop: 10,
+  calendarPickerTitle: {
+    color: colors.lightText,
+    textAlign: "center",
+    fontSize: 12,
+    fontFamily: fonts.Semibold,
+    letterSpacing: 0.8,
   },
 });

@@ -1,28 +1,29 @@
 import { StyleSheet, Text, View } from "react-native";
-import React from "react";
-import GoBackIcon from "../components/GoBackIcon/GoBackIcon";
-import { useRoute } from "@react-navigation/native";
+import React, { useLayoutEffect } from "react";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import OneTimeOrder from "../components/SelectPlan/OneTimeOrder";
-import Weekly from "../components/SelectPlan/Weekly";
 import Monthly from "../components/SelectPlan/Monthly";
-import AlternativeDays from "../components/SelectPlan/AlternativeDays";
 import { ScrollView } from "react-native-gesture-handler";
 import { colors } from "../../theme/colors/colors";
+import Header from "../components/Header";
 
 const SelectPlan = () => {
   const route = useRoute();
+  const navigation = useNavigation();
   const selectedPlanType = route.params?.selectedPlanType || "Default Plan";
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      header: () => <Header goBackIcon={true} title={selectedPlanType} />,
+    });
+  }, [navigation, selectedPlanType]);
 
   let displayComponent;
 
   if (selectedPlanType === "One Time Order") {
     displayComponent = <OneTimeOrder />;
-  } else if (selectedPlanType === "Weekly") {
-    displayComponent = <Weekly />;
   } else if (selectedPlanType === "Monthly") {
     displayComponent = <Monthly />;
-  } else if (selectedPlanType === "Alternative Days") {
-    displayComponent = <AlternativeDays />;
   } else {
     displayComponent = <Text>Default Component</Text>;
   }
@@ -31,8 +32,9 @@ const SelectPlan = () => {
     <View
       style={{
         backgroundColor: colors.white,
-        height:'100%',
+        height: "100%",
         paddingHorizontal: 15,
+        paddingTop:15,
       }}
     >
       <ScrollView
@@ -40,7 +42,6 @@ const SelectPlan = () => {
         bounces={false}
         showsVerticalScrollIndicator={false}
       >
-        <GoBackIcon color={colors.lightText} />
         {displayComponent}
       </ScrollView>
     </View>

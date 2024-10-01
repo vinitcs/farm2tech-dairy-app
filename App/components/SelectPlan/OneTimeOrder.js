@@ -10,75 +10,33 @@ import { useNavigation } from "@react-navigation/native";
 const OneTimeOrder = () => {
   const navigation = useNavigation();
   return (
-    <View
-      style={{
-        flexDirection: "column",
-        gap: 25,
-        marginBottom: 20,
-      }}
-    >
-      <Text
-        style={{
-          color: colors.lightText,
-          fontSize: 16,
-          textAlign: "center",
-          fontFamily: fonts.Bold,
-        }}
-      >
-        One Time Order
-      </Text>
-
+    <View style={styles.oneTimeOrderContainer}>
       <SingleProductPriceInfo />
-
-      <View
-        style={{
-          // backgroundColor:'cyan',
-          width: "100%",
-          height: "auto",
-          flexDirection: "column",
-          gap: 4,
-          // marginTop:10,
-        }}
-      >
-        <Text
-          style={{
-            color: colors.lightText,
-            textAlign: "center",
-            fontSize: 12,
-            fontFamily: fonts.Semibold,
-          }}
-        >
-          Select Quantity
-        </Text>
-        <CountQuantity />
-      </View>
-      <Text
-        style={{
-          fontSize: 12,
-          color: colors.lightText,
-          textAlign: "justify",
-          letterSpacing: 0.2,
-        }}
-      >
+      <CountQuantity title={"Select Quantity"} />
+      <Text style={styles.oneTimeOrderNote}>
         This is a one-time order. Place your order today, and it will be
         delivered the next day.
       </Text>
-      <View
-        style={{
-          justifyContent: "space-between",
-          // alignItems: 'center'
-        }}
-      >
-        <DisplayButton
-          Title={"Next"}
-          onPressChanges={() => navigation.navigate("Address")}
-          color={"primary"}
-        />
-      </View>
+      <DisplayButton
+        Title={"Next"}
+        onPressChanges={() => navigation.navigate("Address")}
+        color={"primary"}
+      />
     </View>
   );
 };
 
 export default OneTimeOrder;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  oneTimeOrderContainer: {
+    gap: 25,
+    marginBottom: 20,
+  },
+  oneTimeOrderNote: {
+    fontSize: 12,
+    color: colors.lightText,
+    textAlign: "justify",
+    letterSpacing: 0.2,
+  },
+});

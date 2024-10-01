@@ -5,22 +5,38 @@ import { useNavigation } from "@react-navigation/native";
 import { Icon } from "@rneui/themed";
 import { colors } from "./../../theme/colors/colors";
 
-const Header = ({ logo, title }) => {
+const Header = ({ menuIcon = false, goBackIcon = false, logo, title }) => {
   const navigation = useNavigation();
   return (
     <View style={styles.headerContainer}>
       <View style={styles.actionBtn}>
-        <TouchableOpacity>
-          <Icon
-            name="menu-outline"
-            type="ionicon"
-            size={34}
-            color={colors.lightText}
-            onPress={() => {
-              navigation.openDrawer();
-            }}
-          />
-        </TouchableOpacity>
+        {menuIcon && (
+          <TouchableOpacity>
+            <Icon
+              name="menu-outline"
+              type="ionicon"
+              size={34}
+              color={colors.lightText}
+              onPress={() => {
+                navigation.openDrawer();
+              }}
+            />
+          </TouchableOpacity>
+        )}
+
+        {goBackIcon && (
+          <TouchableOpacity>
+            <Icon
+              name="arrow-back-outline"
+              type="ionicon"
+              size={28}
+              color={colors.lightText}
+              onPress={() => {
+                navigation.goBack();
+              }}
+            />
+          </TouchableOpacity>
+        )}
       </View>
       {logo ? (
         <Image source={logo} style={styles.logo} />
@@ -49,7 +65,7 @@ const styles = StyleSheet.create({
   },
 
   actionBtn: {
-    marginLeft:15,
+    marginLeft: 15,
     // backgroundColor: "orange",
     position: "absolute",
     left: 0,
@@ -64,7 +80,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     // backgroundColor:"red",
     fontSize: 18,
-    letterSpacing:0.4,
+    letterSpacing: 0.4,
     // fontWeight: "600",
     color: colors.primary,
   },

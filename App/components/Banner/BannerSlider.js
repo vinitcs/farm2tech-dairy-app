@@ -14,18 +14,18 @@ const screenWidth = Dimensions.get("screen").width;
 const BannerSlider = () => {
   const flatListRef = useRef();
   const [activeIndex, setActiveIndex] = useState(0);
-  const dummyData = [
+  const sliderImgData = [
     {
       id: "01",
       image: require("../../../assets/slider_1.png"),
     },
     {
       id: "02",
-      image: require("../../../assets/slider_2.jpg"),
+      image: require("../../../assets/slider_2.png"),
     },
     {
       id: "03",
-      image: require("../../../assets/slider_3.jpg"),
+      image: require("../../../assets/slider_3.png"),
     },
   ];
 
@@ -34,7 +34,7 @@ const BannerSlider = () => {
     //else activeIndex +1
     const interval = setInterval(() => {
       let nextIndex = activeIndex + 1;
-      if (nextIndex >= dummyData.length) {
+      if (nextIndex >= sliderImgData.length) {
         nextIndex = 0; // Loop back to the first image
       }
       flatListRef?.current?.scrollToIndex({
@@ -57,56 +57,48 @@ const BannerSlider = () => {
   const renderItem = useCallback(({ item }) => {
     return (
       <View key={item.id}>
-        <Image
-          source={item.image}
-          style={{
-            height: 230,
-            width: screenWidth,
-          }}
-        />
+        <Image source={item.image} style={styles.img} />
       </View>
     );
   }, []);
 
   //Render Dot Indicators
   const renderDotIndicators = useCallback(() => {
-    return dummyData.map((dot, index) => {
+    return sliderImgData.map((dot, index) => {
       return (
         <View
           key={index}
-          style={{
-            backgroundColor:
-              activeIndex === index ? colors.primary : colors.outline,
-            height: 8,
-            width: 8,
-            borderRadius: 4,
-            marginHorizontal: 2,
-          }}
+          style={[
+            styles.indicator,
+            {
+              backgroundColor:
+                activeIndex === index ? colors.primary : colors.outline, // To display activeIndicator
+            },
+          ]}
         ></View>
       );
     });
-  }, [activeIndex, dummyData.length]);
+  }, [activeIndex, sliderImgData.length]);
 
   const handleScroll = (e) => {
     //Get the scroll position
     const scrollPosition = e.nativeEvent.contentOffset.x;
-    console.log({ scrollPosition });
+    // console.log({ scrollPosition });
 
     //Get the index of current active item
     const index = Math.round(scrollPosition / screenWidth);
-    console.log({ index });
+    // console.log({ index });
 
     //Update the index
-    if (index >= 0 && index < dummyData.length) {
+    if (index >= 0 && index < sliderImgData.length) {
       setActiveIndex(index);
     }
   };
 
   return (
-    <View style={{ alignItems: "center" }}>
-      {/* <View> */}
+    <View style={styles.bannerSliderContainer}>
       <FlatList
-        data={dummyData}
+        data={sliderImgData}
         renderItem={renderItem}
         horizontal={true}
         keyExtractor={(item) => item.id}
@@ -121,21 +113,29 @@ const BannerSlider = () => {
         maxToRenderPerBatch={1} // Render one image at a time
         windowSize={3} // Increase or decrease as needed
       />
-      {/* </View> */}
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "center",
-          marginTop: 12,
-          marginBottom: 12,
-        }}
-      >
-        {renderDotIndicators()}
-      </View>
+      <View style={styles.indicatorContainer}>{renderDotIndicators()}</View>
     </View>
   );
 };
 
 export default React.memo(BannerSlider);
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  bannerSliderContainer: { alignItems: "center" },
+  img: {
+    height: 260,
+    width: screenWidth,
+  },
+  indicatorContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    marginTop: 12,
+    marginBottom: 12,
+  },
+  indicator: {
+    height: 8,
+    width: 8,
+    borderRadius: 4,
+    marginHorizontal: 2,
+  },
+});
