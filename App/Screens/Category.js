@@ -1,17 +1,28 @@
 import { StyleSheet, Text, View } from "react-native";
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import MilkProductSlider from "../components/MilkProduct/MilkProductSlider";
 import { ScrollView } from "react-native-gesture-handler";
 import ProductDisplayPrice from "../components/ProductDisplayInfo/ProductDisplayPrice";
 import { colors } from "./../../theme/colors/colors";
+import { useFocusEffect, useRoute } from "@react-navigation/native";
 
 const Category = () => {
+  const route = useRoute();
   const [selectProduct, setSelectProduct] = useState(null);
 
-  const handleProductSelect = (product) => {
+  useFocusEffect(
+    useCallback(() => {
+      if (route.params?.selectedProduct) {
+        setSelectProduct(route.params.selectedProduct);
+      }
+    }, [route.params?.selectedProduct])
+  );
+
+  const handleProductSelect = useCallback((product) => {
     setSelectProduct(product);
-    console.log("Selected product:", product);
-  };
+    // console.log("Selected product in Category:", product);
+    console.log("Selected product in Category:");
+  }, []);
 
   return (
     <ScrollView

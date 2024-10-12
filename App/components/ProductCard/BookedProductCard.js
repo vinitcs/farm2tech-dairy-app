@@ -4,7 +4,7 @@ import { colors } from '../../../theme/colors/colors';
 import { fonts } from '../../../theme/fonts/fonts';
 import { productDataAndQuantity } from './ProductInfoData';
 
-const SingleProductPriceAndQuantity = () => {
+const BookedProductCard = () => {
      return (
           <View >
                {productDataAndQuantity.map((item, idx) => (
@@ -21,7 +21,7 @@ const SingleProductPriceAndQuantity = () => {
                                    <Text style={styles.QuantityText}>QTY: {item.qty}</Text>
                               </View>
                               <Text style={styles.priceText}>{'\u20B9'} {item.price}</Text>
-                              <Text style={styles.priceSubscribeText}>Subscribe to save {item.price}Rs in per unit</Text>
+                              {/* <Text style={styles.priceSubscribeText}>Subscribe to save {item.price}Rs in per unit</Text> */}
                          </View>
                     </View>
                ))}
@@ -29,7 +29,7 @@ const SingleProductPriceAndQuantity = () => {
      )
 }
 
-export default SingleProductPriceAndQuantity
+export default BookedProductCard
 
 const styles = StyleSheet.create({
      box: {
@@ -99,10 +99,10 @@ const styles = StyleSheet.create({
           fontFamily: fonts.Semibold,
      },
 
-     priceSubscribeText: {
-          // backgroundColor:'magenta',
-          fontSize: 12,
-          color: colors.primary,
-          fontFamily: fonts.Bold,
-     },
+     // priceSubscribeText: {
+     //      // backgroundColor:'magenta',
+     //      fontSize: 12,
+     //      color: colors.primary,
+     //      fontFamily: fonts.Bold,
+     // },
 })

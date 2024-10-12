@@ -8,13 +8,13 @@ import {
 import MainParent from "../../DefaultScreens/MainParent";
 import Delivery from "../../Screens/Delivery";
 import Notification from "../../Screens/Notification";
-import Profile from "../../Screens/Profile";
 import ProductDisplayInfo from "../../Screens/ProductDisplayInfo";
 import SelectPlan from "../../Screens/SelectPlan";
 import Address from "../../Screens/Address";
 import NewAddress from "../../Screens/NewAddress";
 import BookedItem from "../../Screens/BookedItem";
 import Header from "../../components/Header";
+import Orders from "../../Screens/Orders";
 
 // import Header from '../components/Header';
 
@@ -34,24 +34,13 @@ const AppNavigation = () => {
         component={MainParent}
         // options={{headerShown:false}}
       />
-      <Stack.Screen
-        name="Notification"
-        // options={{
-        //      headerShown: false,
-        //      gestureEnabled: true,
-        //      gestureDirection: "vertical",
-        //      cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS
-        //    }}
-        component={Notification}
-      />
-      <Stack.Screen name="Delivery" component={Delivery} />
+
       <Stack.Screen
         name="ProductDisplayInfo"
         component={ProductDisplayInfo}
         options={{
           headerShown: true,
           header: () => <Header goBackIcon={true} title="product Info" />,
-
           //      cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS,
         }}
       />
@@ -60,18 +49,51 @@ const AppNavigation = () => {
         component={SelectPlan}
         options={({ route }) => ({
           headerShown: true,
-          header: () => <Header goBackIcon={true} title={route.params?.selectedPlanType || "Default Plan"} />,
+          header: () => (
+            <Header
+              goBackIcon={true}
+              title={route.params?.selectedPlanType || "Default Plan"}
+            />
+          ),
         })}
       />
-      <Stack.Screen name="Address" component={Address} options={{
+      <Stack.Screen
+        name="Address"
+        component={Address}
+        options={{
           headerShown: true,
           header: () => <Header goBackIcon={true} title="Address" />,
-        }} />
+        }}
+      />
       <Stack.Screen name="NewAddress" component={NewAddress} />
-      <Stack.Screen name="BookedItem" component={BookedItem} options={{
+      <Stack.Screen
+        name="BookedItem"
+        component={BookedItem}
+        options={{
           headerShown: true,
           header: () => <Header goBackIcon={true} title="BookedItem" />,
-        }} />
+        }}
+      />
+      <Stack.Screen
+        name="Orders"
+        component={Orders}
+        options={{
+          headerShown: true,
+          header: () => <Header goBackIcon={true} title="Orders" />,
+        }}
+      />
+
+      {/* <Stack.Screen
+        name="Notification"
+        // options={{
+        //      headerShown: false,
+        //      gestureEnabled: true,
+        //      gestureDirection: "vertical",
+        //      cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS
+        //    }}
+        component={Notification}
+      /> */}
+      {/* <Stack.Screen name="Delivery" component={Delivery} /> */}
     </Stack.Navigator>
   );
 };

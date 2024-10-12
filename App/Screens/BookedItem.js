@@ -5,9 +5,10 @@ import { fonts } from "../../theme/fonts/fonts";
 import { ScrollView } from "react-native-gesture-handler";
 import { Icon } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
-import SingleProductPriceAndQuantity from "../components/ProductInfo/SingleProductPriceAndQuantity";
+
 import DisplayButton from "../components/Button/DisplayButton";
 import BookedItemPricing from "../components/BookedItemPricing/BookedItemPricing";
+import BookedProductCard from "../components/ProductCard/BookedProductCard";
 
 const BookedItem = () => {
   const navigation = useNavigation();
@@ -24,7 +25,7 @@ const BookedItem = () => {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.bookItemContainer}>
-          <SingleProductPriceAndQuantity />
+          <BookedProductCard />
 
           {/* Address */}
           <View
@@ -71,8 +72,8 @@ const BookedItem = () => {
           </View>
 
           <DisplayButton
-            Title={"Add to Cart"}
-            onPressChanges={() => navigation.navigate("Cart")}
+            Title={"Confirm Order"}
+            onPressChanges={() => navigation.navigate("Orders")}
             color={"primary"}
           />
         </View>

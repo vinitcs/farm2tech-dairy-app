@@ -1,24 +1,40 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
 import Modal from "react-native-modal";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Icon } from "@rneui/themed";
 import { fonts } from "./../../theme/fonts/fonts";
 import { colors } from "./../../theme/colors/colors";
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
-import SingleProductPriceInfo from "../components/ProductInfo/SingleProductPriceInfo";
+import SingleProductPriceInfo from "../components/ProductCard/SingleProductPriceInfo";
 import DisplayButton from "../components/Button/DisplayButton";
+import { AuthContext } from "../context/auth/auth.context";
 
 const ProductDisplayInfo = () => {
   const navigation = useNavigation();
-
+  const { isLogin } = useContext(AuthContext);
   const [visible, setVisible] = useState(false);
   const selectPlanType = ["One Time Order", "Monthly"];
 
   const handlePlanTypePress = (selectedPlanType) => {
-    console.log("Selected Plan:", selectedPlanType);
-    setVisible(false); // Close the modal bottom sheet
-    navigation.navigate("SelectPlan", { selectedPlanType });
+    if (isLogin) {
+      console.log("Selected Plan:", selectedPlanType);
+      setVisible(false);
+      navigation.navigate("SelectPlan", { selectedPlanType });
+    } else {
+      setVisible(false);
+      Alert.alert(
+        "Login Required",
+        "You need to be logged in to select a plan.",
+        [
+          { text: "Cancel", style: "cancel" },
+          {
+            text: "Login",
+            onPress: () => navigation.navigate("Auth", { screen: "Login" }),
+          },
+        ]
+      );
+    }
   };
 
   function renderModal() {
@@ -232,7 +248,7 @@ const styles = StyleSheet.create({
     // backgroundColor:'blue',
     fontSize: 15,
     letterSpacing: 0.6,
-    fontFamily: fonts.Bold,
+    fontFamily: fonts.Semibold,
     marginVertical: 6,
     marginLeft: 6,
     color: colors.lightText,

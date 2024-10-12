@@ -1,36 +1,42 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
-import React from 'react';
-import { productData } from './ProductInfoData';
-import {colors} from '../../../theme/colors/colors';
-import {fonts} from '../../../theme/fonts/fonts';
+import { StyleSheet, Text, View, Image } from "react-native";
+import React from "react";
+import { productData } from "./ProductInfoData";
+import { colors } from "../../../theme/colors/colors";
+import { fonts } from "../../../theme/fonts/fonts";
 
-const SingleProductPriceInfo = () => {
-     return (
+const OneTimeOrderProductCard = () => {
+  return (
+    <View>
+      {productData.map((item, idx) => (
+        <View style={styles.box} key={idx}>
           <View>
-               {productData.map((item, idx) => (
-                    <View style={styles.box} key={idx} >
-                         <View>
-                              <Image source={item.uri} style={styles.logo} />
-                         </View>
-                         <View
-                         // style={{backgroundColor:'pink'}}
-                         >
-                              <Text style={styles.text}>{item.name}</Text>
-                              <Text style={styles.litreText}>{item.litre}/L</Text>
-                              <View style={{ flexDirection: 'row', gap: 6, marginTop: 6, }}>
-                                   <Text style={styles.priceText}>{'\u20B9'} {item.price}/L</Text>
-                                   <Text style={styles.priceStrikeThroughText}>{'\u20B9'} {item.price}/L</Text>
-                                   <Text style={styles.priceOffText}>{item.price}% off</Text>
-                              </View>
-                              <Text style={styles.priceSubscribeText}>Subscribe to save {item.price}Rs in per unit</Text>
-                         </View>
-                    </View>
-               ))}
+            <Image source={item.uri} style={styles.logo} />
           </View>
-     )
-}
+          <View
+          // style={{backgroundColor:'pink'}}
+          >
+            <Text style={styles.text}>{item.name}</Text>
+            <Text style={styles.litreText}>{item.litre}L</Text>
+            <View style={{ flexDirection: "row", gap: 6, marginTop: 6 }}>
+              <Text style={styles.priceText}>
+                {"\u20B9"} {item.price}.0
+              </Text>
+              <Text style={styles.priceStrikeThroughText}>
+                {"\u20B9"} {item.price}.0
+              </Text>
+              <Text style={styles.priceOffText}>{item.price}% off</Text>
+            </View>
+            <Text style={styles.priceSubscribeText}>
+              Buy and get Rs.{item.price} in per unit
+            </Text>
+          </View>
+        </View>
+      ))}
+    </View>
+  );
+};
 
-export default SingleProductPriceInfo
+export default OneTimeOrderProductCard;
 
 const styles = StyleSheet.create({
 

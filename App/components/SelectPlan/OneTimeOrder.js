@@ -1,17 +1,16 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { colors } from "../../../theme/colors/colors";
-import { fonts } from "../../../theme/fonts/fonts";
-import SingleProductPriceInfo from "../ProductInfo/SingleProductPriceInfo";
 import CountQuantity from "../Count/CountQuantity";
 import DisplayButton from "../Button/DisplayButton";
 import { useNavigation } from "@react-navigation/native";
+import OneTimeOrderProductCard from "../ProductCard/OneTimeOrderProductCard";
 
 const OneTimeOrder = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.oneTimeOrderContainer}>
-      <SingleProductPriceInfo />
+      <OneTimeOrderProductCard />
       <CountQuantity title={"Select Quantity"} />
       <Text style={styles.oneTimeOrderNote}>
         This is a one-time order. Place your order today, and it will be

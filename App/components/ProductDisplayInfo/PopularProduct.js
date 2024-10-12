@@ -1,32 +1,21 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
-import React, { useMemo } from "react";
+import React from "react";
 import { productDisplayInfoData } from "./ProductDisplayInfoContent";
-import { fonts } from "./../../../theme/fonts/fonts";
-import { colors } from "./../../../theme/colors/colors";
+import { fonts } from "../../../theme/fonts/fonts";
+import { colors } from "../../../theme/colors/colors";
 import { useNavigation } from "@react-navigation/native";
 
-const ProductDisplayPrice = ({ selectedProduct }) => {
+const PopularProduct = () => {
   const navigation = useNavigation();
-  console.log("ProductDisplayPrice ReRendered ****");
-
-  const filteredData = selectedProduct
-    ? productDisplayInfoData.filter(
-        (item) => item.name === selectedProduct.name
-      )
-    : productDisplayInfoData;
-  // console.log(filteredData);
 
   return (
-    <View style={styles.productDisplayPriceContainer}>
-      <Text style={styles.dairyDisplayContainerText}>
-        {selectedProduct?.name || "All Products"}
-      </Text>
+    <View style={styles.popularProductContainer}>
+      <Text style={styles.dairyDisplayContainerText}>Popular Product</Text>
       <View style={styles.boxContainer}>
-        {filteredData.map((item, idx) => (
+        {productDisplayInfoData.map((item, idx) => (
           <TouchableOpacity
             onPress={() => {
               navigation.navigate("ProductDisplayInfo");
-              console.log("productDisplayInfo");
             }}
             key={idx}
           >
@@ -69,10 +58,10 @@ const ProductDisplayPrice = ({ selectedProduct }) => {
   );
 };
 
-export default ProductDisplayPrice;
+export default PopularProduct;
 
 const styles = StyleSheet.create({
-  productDisplayPriceContainer: {
+  popularProductContainer: {
     // backgroundColor:'purple',
     flex: 1,
     height: "auto",

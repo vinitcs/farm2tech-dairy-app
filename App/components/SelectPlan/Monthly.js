@@ -4,9 +4,9 @@ import { fonts } from "../../../theme/fonts/fonts";
 import { colors } from "../../../theme/colors/colors";
 import CountQuantity from "../Count/CountQuantity";
 import MonthlySelectCalendar from "../Calendar/MonthlySelectCalendar";
-import SingleProductPriceInfo from "../ProductInfo/SingleProductPriceInfo";
 import { useNavigation } from "@react-navigation/native";
 import DisplayButton from "../Button/DisplayButton";
+import MonthlyProductCard from "../ProductCard/MonthlyProductCard";
 
 const Monthly = () => {
   const navigation = useNavigation();
@@ -16,7 +16,7 @@ const Monthly = () => {
 
   return (
     <View style={styles.monthlyContainer}>
-      <SingleProductPriceInfo />
+      <MonthlyProductCard/>
       <CountQuantity title={"Select Per Day Quantity"} />
       <View style={styles.calendarSection}>
         <MonthlySelectCalendar

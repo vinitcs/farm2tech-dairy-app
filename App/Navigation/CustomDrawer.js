@@ -1,5 +1,5 @@
-import { StyleSheet, View } from "react-native";
-import React from "react";
+import { StyleSheet, View, Dimensions } from "react-native";
+import React, { version } from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import { Icon } from "@rneui/themed";
@@ -15,6 +15,8 @@ import {
   Switch,
 } from "react-native-paper";
 // import ProfileAvatar from "../components/Avatar/ProfileAvatar";
+
+const screenHeight = Dimensions.get("window").height;
 
 const CustomDrawer = ({ navigation, props }) => {
   return (
@@ -60,18 +62,19 @@ const CustomDrawer = ({ navigation, props }) => {
             />
             <Drawer.Item
               icon="cart-outline"
-              label="My Cart"
+              label="Cart"
               onPress={() => navigation.navigate("Cart")}
             />
             <Drawer.Item
+              icon="shopping-outline"
+              label="Orders"
+              onPress={() => navigation.navigate("Orders")}
+            />
+            <Drawer.Item
               icon="account-circle-outline"
-              label="My Account"
+              label="Account"
               onPress={() => navigation.navigate("Profile")}
             />
-            {/* <Drawer.Item
-                                        label="Delivery"
-                                        onPress={() => navigation.navigate('Delivery')}
-                                   /> */}
             {/* <Drawer.Item
                                         label="Contact"
                                         onPress={() => navigation.navigate('Contact')}
@@ -84,11 +87,7 @@ const CustomDrawer = ({ navigation, props }) => {
           />
         </View>
       </DrawerContentScrollView>
-      <Text
-        style={{ marginLeft: 20, color: colors.lightText, fontWeight: "700" }}
-      >
-        Version - 1.0.0
-      </Text>
+      <Text style={styles.version}>Version - 1.0.0</Text>
     </View>
   );
 };
@@ -98,7 +97,7 @@ export default CustomDrawer;
 const styles = StyleSheet.create({
   drawerContent: {
     // backgroundColor: "orange",
-    height: "auto",
+    height: screenHeight,
   },
   closeBtn: {
     position: "absolute",
@@ -106,9 +105,9 @@ const styles = StyleSheet.create({
     top: 10,
   },
   userInfoSection: {
-    //     backgroundColor: "red",
+        // backgroundColor: "red",
     display: "flex",
-    flexDirection: "row",
+    // flexDirection: "row",
     marginTop: 30,
     marginLeft: 18,
   },
@@ -127,9 +126,9 @@ const styles = StyleSheet.create({
   userName: {
     fontSize: 18,
     flexWrap: "nowrap",
-    fontWeight:"800",
-    letterSpacing:0.4,
-    color:colors.primary
+    fontWeight: "800",
+    letterSpacing: 0.4,
+    color: colors.primary,
   },
 
   memberText: {
@@ -143,17 +142,16 @@ const styles = StyleSheet.create({
   drawerSection: {
     // backgroundColor: "yellow",
     marginTop: 20,
-    height: "auto",
-    display: "flex",
-    gap: 300,
+    height: screenHeight - 150,
+    justifyContent: "space-between",
+    // gap: 300,
   },
-  
+
+  version: {
+    marginLeft: 30,
+    marginBottom:2,
+    color: colors.lightText,
+  },
 });
 
-// Colors
-//   --main-color: #4B8E71;
-//   --primary-color: #6B9080;
-//   --button-background: #DA7650;
-//   --primary-button-background: #fe7649;
-//   --background-color: #CCE3DE;
-//   --hover-color: #5c9ceb;
+

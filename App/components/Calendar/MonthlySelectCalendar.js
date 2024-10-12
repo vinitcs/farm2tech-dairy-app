@@ -4,7 +4,7 @@ import CalendarPicker from "react-native-calendar-picker";
 import { colors } from "../../../theme/colors/colors";
 import { fonts } from "../../../theme/fonts/fonts";
 
-const MonthlySelectCalendar = (onDateChange) => {
+const MonthlySelectCalendar = ({onDateChange}) => {
   const minDate = new Date(); // Today's date
   // console.log(minDate);
 

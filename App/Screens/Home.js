@@ -1,26 +1,23 @@
-import React, { useState } from "react";
-import {
-  View,
-  StyleSheet,
-  ScrollView,
-  SafeAreaView,
-} from "react-native";
+import React, { useCallback, useState } from "react";
+import { View, StyleSheet, ScrollView, SafeAreaView } from "react-native";
 import MilkProductSlider from "../components/MilkProduct/MilkProductSlider";
-import ProductDisplayPrice from "../components/ProductDisplayInfo/ProductDisplayPrice";
 import About from "../components/About";
 import Contact from "../components/Contact";
 import DummySearch from "../components/Search/DummySearch";
-// import Speciality from "../components/Speciality/Speciality";
 import { colors } from "./../../theme/colors/colors";
 import BannerSlider from "../components/Banner/BannerSlider";
+import PopularProduct from "../components/ProductDisplayInfo/PopularProduct";
+import { useNavigation } from "@react-navigation/native";
 
 const Home = () => {
   const [selectProduct, setSelectProduct] = useState(null);
+  const navigation = useNavigation();
 
-  const handleProductSelect = (product) => {
+  const handleProductSelect = useCallback((product) => {
     setSelectProduct(product);
-    console.log("Selected product:", product);
-  };
+    navigation.navigate("Category", { selectProduct: product });
+    // console.log("Selected product:", product);
+  },[navigation]);
 
   return (
     <SafeAreaView>
@@ -34,8 +31,7 @@ const Home = () => {
           <View style={styles.sectionContainer}>
             <DummySearch />
             <MilkProductSlider onProductSelect={handleProductSelect} />
-            {/* <Speciality /> */}
-            <ProductDisplayPrice selectedProduct={selectProduct} />
+            <PopularProduct />
             <About />
             <Contact />
           </View>

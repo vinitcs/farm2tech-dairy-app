@@ -66,7 +66,7 @@ const Contact = () => {
       </View>
 
       <Text style={styles.copyrightText}>
-        Copyrights 2023. Farm2Tech. All Rights Reserved.
+        Copyrights 2024. Farm2Tech. All Rights Reserved.
       </Text>
     </View>
   );

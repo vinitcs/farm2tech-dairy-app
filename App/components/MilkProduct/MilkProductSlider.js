@@ -6,14 +6,30 @@ import {
   FlatList,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { memo, useCallback } from "react";
 import { fonts } from "../../../theme/fonts/fonts";
 import { colors } from "../../../theme/colors/colors";
 import { productSliderData } from "./ProductSliderContent";
+import { useNavigation } from "@react-navigation/native";
 
-const MilkProductSlider = ({ onProductSelect }) => {
+const MilkProductSlider = memo(({ onProductSelect }) => {
+  const navigation = useNavigation();
+  console.log("MilkProductSlider ReRendered ####");
+
+  const handPress = useCallback(
+    (item) => {
+      onProductSelect(item);
+      navigation.navigate("Category", { selectedProduct: item });
+    },
+    [onProductSelect, navigation]
+  );
+
   const renderItem = ({ item }) => (
-    <TouchableOpacity onPress={() => onProductSelect(item)}>
+    <TouchableOpacity
+      onPress={() => {
+        handPress(item);
+      }}
+    >
       <View style={styles.box}>
         <Image source={item.uri} style={styles.logo} />
         <Text style={styles.text}>{item.name}</Text>
@@ -33,7 +49,7 @@ const MilkProductSlider = ({ onProductSelect }) => {
       />
     </View>
   );
-};
+});
 
 export default MilkProductSlider;
 
