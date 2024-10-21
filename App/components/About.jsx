@@ -1,7 +1,7 @@
 import { StyleSheet, Image, Text, View } from "react-native";
 import React from "react";
-import { fonts } from "./../../theme/fonts/fonts";
-import { colors } from "./../../theme/colors/colors";
+import { fonts } from "../../theme/fonts/fonts";
+import { colors } from "../../theme/colors/colors";
 
 const About = () => {
   return (

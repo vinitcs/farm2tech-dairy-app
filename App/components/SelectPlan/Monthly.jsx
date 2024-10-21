@@ -6,18 +6,34 @@ import CountQuantity from "../Count/CountQuantity";
 import MonthlySelectCalendar from "../Calendar/MonthlySelectCalendar";
 import { useNavigation } from "@react-navigation/native";
 import DisplayButton from "../Button/DisplayButton";
-import MonthlyProductCard from "../ProductCard/MonthlyProductCard";
+// import MonthlyProductCard from "../ProductCard/MonthlyProductCard";
+import SelectedProductCard from "../ProductCard/SelectedProductCard";
+import { useDispatch, useSelector } from "react-redux";
+import { setMonthlyOrderQuantity } from "../../../redux/slice/productSlice";
 
 const Monthly = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const monthlyOrderQuantity = useSelector(
+    (state) => state.product.monthlyOrderQuantity
+  );
+
+  const handleSetCount = (count) => {
+    dispatch(setMonthlyOrderQuantity(count));
+  };
 
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
   return (
     <View style={styles.monthlyContainer}>
-      <MonthlyProductCard/>
-      <CountQuantity title={"Select Per Day Quantity"} />
+      {/* <MonthlyProductCard/> */}
+      <SelectedProductCard />
+      <CountQuantity
+        title={"Select Per Day Quantity"}
+        count={monthlyOrderQuantity}
+        setCount={handleSetCount}
+      />
       <View style={styles.calendarSection}>
         <MonthlySelectCalendar
           onDateChange={(startDate, endDate) => {
@@ -67,7 +83,7 @@ const styles = StyleSheet.create({
     color: colors.lightText,
     fontFamily: fonts.Semibold,
     fontSize: 14,
-    letterSpacing:1,
+    letterSpacing: 1,
   },
   startDateValue: {
     color: colors.primary,

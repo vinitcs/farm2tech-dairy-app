@@ -3,10 +3,21 @@ import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 import { Icon } from "@rneui/themed";
-import { colors } from "./../../theme/colors/colors";
+import { colors } from "../../theme/colors/colors";
 
-const Header = ({ menuIcon = false, goBackIcon = false, logo, title }) => {
+const Header = ({
+  menuIcon = false,
+  goBackIcon = false,
+  logo,
+  title,
+  goBackFn,
+}) => {
   const navigation = useNavigation();
+
+  const handleGoBack = () => {
+    goBackFn ? goBackFn() : navigation.goBack();
+  };
+
   return (
     <View style={styles.headerContainer}>
       <View style={styles.actionBtn}>
@@ -31,9 +42,7 @@ const Header = ({ menuIcon = false, goBackIcon = false, logo, title }) => {
               type="ionicon"
               size={28}
               color={colors.lightText}
-              onPress={() => {
-                navigation.goBack();
-              }}
+              onPress={handleGoBack}
             />
           </TouchableOpacity>
         )}

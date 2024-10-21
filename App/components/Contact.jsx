@@ -2,8 +2,8 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 import { TextInput, Button } from "react-native-paper";
 import { Icon } from "@rneui/themed";
-import { fonts } from "./../../theme/fonts/fonts";
-import { colors } from "./../../theme/colors/colors";
+import { fonts } from "../../theme/fonts/fonts";
+import { colors } from "../../theme/colors/colors";
 
 const Contact = () => {
   const [text, setText] = React.useState("");

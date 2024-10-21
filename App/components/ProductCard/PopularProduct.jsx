@@ -1,12 +1,41 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  Alert,
+} from "react-native";
 import React from "react";
 import { productDisplayInfoData } from "./ProductDisplayInfoContent";
-import { fonts } from "../../../theme/fonts/fonts";
-import { colors } from "../../../theme/colors/colors";
+import { fonts } from "../../../theme/fonts/fonts.js";
+import { colors } from "../../../theme/colors/colors.js";
 import { useNavigation } from "@react-navigation/native";
+import { Icon } from "@rneui/themed";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, setSelectedProduct } from "../../../redux/slice/productSlice.js";
 
 const PopularProduct = () => {
   const navigation = useNavigation();
+  const cartItems = useSelector((state) => state.product.cartItems);
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (product) => {
+    const existingItem = cartItems.find((item) => item.id === product.id);
+    if (existingItem) {
+      Alert.alert("Product already added to the cart");
+    } else {
+      Alert.alert("Product added to the cart");
+      dispatch(addToCart(product));
+    }
+  };
+
+  const handleProductSelect = (product) => {
+    dispatch(setSelectedProduct(product));
+    navigation.navigate("ProductInfo");
+  }
+
+
 
   return (
     <View style={styles.popularProductContainer}>
@@ -15,7 +44,7 @@ const PopularProduct = () => {
         {productDisplayInfoData.map((item, idx) => (
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("ProductDisplayInfo");
+              handleProductSelect(item);
             }}
             key={idx}
           >
@@ -41,15 +70,18 @@ const PopularProduct = () => {
                 </Text>
               </View>
 
-              {/* <View style={styles.calendarIcon}>
+              <TouchableOpacity
+                style={styles.addIcon}
+                onPress={() => handleAddToCart(item)}
+              >
                 <Icon
-                  name="calendar"
+                  name="add-outline"
                   type="ionicon"
-                  size={28}
+                  size={26}
                   color={colors.lightText}
-                  // onPress={() => { navigation.navigate('Cart') }}
+                // onPress={() => { navigation.navigate('Cart') }}
                 />
-              </View> */}
+              </TouchableOpacity>
             </View>
           </TouchableOpacity>
         ))}
@@ -154,11 +186,12 @@ const styles = StyleSheet.create({
     fontFamily: fonts.Semibold,
   },
 
-  calendarIcon: {
+  addIcon: {
     // backgroundColor: "yellow",
     position: "absolute",
-    right: 6,
-    top: 6,
+    right: 0,
+    borderTopRightRadius: 12,
     zIndex: 3,
+    padding: 6,
   },
 });

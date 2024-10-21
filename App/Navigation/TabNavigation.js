@@ -9,8 +9,9 @@ import Search from "../Screens/Search";
 import Category from "../Screens/Category";
 import Profile from "../Screens/Profile";
 
-import Header from "../components/Header.js";
+import Header from "../components/Header";
 import logo from "../../assets/logo.png";
+import { useSelector } from "react-redux";
 
 const homeName = "Home";
 const categoryName = "Category";
@@ -21,6 +22,9 @@ const profileName = "Profile";
 const Tab = createBottomTabNavigator();
 
 const TabNavigation = () => {
+  const cartItems = useSelector((state) => state.product.cartItems);
+  const cartItemCount = cartItems.length;
+
   return (
     <Tab.Navigator
       initialRouteName={homeName}
@@ -47,19 +51,19 @@ const TabNavigation = () => {
 
           if (rn === homeName) {
             iconName = focused ? "home" : "home-outline";
-            size = 28;
+            size = 24;
           } else if (rn === categoryName) {
             iconName = focused ? "grid" : "grid-outline";
-            size = 28;
+            size = 24;
           } else if (rn === searchName) {
             iconName = focused ? "search" : "search-outline";
-            size = 28;
+            size = 24;
           } else if (rn === cartName) {
             iconName = focused ? "cart" : "cart-outline";
-            size = 28;
+            size = 24;
           } else if (rn === profileName) {
             iconName = focused ? "person-circle" : "person-circle-outline";
-            size = 28;
+            size = 24;
           }
 
           return (
@@ -71,7 +75,10 @@ const TabNavigation = () => {
       <Tab.Screen
         name={homeName}
         component={Home}
-        options={{ headerShown: true, header: () => <Header menuIcon={true} logo={logo} /> }}
+        options={{
+          headerShown: true,
+          header: () => <Header menuIcon={true} logo={logo} />,
+        }}
       />
       <Tab.Screen
         name={categoryName}
@@ -84,19 +91,31 @@ const TabNavigation = () => {
       <Tab.Screen
         name={searchName}
         component={Search}
-        options={{ headerShown: true, header: () => <Header menuIcon={true} title="Search" /> }}
+        options={{
+          headerShown: true,
+          header: () => <Header menuIcon={true} title="Search" />,
+        }}
       />
       <Tab.Screen
         name={cartName}
         component={Cart}
-        options={{ headerShown: true, header: () => <Header menuIcon={true} title="Cart" /> }}
+        options={{
+          headerShown: true,
+          header: () => <Header menuIcon={true} title="Cart" />,
+          tabBarBadge: cartItemCount > 0 ? cartItemCount : null,
+          tabBarBadgeStyle:{
+            backgroundColor:colors.lightText,
+            color:colors.white
+          }
+        }}
       />
       <Tab.Screen
         name={profileName}
         component={Profile}
-        options={{ headerShown: true,
-          header: () => <Header menuIcon={true} title="Profile" /> 
-         }}
+        options={{
+          headerShown: true,
+          header: () => <Header menuIcon={true} title="Profile" />,
+        }}
       />
     </Tab.Navigator>
   );

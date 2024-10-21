@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
 import React, { useCallback, useEffect, useState } from "react";
-import MilkProductSlider from "../components/MilkProduct/MilkProductSlider";
-import { ScrollView } from "react-native-gesture-handler";
-import ProductDisplayPrice from "../components/ProductDisplayInfo/ProductDisplayPrice";
-import { colors } from "./../../theme/colors/colors";
 import { useFocusEffect, useRoute } from "@react-navigation/native";
+import { ScrollView } from "react-native-gesture-handler";
+import MilkProductSlider from "../components/MilkProducts/MilkProductSlider";
+import Product from "../components/ProductCard/Product";
+import { colors } from "../../theme/colors/colors";
 
 const Category = () => {
   const route = useRoute();
@@ -33,7 +33,7 @@ const Category = () => {
     >
       <View style={styles.categoryContainer}>
         <MilkProductSlider onProductSelect={handleProductSelect} />
-        <ProductDisplayPrice selectedProduct={selectProduct} />
+        <Product selectedProduct={selectProduct} />
       </View>
     </ScrollView>
   );

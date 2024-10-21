@@ -10,8 +10,8 @@ import { Icon } from "@rneui/themed";
 import { colors } from "../../../theme/colors/colors";
 import { fonts } from "../../../theme/fonts/fonts";
 
-const CountQuantity = ({title}) => {
-  const [count, setCount] = useState(0);
+const CountQuantity = ({title, count, setCount}) => {
+  // const [count, setCount] = useState(0);
 
   const increaseCount = () => {
     setCount(count + 1);

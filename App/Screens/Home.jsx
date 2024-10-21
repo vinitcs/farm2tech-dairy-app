@@ -1,12 +1,12 @@
 import React, { useCallback, useState } from "react";
 import { View, StyleSheet, ScrollView, SafeAreaView } from "react-native";
-import MilkProductSlider from "../components/MilkProduct/MilkProductSlider";
+import MilkProductSlider from "../components/MilkProducts/MilkProductSlider";
 import About from "../components/About";
 import Contact from "../components/Contact";
 import DummySearch from "../components/Search/DummySearch";
-import { colors } from "./../../theme/colors/colors";
+import { colors } from "../../theme/colors/colors";
 import BannerSlider from "../components/Banner/BannerSlider";
-import PopularProduct from "../components/ProductDisplayInfo/PopularProduct";
+import PopularProduct from "../components/ProductCard/PopularProduct";
 import { useNavigation } from "@react-navigation/native";
 
 const Home = () => {

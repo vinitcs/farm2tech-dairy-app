@@ -1,6 +1,5 @@
 import { StyleSheet, ActivityIndicator, View } from "react-native";
 import React from "react";
-import { useContext } from "react";
 import App from "./App/App";
 import Auth from "./Auth/Auth";
 import { AuthContext } from "../context/auth/auth.context";
@@ -8,14 +7,14 @@ import { useCustomFonts } from "../hooks/Fonts/useCustomFonts";
 import { colors } from "../../theme/colors/colors";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { useSelector } from "react-redux";
 
 const Stack = createStackNavigator();
 
 const Navigation = () => {
-  const { isLogin, isLoading } = useContext(AuthContext);
-  console.log("navigation");
+  const isLogin = useSelector((state) => state.userAuth.isLogin);
+  const isLoading = useSelector((state) => state.userAuth.isLoading);
   const { fontsLoaded } = useCustomFonts();
-  console.log(fontsLoaded);
 
   if (isLoading || !fontsLoaded) {
     return (

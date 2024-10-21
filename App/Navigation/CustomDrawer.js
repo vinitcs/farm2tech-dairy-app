@@ -14,11 +14,14 @@ import {
   TouchableRipple,
   Switch,
 } from "react-native-paper";
+import { useSelector } from "react-redux";
 // import ProfileAvatar from "../components/Avatar/ProfileAvatar";
 
 const screenHeight = Dimensions.get("window").height;
 
 const CustomDrawer = ({ navigation, props }) => {
+  const isLogin = useSelector((state) => state.userAuth.isLogin);
+
   return (
     <View style={{ flex: 1 }}>
       <DrawerContentScrollView {...props} style={styles.drawerContent}>
@@ -80,14 +83,25 @@ const CustomDrawer = ({ navigation, props }) => {
                                         onPress={() => navigation.navigate('Contact')}
                                    /> */}
           </Drawer.Section>
+        </View>
+      </DrawerContentScrollView>
+
+      <Drawer.Section showDivider={false}>
+        {isLogin ? (
           <Drawer.Item
             icon="logout"
             label="Logout"
             //  onPress={() => navigation.navigate("Contact")}
           />
-        </View>
-      </DrawerContentScrollView>
-      <Text style={styles.version}>Version - 1.0.0</Text>
+        ) : (
+          <Drawer.Item
+            icon="login"
+            label="Login / Sign Up"
+            onPress={() => navigation.navigate("Auth", { screen: "Login" })}
+          />
+        )}
+      </Drawer.Section>
+      {/* <Text style={styles.version}>Version - 1.0.0</Text> */}
     </View>
   );
 };
@@ -105,7 +119,7 @@ const styles = StyleSheet.create({
     top: 10,
   },
   userInfoSection: {
-        // backgroundColor: "red",
+    // backgroundColor: "red",
     display: "flex",
     // flexDirection: "row",
     marginTop: 30,
@@ -142,16 +156,14 @@ const styles = StyleSheet.create({
   drawerSection: {
     // backgroundColor: "yellow",
     marginTop: 20,
-    height: screenHeight - 150,
-    justifyContent: "space-between",
-    // gap: 300,
   },
 
-  version: {
-    marginLeft: 30,
-    marginBottom:2,
-    color: colors.lightText,
-  },
+  // version: {
+  //   // backgroundColor: "red",
+  //   width: "100%",
+  //   textAlign: "right",
+  //   paddingRight: 10,
+  //   paddingBottom: 4,
+  //   color: colors.lightText,
+  // },
 });
-
-

@@ -8,7 +8,7 @@ import {
 import MainParent from "../../DefaultScreens/MainParent";
 import Delivery from "../../Screens/Delivery";
 import Notification from "../../Screens/Notification";
-import ProductDisplayInfo from "../../Screens/ProductDisplayInfo";
+import ProductInfo from "../../Screens/ProductInfo";
 import SelectPlan from "../../Screens/SelectPlan";
 import Address from "../../Screens/Address";
 import NewAddress from "../../Screens/NewAddress";
@@ -36,8 +36,8 @@ const AppNavigation = () => {
       />
 
       <Stack.Screen
-        name="ProductDisplayInfo"
-        component={ProductDisplayInfo}
+        name="ProductInfo"
+        component={ProductInfo}
         options={{
           headerShown: true,
           header: () => <Header goBackIcon={true} title="product Info" />,
@@ -47,15 +47,18 @@ const AppNavigation = () => {
       <Stack.Screen
         name="SelectPlan"
         component={SelectPlan}
-        options={({ route }) => ({
-          headerShown: true,
-          header: () => (
-            <Header
-              goBackIcon={true}
-              title={route.params?.selectedPlanType || "Default Plan"}
-            />
-          ),
-        })}
+        options={{
+          headerShown: true,  // Manage header in SelectPlan screen   
+        }}
+        // options={({ route }) => ({
+        //   headerShown: true,
+        //   header: () => (
+        //     <Header
+        //       goBackIcon={true}
+        //       title={route.params?.selectedPlanType || "Default Plan"}
+        //     />
+        //   ),
+        // })}
       />
       <Stack.Screen
         name="Address"

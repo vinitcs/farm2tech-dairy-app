@@ -1,23 +1,24 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React, { useMemo } from "react";
 import { productDisplayInfoData } from "./ProductDisplayInfoContent";
-import { fonts } from "./../../../theme/fonts/fonts";
-import { colors } from "./../../../theme/colors/colors";
+import { fonts } from "../../../theme/fonts/fonts";
+import { colors } from "../../../theme/colors/colors";
 import { useNavigation } from "@react-navigation/native";
+import { Icon } from "@rneui/themed";
 
-const ProductDisplayPrice = ({ selectedProduct }) => {
+const Product = ({ selectedProduct }) => {
   const navigation = useNavigation();
-  console.log("ProductDisplayPrice ReRendered ****");
+  console.log("Product ReRendered ****");
 
   const filteredData = selectedProduct
     ? productDisplayInfoData.filter(
-        (item) => item.name === selectedProduct.name
-      )
+      (item) => item.name === selectedProduct.name
+    )
     : productDisplayInfoData;
   // console.log(filteredData);
 
   return (
-    <View style={styles.productDisplayPriceContainer}>
+    <View style={styles.productContainer}>
       <Text style={styles.dairyDisplayContainerText}>
         {selectedProduct?.name || "All Products"}
       </Text>
@@ -25,8 +26,8 @@ const ProductDisplayPrice = ({ selectedProduct }) => {
         {filteredData.map((item, idx) => (
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("ProductDisplayInfo");
-              console.log("productDisplayInfo");
+              navigation.navigate("ProductInfo");
+              // console.log("productDisplayInfo");
             }}
             key={idx}
           >
@@ -52,15 +53,20 @@ const ProductDisplayPrice = ({ selectedProduct }) => {
                 </Text>
               </View>
 
-              {/* <View style={styles.calendarIcon}>
+              <TouchableOpacity
+                style={styles.addIcon}
+                onPress={() => {
+                  navigation.navigate("Cart");
+                }}
+              >
                 <Icon
-                  name="calendar"
+                  name="add-outline"
                   type="ionicon"
-                  size={28}
+                  size={26}
                   color={colors.lightText}
-                  // onPress={() => { navigation.navigate('Cart') }}
+                // onPress={() => { navigation.navigate('Cart') }}
                 />
-              </View> */}
+              </TouchableOpacity>
             </View>
           </TouchableOpacity>
         ))}
@@ -69,10 +75,10 @@ const ProductDisplayPrice = ({ selectedProduct }) => {
   );
 };
 
-export default ProductDisplayPrice;
+export default Product;
 
 const styles = StyleSheet.create({
-  productDisplayPriceContainer: {
+  productContainer: {
     // backgroundColor:'purple',
     flex: 1,
     height: "auto",
@@ -165,11 +171,12 @@ const styles = StyleSheet.create({
     fontFamily: fonts.Semibold,
   },
 
-  calendarIcon: {
+  addIcon: {
     // backgroundColor: "yellow",
     position: "absolute",
-    right: 6,
-    top: 6,
+    right: 0,
+    borderTopRightRadius: 12,
     zIndex: 3,
+    padding: 6,
   },
 });

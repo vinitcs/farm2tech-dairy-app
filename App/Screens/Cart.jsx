@@ -1,19 +1,24 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { ScrollView } from "react-native-gesture-handler";
 import { colors } from "../../theme/colors/colors";
 import { fonts } from "../../theme/fonts/fonts";
-import { productDataAndQuantity } from "../components/ProductCard/ProductInfoData";
+// import { productDataAndQuantity } from "../components/ProductCard/ProductInfoData";
 import { Icon } from "@rneui/themed";
-
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromCart } from "../../redux/slice/productSlice.js";
+import { useNavigation } from "@react-navigation/native";
 
 const Cart = () => {
+  const navigation = useNavigation();
+  const cartItems = useSelector((state) => state.product.cartItems);
+
+  const dispatch = useDispatch();
+
+  const handleRemoveFromCart = (product) => {
+    dispatch(removeFromCart(product));
+  };
+
   return (
     <ScrollView
       contentContainerStyle={styles.scrollViewContent}
@@ -21,46 +26,49 @@ const Cart = () => {
       showsVerticalScrollIndicator={false}
     >
       <View style={styles.cartContainer}>
-          {productDataAndQuantity.map((item, idx) => (
-            <View style={styles.box}>
-              <View>
-                <Image source={item.uri} style={styles.logo} />
-              </View>
-              <View
-              // style={{backgroundColor:'pink'}}
-              >
-                <Text style={styles.text}>{item.name}</Text>
-                <Text style={styles.priceText}>
-                  {"\u20B9"} {item.price}
-                </Text>
+        {cartItems.map((item, idx) => (
+          <TouchableOpacity
+            style={styles.box}
+            key={idx}
+            onPress={() => {
+              navigation.navigate("ProductInfo");
+            }}
+          >
+            <View>
+              <Image source={item.uri} style={styles.logo} />
+            </View>
+            <View
+            // style={{backgroundColor:'pink'}}
+            >
+              <Text style={styles.text}>{item.name}</Text>
+              <Text style={styles.priceText}>
+                {"\u20B9"} {item.price}
+              </Text>
 
-                <View style={{ flexDirection: "row", gap: 6, marginTop: 6 }}>
-                  <Text style={styles.litreText}>{item.litre}L</Text>
-                  <Text style={styles.QuantityText}>QTY: {item.qty}</Text>
-                </View>
-              </View>
-
-              <View style={styles.actionBtnSection}>
-                <TouchableOpacity style={styles.editBtnBg}>
-                  <Icon
-                    name="edit"
-                    type="material"
-                    color={colors.primary}
-                    size={20}
-                  />
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.closeBtnBg}>
-                  <Icon
-                    name="close"
-                    type="ionicon"
-                    color={colors.lightText}
-                    size={20}
-                  />
-                </TouchableOpacity>
+              <View style={{ flexDirection: "row", gap: 6, marginTop: 6 }}>
+                <Text style={styles.litreText}>{item.litre}L</Text>
+                {/* <Text style={styles.QuantityText}>QTY: {item.qty}</Text> */}
               </View>
             </View>
-          ))}
-        </View>
+
+            <View style={styles.actionBtnSection}>
+              <TouchableOpacity
+                style={styles.closeBtn}
+                onPress={() => {
+                  handleRemoveFromCart(item.id);
+                }}
+              >
+                <Icon
+                  name="close-outline"
+                  type="ionicon"
+                  color={colors.lightText}
+                  size={26}
+                />
+              </TouchableOpacity>
+            </View>
+          </TouchableOpacity>
+        ))}
+      </View>
     </ScrollView>
   );
 };
@@ -154,15 +162,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 12,
   },
-  editBtnBg: {
-    // backgroundColor: colors.background,
-    borderRadius: 30,
-    padding:4
-  },
 
-  closeBtnBg: {
-    backgroundColor: colors.background,
-    borderRadius: 30,
-    padding:4
+  closeBtn: {
+    // backgroundColor: "yellow",
+    position: "absolute",
+    right: 0,
+    borderTopRightRadius: 12,
+    zIndex: 3,
+    padding: 6,
   },
 });

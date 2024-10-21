@@ -2,25 +2,29 @@ import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
 import Modal from "react-native-modal";
 import React, { useContext, useState } from "react";
 import { Icon } from "@rneui/themed";
-import { fonts } from "./../../theme/fonts/fonts";
-import { colors } from "./../../theme/colors/colors";
+import { fonts } from "../../theme/fonts/fonts";
+import { colors } from "../../theme/colors/colors";
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
-import SingleProductPriceInfo from "../components/ProductCard/SingleProductPriceInfo";
 import DisplayButton from "../components/Button/DisplayButton";
-import { AuthContext } from "../context/auth/auth.context";
+import { useDispatch, useSelector } from "react-redux";
+import SelectedProductCard from "../components/ProductCard/SelectedProductCard";
+import { setSelectedPlanType } from "../../redux/slice/productSlice";
 
-const ProductDisplayInfo = () => {
+const ProductInfo = () => {
   const navigation = useNavigation();
-  const { isLogin } = useContext(AuthContext);
+  const dispatch = useDispatch();
+
+  const isLogin = useSelector((state) => state.userAuth.isLogin);
   const [visible, setVisible] = useState(false);
   const selectPlanType = ["One Time Order", "Monthly"];
 
-  const handlePlanTypePress = (selectedPlanType) => {
+  const handlePlanTypePress = (selectedPlan) => {
     if (isLogin) {
-      console.log("Selected Plan:", selectedPlanType);
+      // console.log("Selected Plan:", selectedPlan);
+      dispatch(setSelectedPlanType(selectedPlan));
       setVisible(false);
-      navigation.navigate("SelectPlan", { selectedPlanType });
+      navigation.navigate("SelectPlan", { selectedPlan });
     } else {
       setVisible(false);
       Alert.alert(
@@ -78,12 +82,6 @@ const ProductDisplayInfo = () => {
               activeOpacity={0.7}
               pointerEvents="auto"
             >
-              {/* <Icon
-                name="calendar"
-                type="ionicon"
-                size={24}
-                color={colors.lightText}
-              /> */}
               <Text style={styles.planTypeBtnValue}>{name}</Text>
             </TouchableOpacity>
           ))}
@@ -107,7 +105,7 @@ const ProductDisplayInfo = () => {
       >
         <View style={styles.productInfoContainer}>
           <View style={styles.boxContainer}>
-            <SingleProductPriceInfo />
+            <SelectedProductCard />
             <View style={styles.productDescription}>
               <Text style={styles.productDescriptionTitle}>Description</Text>
               <Text style={styles.productDescriptionPara}>
@@ -143,7 +141,7 @@ const ProductDisplayInfo = () => {
   );
 };
 
-export default ProductDisplayInfo;
+export default ProductInfo;
 
 const styles = StyleSheet.create({
   scrollViewContent: {

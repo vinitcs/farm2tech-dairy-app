@@ -1,22 +1,20 @@
-
-import { StyleSheet, Text, View } from 'react-native';
-import React, { useEffect } from "react";
-// import { NavigationContainer } from '@react-navigation/native';
-import Navigation from './App/Navigation/Navigation';
-import { AuthProvider } from './App/context/auth/auth.context';
-import { Provider } from 'react-redux';
-import store from './redux/store/store';
+import { StyleSheet } from "react-native";
+import React from "react";
+import Navigation from "./App/Navigation/Navigation";
+// import { AuthProvider } from "./App/context/auth/auth.context";
+import { Provider } from "react-redux";
+import store from "./redux/store/store.js";
 
 const App = () => {
-  console.log("main")
+  console.log("main");
   return (
-    <AuthProvider>
-      <Provider store={store}>
-        <Navigation />
-      </Provider>
-    </AuthProvider>
-  )
-}
+    // <AuthProvider>
+    <Provider store={store}>
+      <Navigation />
+    </Provider>
+    // </AuthProvider>
+  );
+};
 
 export default App;
 
