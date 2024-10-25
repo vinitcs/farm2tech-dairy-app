@@ -6,15 +6,14 @@ import {
 } from "@react-navigation/stack";
 
 import MainParent from "../../DefaultScreens/MainParent";
-import Delivery from "../../Screens/Delivery";
-import Notification from "../../Screens/Notification";
+// import Delivery from "../../Screens/Delivery";
+// import Notification from "../../Screens/Notification";
 import ProductInfo from "../../Screens/ProductInfo";
 import SelectPlan from "../../Screens/SelectPlan";
-import Address from "../../Screens/Address";
-import NewAddress from "../../Screens/NewAddress";
+import UpdateAddress from "../../Screens/UpdateAddress";
 import BookedItem from "../../Screens/BookedItem";
 import Header from "../../components/Header";
-import Orders from "../../Screens/Orders";
+import Search from "../../Screens/Search";
 
 // import Header from '../components/Header';
 
@@ -25,14 +24,23 @@ const AppNavigation = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
-        gestureEnabled: true,
-        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        gestureEnabled: false,
+        // cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }}
     >
       <Stack.Screen
         name="MainParent"
         component={MainParent}
-        // options={{headerShown:false}}
+      // options={{headerShown:false}}
+      />
+
+      <Stack.Screen
+        name="Search"
+        component={Search}
+        options={{
+          headerShown: true,
+          header: () => <Header goBackIcon={true} title="Search Product" />,
+        }}
       />
 
       <Stack.Screen
@@ -40,7 +48,7 @@ const AppNavigation = () => {
         component={ProductInfo}
         options={{
           headerShown: true,
-          header: () => <Header goBackIcon={true} title="product Info" />,
+          header: () => <Header goBackIcon={true} title="Product Info" />,
           //      cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS,
         }}
       />
@@ -50,39 +58,31 @@ const AppNavigation = () => {
         options={{
           headerShown: true,  // Manage header in SelectPlan screen   
         }}
-        // options={({ route }) => ({
-        //   headerShown: true,
-        //   header: () => (
-        //     <Header
-        //       goBackIcon={true}
-        //       title={route.params?.selectedPlanType || "Default Plan"}
-        //     />
-        //   ),
-        // })}
+      // options={({ route }) => ({
+      //   headerShown: true,
+      //   header: () => (
+      //     <Header
+      //       goBackIcon={true}
+      //       title={route.params?.selectedPlanType || "Default Plan"}
+      //     />
+      //   ),
+      // })}
       />
       <Stack.Screen
-        name="Address"
-        component={Address}
+        name="UpdateAddress"
+        component={UpdateAddress}
         options={{
           headerShown: true,
-          header: () => <Header goBackIcon={true} title="Address" />,
+          header: () => <Header goBackIcon={true} title="Update Address" />,
         }}
       />
-      <Stack.Screen name="NewAddress" component={NewAddress} />
+      
       <Stack.Screen
         name="BookedItem"
         component={BookedItem}
         options={{
           headerShown: true,
-          header: () => <Header goBackIcon={true} title="BookedItem" />,
-        }}
-      />
-      <Stack.Screen
-        name="Orders"
-        component={Orders}
-        options={{
-          headerShown: true,
-          header: () => <Header goBackIcon={true} title="Orders" />,
+          header: () => <Header goBackIcon={true} title="Booked Item" />,
         }}
       />
 

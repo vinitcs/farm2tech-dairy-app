@@ -1,8 +1,8 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import React, { useCallback, useEffect, useState } from "react";
 import { useFocusEffect, useRoute } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
-import MilkProductSlider from "../components/MilkProducts/MilkProductSlider";
+import MilkProductSlider from "../components/MilkProductSlider/MilkProductSlider";
 import Product from "../components/ProductCard/Product";
 import { colors } from "../../theme/colors/colors";
 

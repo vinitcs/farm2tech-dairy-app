@@ -16,6 +16,8 @@ const ProductInfo = () => {
   const dispatch = useDispatch();
 
   const isLogin = useSelector((state) => state.userAuth.isLogin);
+  const selectedProduct = useSelector((state) => state.product.selectedProduct);
+
   const [visible, setVisible] = useState(false);
   const selectPlanType = ["One Time Order", "Monthly"];
 
@@ -109,23 +111,14 @@ const ProductInfo = () => {
             <View style={styles.productDescription}>
               <Text style={styles.productDescriptionTitle}>Description</Text>
               <Text style={styles.productDescriptionPara}>
-                Experience dairy perfection with our fresh, creamy milk
-                products. From wholesome milk to delectable dairy treats, we've
-                got your cravings covered. Vist us for the the finest in
-                Farm2Tech!
+                {selectedProduct.description}
               </Text>
             </View>
 
             <View style={styles.productDelaimer}>
               <Text style={styles.productDelaimerTitle}>Declaimer</Text>
               <Text style={styles.productDeclaimerPara}>
-                Discover pure delight with our handpicked selection of premium
-                milk products. Our commitment to quality ensures that you and
-                your family receive only the freshest and finest dairy goodness.
-                From classic milk cartoons to an array of Farm2Tech, our shelves
-                are stocked with products that elevate your taste experience.
-                Taste the difference that quality makes - visit our store today
-                and savor the essence of Farm2Tech!
+              {selectedProduct.declaimer}
               </Text>
             </View>
             <DisplayButton
@@ -174,9 +167,8 @@ const styles = StyleSheet.create({
   },
   productDescriptionTitle: {
     fontFamily: fonts.Bold,
-    fontSize: 16,
+    fontSize: 14,
     color: colors.lightText,
-    textDecorationLine: "underline",
   },
   productDescriptionPara: {
     color: colors.lightText,
@@ -196,9 +188,8 @@ const styles = StyleSheet.create({
   },
   productDelaimerTitle: {
     fontFamily: fonts.Bold,
-    fontSize: 16,
+    fontSize: 14,
     color: colors.lightText,
-    textDecorationLine: "underline",
   },
   productDeclaimerPara: {
     color: colors.lightText,

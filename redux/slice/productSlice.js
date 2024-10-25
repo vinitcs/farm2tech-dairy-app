@@ -6,6 +6,8 @@ const initialState = {
   selectedPlanType: null,
   oneTimeOrderQuantity: 0,
   monthlyOrderQuantity: 0,
+  monthlyStartDate: "",
+  monthlyEndDate: "",
 };
 
 const productSlice = createSlice({
@@ -31,27 +33,39 @@ const productSlice = createSlice({
     setSelectedProduct: (state, action) => {
       state.selectedProduct = action.payload;
     },
-
-    clearSelectedProduct: (state, action) => {
+    clearSelectedProduct: (state) => {
       state.selectedProduct = null;
     },
+
     setSelectedPlanType: (state, action) => {
       state.selectedPlanType = action.payload;
     },
-    clearSelectedPlanType: (state, action) => {
+    clearSelectedPlanType: (state) => {
       state.selectedPlanType = null;
     },
+
     setOneTimeOrderQuantity: (state, action) => {
       state.oneTimeOrderQuantity = action.payload;
     },
-    clearOneTimeOrderQuantity: (state, action) => {
+    clearOneTimeOrderQuantity: (state) => {
       state.oneTimeOrderQuantity = 0;
     },
+
     setMonthlyOrderQuantity: (state, action) => {
       state.monthlyOrderQuantity = action.payload;
     },
-    clearMonthlyOrderQuantity: (state, action) => {
+    clearMonthlyOrderQuantity: (state) => {
       state.monthlyOrderQuantity = 0;
+    },
+
+    setMonthlyAndEndDate: (state, action) => {
+      const { startDate, endDate } = action.payload;
+      state.monthlyStartDate = startDate;
+      state.monthlyEndDate = endDate;
+    },
+    clearMonthlyAndEndDate: (state) => {
+      state.monthlyStartDate = null;
+      state.monthlyEndDate = null;
     },
   },
 });
@@ -67,5 +81,7 @@ export const {
   clearOneTimeOrderQuantity,
   setMonthlyOrderQuantity,
   clearMonthlyOrderQuantity,
+  setMonthlyAndEndDate,
+  clearMonthlyAndEndDate,
 } = productSlice.actions;
 export default productSlice.reducer;

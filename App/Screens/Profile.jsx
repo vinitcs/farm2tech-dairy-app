@@ -37,7 +37,7 @@ export default function Profile() {
             <View style={styles.inputsSubSection}>
               <Text style={styles.inputLabel}>Name</Text>
               <ProfileDisplayCredentials
-                Title={"Profile Name"}
+                Title={"Profile name"}
                 color={"outline"}
               />
             </View>
@@ -46,7 +46,7 @@ export default function Profile() {
             <View style={styles.inputsSubSection}>
               <Text style={styles.inputLabel}>Phone</Text>
               <ProfileDisplayCredentials
-                Title={"Profile Phone"}
+                Title={"Profile phone"}
                 color={"outline"}
               />
             </View>
@@ -55,7 +55,34 @@ export default function Profile() {
             <View style={styles.inputsSubSection}>
               <Text style={styles.inputLabel}>Email</Text>
               <ProfileDisplayCredentials
-                Title={"Profile Email"}
+                Title={"Profile email"}
+                color={"outline"}
+              />
+            </View>
+
+            {/* Address  */}
+            <View style={styles.inputsSubSection}>
+              <Text style={styles.inputLabel}>Address</Text>
+              <ProfileDisplayCredentials
+                Title={"Profile address"}
+                color={"outline"}
+              />
+            </View>
+
+            {/* City  */}
+            <View style={styles.inputsSubSection}>
+              <Text style={styles.inputLabel}>City</Text>
+              <ProfileDisplayCredentials
+                Title={"Profile city"}
+                color={"outline"}
+              />
+            </View>
+
+            {/* Zip/Postal Code  */}
+            <View style={styles.inputsSubSection}>
+              <Text style={styles.inputLabel}>Zip/Postal Code</Text>
+              <ProfileDisplayCredentials
+                Title={"Profile zip/postal code"}
                 color={"outline"}
               />
             </View>
@@ -133,12 +160,13 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   inputLabel: {
-    fontSize: 16,
-    color: colors.lightText,
+    fontSize: 14,
     fontFamily: fonts.Semibold,
+    color: colors.lightText,
     marginTop: 4,
   },
   submitSection: {
     marginTop: 25,
+    marginBottom:30,
   },
 });

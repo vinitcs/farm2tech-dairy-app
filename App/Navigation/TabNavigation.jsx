@@ -1,11 +1,12 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Icon } from "@rneui/themed";
-import { fonts } from "./../../theme/fonts/fonts";
-import { colors } from "./../../theme/colors/colors";
+import { fonts } from "../../theme/fonts/fonts";
+import { colors } from "../../theme/colors/colors";
 import Home from "../Screens/Home";
 import Cart from "../Screens/Cart";
-import Search from "../Screens/Search";
+// import Search from "../Screens/Search";
+import Orders from "../Screens/Orders";
 import Category from "../Screens/Category";
 import Profile from "../Screens/Profile";
 
@@ -15,7 +16,7 @@ import { useSelector } from "react-redux";
 
 const homeName = "Home";
 const categoryName = "Category";
-const searchName = "Search";
+const ordersName = "Orders";
 const cartName = "Cart";
 const profileName = "Profile";
 
@@ -55,11 +56,11 @@ const TabNavigation = () => {
           } else if (rn === categoryName) {
             iconName = focused ? "grid" : "grid-outline";
             size = 24;
-          } else if (rn === searchName) {
-            iconName = focused ? "search" : "search-outline";
-            size = 24;
           } else if (rn === cartName) {
             iconName = focused ? "cart" : "cart-outline";
+            size = 24;
+          } else if (rn === ordersName) {
+            iconName = focused ? "bag-check" : "bag-check-outline";
             size = 24;
           } else if (rn === profileName) {
             iconName = focused ? "person-circle" : "person-circle-outline";
@@ -89,24 +90,24 @@ const TabNavigation = () => {
         }}
       />
       <Tab.Screen
-        name={searchName}
-        component={Search}
-        options={{
-          headerShown: true,
-          header: () => <Header menuIcon={true} title="Search" />,
-        }}
-      />
-      <Tab.Screen
         name={cartName}
         component={Cart}
         options={{
           headerShown: true,
           header: () => <Header menuIcon={true} title="Cart" />,
           tabBarBadge: cartItemCount > 0 ? cartItemCount : null,
-          tabBarBadgeStyle:{
-            backgroundColor:colors.lightText,
-            color:colors.white
+          tabBarBadgeStyle: {
+            backgroundColor: colors.lightText,
+            color: colors.white
           }
+        }}
+      />
+      <Tab.Screen
+        name={ordersName}
+        component={Orders}
+        options={{
+          headerShown: true,
+          header: () => <Header menuIcon={true} title="Orders" />,
         }}
       />
       <Tab.Screen

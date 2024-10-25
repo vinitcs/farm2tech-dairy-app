@@ -77,6 +77,5 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 12,
     fontFamily: fonts.Semibold,
-    letterSpacing: 0.8,
   },
 });

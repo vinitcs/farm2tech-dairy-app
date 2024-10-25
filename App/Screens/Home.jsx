@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { View, StyleSheet, ScrollView, SafeAreaView } from "react-native";
-import MilkProductSlider from "../components/MilkProducts/MilkProductSlider";
+import MilkProductSlider from "../components/MilkProductSlider/MilkProductSlider";
 import About from "../components/About";
 import Contact from "../components/Contact";
 import DummySearch from "../components/Search/DummySearch";

@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { fonts } from "../../../theme/fonts/fonts";
 import { colors } from "../../../theme/colors/colors";
 import CountQuantity from "../Count/CountQuantity";
@@ -9,9 +9,11 @@ import DisplayButton from "../Button/DisplayButton";
 // import MonthlyProductCard from "../ProductCard/MonthlyProductCard";
 import SelectedProductCard from "../ProductCard/SelectedProductCard";
 import { useDispatch, useSelector } from "react-redux";
-import { setMonthlyOrderQuantity } from "../../../redux/slice/productSlice";
+import { setMonthlyAndEndDate, setMonthlyOrderQuantity } from "../../../redux/slice/productSlice";
 
 const Monthly = () => {
+  console.log("Monthly Plan rendered+++");
+
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const monthlyOrderQuantity = useSelector(
@@ -25,12 +27,22 @@ const Monthly = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
+  useEffect(() => {
+    if (startDate && endDate) {
+      const formatStartDate = startDate.toDateString() || "";
+      const formatEndDate = endDate.toDateString() || "";
+
+      dispatch(setMonthlyAndEndDate({ startDate: formatStartDate, endDate: formatEndDate }));
+    }
+  }, [startDate, endDate, dispatch]);
+
+
   return (
     <View style={styles.monthlyContainer}>
       {/* <MonthlyProductCard/> */}
       <SelectedProductCard />
       <CountQuantity
-        title={"Select Per Day Quantity"}
+        title={"Select per day quantity"}
         count={monthlyOrderQuantity}
         setCount={handleSetCount}
       />
@@ -57,7 +69,7 @@ const Monthly = () => {
 
       <DisplayButton
         Title={"Next"}
-        onPressChanges={() => navigation.navigate("Address")}
+        onPressChanges={() => navigation.navigate("BookedItem")}
         color={"primary"}
       />
     </View>

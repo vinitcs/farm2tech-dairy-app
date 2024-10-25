@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { ScrollView } from "react-native-gesture-handler";
-import { colors } from "../../theme/colors/colors";
-import { fonts } from "../../theme/fonts/fonts";
+import { colors } from "../../theme/colors/colors.js";
+import { fonts } from "../../theme/fonts/fonts.js";
 // import { productDataAndQuantity } from "../components/ProductCard/ProductInfoData";
 import { Icon } from "@rneui/themed";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,7 +26,7 @@ const Cart = () => {
       showsVerticalScrollIndicator={false}
     >
       <View style={styles.cartContainer}>
-        {cartItems.map((item, idx) => (
+        {cartItems.length === 0 ? <Text style={styles.emptyCartDisplayMsg}>Looks like your cart is empty. Explore our products to fill it up!</Text> : cartItems.map((item, idx) => (
           <TouchableOpacity
             style={styles.box}
             key={idx}
@@ -171,4 +171,10 @@ const styles = StyleSheet.create({
     zIndex: 3,
     padding: 6,
   },
+  emptyCartDisplayMsg:{
+    fontSize:12,
+    textAlign:"center",
+    margin:"auto",
+    color:colors.lightText
+  }
 });

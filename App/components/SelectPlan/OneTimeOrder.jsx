@@ -25,7 +25,7 @@ const OneTimeOrder = () => {
       {/* <OneTimeOrderProductCard /> */}
       <SelectedProductCard />
       <CountQuantity
-        title={"Select Quantity"}
+        title={"Select quantity"}
         count={oneTimeOrderQuantity}
         setCount={handleSetCount}
       />
@@ -35,7 +35,7 @@ const OneTimeOrder = () => {
       </Text>
       <DisplayButton
         Title={"Next"}
-        onPressChanges={() => navigation.navigate("Address")}
+        onPressChanges={() => navigation.navigate("BookedItem")}
         color={"primary"}
       />
     </View>

@@ -3,28 +3,34 @@ import React from 'react';
 import { colors } from '../../../theme/colors/colors';
 import { fonts } from '../../../theme/fonts/fonts';
 import { productDataAndQuantity } from './ProductInfoData';
+import { useSelector } from 'react-redux';
 
 const BookedProductCard = () => {
+     const selectedProduct = useSelector((state) => state.product.selectedProduct);
+     const selectedPlanType = useSelector((state) => state.product.selectedPlanType);
+     const oneTimeOrderQuantity = useSelector((state) => state.product.oneTimeOrderQuantity);
+     const monthlyOrderQuantity = useSelector((state) => state.product.monthlyOrderQuantity);
+
      return (
           <View >
-               {productDataAndQuantity.map((item, idx) => (
-                    <View style={styles.box} key={idx} >
+               {/* {productDataAndQuantity.map((item, idx) => ( */}
+                    <View style={styles.box}>
                          <View>
-                              <Image source={item.uri} style={styles.logo} />
+                              <Image source={selectedProduct.uri} style={styles.logo} />
                          </View>
                          <View
                          // style={{backgroundColor:'pink'}}
                          >
-                              <Text style={styles.text}>{item.name}</Text>
+                              <Text style={styles.text}>{selectedProduct.name}</Text>
                               <View style={{ flexDirection: 'row', gap: 6, marginTop: 6, }}>
-                                   <Text style={styles.litreText}>{item.litre}L</Text>
-                                   <Text style={styles.QuantityText}>QTY: {item.qty}</Text>
+                                   <Text style={styles.litreText}>{selectedProduct.litre}L</Text>
+                                   <Text style={styles.QuantityText}>QTY: {selectedPlanType === "Monthly" ? monthlyOrderQuantity : oneTimeOrderQuantity}</Text>
                               </View>
-                              <Text style={styles.priceText}>{'\u20B9'} {item.price}</Text>
-                              {/* <Text style={styles.priceSubscribeText}>Subscribe to save {item.price}Rs in per unit</Text> */}
+                              <Text style={styles.priceText}>{'\u20B9'} {selectedProduct.price}</Text>
+                              <Text style={styles.selectedPlan}>Selected Plan: <Text style={styles.highlightSelectedPlan}>{selectedPlanType}</Text></Text>
                          </View>
                     </View>
-               ))}
+               {/* ))} */}
           </View>
      )
 }
@@ -43,7 +49,7 @@ const styles = StyleSheet.create({
           height: 'auto',
           flexDirection: 'row',
           gap: 10,
-          zIndex:1,
+          zIndex: 1,
      },
 
      logo: {
@@ -81,7 +87,7 @@ const styles = StyleSheet.create({
           fontSize: 18,
           color: colors.black,
           fontFamily: fonts.Semibold,
-          marginTop:4,
+          marginTop: 4,
      },
 
      priceStrikeThroughText: {
@@ -99,10 +105,13 @@ const styles = StyleSheet.create({
           fontFamily: fonts.Semibold,
      },
 
-     // priceSubscribeText: {
-     //      // backgroundColor:'magenta',
-     //      fontSize: 12,
-     //      color: colors.primary,
-     //      fontFamily: fonts.Bold,
-     // },
+     selectedPlan: {
+          // backgroundColor:'magenta',
+          fontSize: 12,
+          color: colors.lightText,
+          fontFamily: fonts.Bold,
+     },
+     highlightSelectedPlan: {
+          color: colors.primary,
+     }
 })

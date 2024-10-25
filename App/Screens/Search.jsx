@@ -1,45 +1,36 @@
-import { StyleSheet, TextInput, View } from "react-native";
-import React from "react";
-import GoBackIcon from "../components/GoBackIcon/GoBackIcon";
-import { colors } from "./../../theme/colors/colors";
-import { fonts } from "./../../theme/fonts/fonts";
+import { ScrollView, StyleSheet, TextInput, View } from "react-native";
+import React, { useState } from "react";
+import { colors } from "../../theme/colors/colors";
+import { fonts } from "../../theme/fonts/fonts";
+import Product from "../components/ProductCard/Product";
 
 const Search = () => {
-  const [searchQuery, setSearchQuery] = React.useState("");
+  console.log("Search Rerendered ----");
+
+  const [searchQuery, setSearchQuery] = useState("");
   const onChangeSearch = (query) => setSearchQuery(query);
 
   return (
     <View
-      style={{
-        backgroundColor: colors.white,
-        height: "100%",
-        paddingHorizontal: 15,
-      }}
+      style={styles.searchContainer}
     >
-      {/* <GoBackIcon color={colors.lightText}/> */}
-      <View
-        style={{
-          width: "100%",
-          height: "auto",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          marginTop: 25,
-        }}
-      >
-        <View style={[styles.shadowProp, styles.searchDiv]}>
-          <TextInput
-            placeholder="Try 'Milk'"
-            selectionColor={colors.lightText}
-            autoFocus={true}
-            style={{
-              color: colors.lightText,
-              fontFamily: fonts.Medium,
-              fontSize: 18,
-            }}
-          ></TextInput>
-        </View>
+      <View style={styles.searchBox}>
+        <TextInput
+          placeholder="Try 'Milk'"
+          selectionColor={colors.lightText}
+          autoFocus={true}
+          style={styles.input}
+          onChangeText={onChangeSearch}
+        />
       </View>
+
+      <ScrollView
+        contentContainerStyle={styles.scrollViewContent}
+        bounces={false}
+        showsVerticalScrollIndicator={false}
+      >
+        {searchQuery.length > 0 && <Product hideTitle={true} searchQuery={searchQuery} />}
+      </ScrollView>
     </View>
   );
 };
@@ -47,21 +38,29 @@ const Search = () => {
 export default Search;
 
 const styles = StyleSheet.create({
-  shadowProp: {
-    shadowColor: colors.outline,
-    shadowOffset: { width: -2, height: 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-    backgroundColor: colors.background,
-    elevation: 4,
+  searchContainer: {
+    backgroundColor: colors.white,
+    height: "100%",
   },
-  searchDiv: {
+  scrollViewContent: {
+    paddingHorizontal: 15,
+    flexGrow: 1,
+  },
+  searchBox: {
     width: "100%",
-    height: 50,
+    height: 55,
     borderRadius: 8,
     display: "flex",
     justifyContent: "center",
-    paddingLeft: 20,
-    paddingRight: 20,
+    paddingHorizontal: 20,
+    // backgroundColor: colors.background,
+    borderBottomWidth: 0.4,
+    borderBottomColor: colors.outline,
+    // marginBottom: 10
+  },
+  input: {
+    color: colors.black,
+    fontFamily: fonts.Medium,
+    fontSize: 18,
   },
 });

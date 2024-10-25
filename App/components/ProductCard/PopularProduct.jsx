@@ -17,8 +17,9 @@ import { addToCart, setSelectedProduct } from "../../../redux/slice/productSlice
 
 const PopularProduct = () => {
   const navigation = useNavigation();
-  const cartItems = useSelector((state) => state.product.cartItems);
   const dispatch = useDispatch();
+
+  const cartItems = useSelector((state) => state.product.cartItems);
 
   const handleAddToCart = (product) => {
     const existingItem = cartItems.find((item) => item.id === product.id);
@@ -135,7 +136,7 @@ const styles = StyleSheet.create({
     // backgroundColor: 'yellow',
     resizeMode: "contain",
     width: 90,
-    height: 90,
+    height: 85,
   },
   text: {
     // backgroundColor:'blue',

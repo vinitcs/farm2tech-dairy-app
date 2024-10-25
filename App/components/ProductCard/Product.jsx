@@ -1,33 +1,56 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity, Alert } from "react-native";
 import React, { useMemo } from "react";
 import { productDisplayInfoData } from "./ProductDisplayInfoContent";
 import { fonts } from "../../../theme/fonts/fonts";
 import { colors } from "../../../theme/colors/colors";
 import { useNavigation } from "@react-navigation/native";
 import { Icon } from "@rneui/themed";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, setSelectedProduct } from "../../../redux/slice/productSlice";
 
-const Product = ({ selectedProduct }) => {
-  const navigation = useNavigation();
+const Product = ({ searchQuery, selectedProduct, hideTitle = false }) => {
   console.log("Product ReRendered ****");
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
 
-  const filteredData = selectedProduct
-    ? productDisplayInfoData.filter(
-      (item) => item.name === selectedProduct.name
-    )
-    : productDisplayInfoData;
+  const cartItems = useSelector((state) => state.product.cartItems);
+
+  const handleAddToCart = (product) => {
+    const existingItem = cartItems.find((item) => item.id === product.id);
+    if (existingItem) {
+      Alert.alert("Product already added to the cart");
+    } else {
+      Alert.alert("Product added to the cart");
+      dispatch(addToCart(product));
+    }
+  }
+
+  const handleProductSelect = (product) => {
+    dispatch(setSelectedProduct(product));
+    navigation.navigate("ProductInfo");
+  }
+
+  const filteredData = searchQuery ?
+    productDisplayInfoData.filter(
+      (item) =>
+        item.name.toLowerCase().includes(searchQuery.toLowerCase())
+    ) :
+    selectedProduct ?
+      productDisplayInfoData.filter((item) => item.name === selectedProduct.name)
+      :
+      productDisplayInfoData;
   // console.log(filteredData);
 
   return (
     <View style={styles.productContainer}>
-      <Text style={styles.dairyDisplayContainerText}>
+      {!hideTitle && (<Text style={styles.dairyDisplayContainerText}>
         {selectedProduct?.name || "All Products"}
-      </Text>
+      </Text>)}
       <View style={styles.boxContainer}>
         {filteredData.map((item, idx) => (
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("ProductInfo");
-              // console.log("productDisplayInfo");
+              handleProductSelect(item);
             }}
             key={idx}
           >
@@ -55,9 +78,7 @@ const Product = ({ selectedProduct }) => {
 
               <TouchableOpacity
                 style={styles.addIcon}
-                onPress={() => {
-                  navigation.navigate("Cart");
-                }}
+                onPress={() => handleAddToCart(item)}
               >
                 <Icon
                   name="add-outline"
@@ -120,7 +141,7 @@ const styles = StyleSheet.create({
     // backgroundColor: 'yellow',
     resizeMode: "contain",
     width: 90,
-    height: 90,
+    height: 85,
   },
   text: {
     // backgroundColor:'blue',

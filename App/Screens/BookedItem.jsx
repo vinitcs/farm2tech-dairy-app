@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import { colors } from "../../theme/colors/colors";
 import { fonts } from "../../theme/fonts/fonts";
@@ -9,9 +9,19 @@ import { useNavigation } from "@react-navigation/native";
 import DisplayButton from "../components/Button/DisplayButton";
 import BookedItemPricing from "../components/BookedItemPricing/BookedItemPricing";
 import BookedProductCard from "../components/ProductCard/BookedProductCard";
+import { useSelector } from "react-redux";
 
 const BookedItem = () => {
   const navigation = useNavigation();
+
+  const selectedProduct = useSelector((state) => state.product.selectedProduct);
+  const selectedPlanType = useSelector((state) => state.product.selectedPlanType);
+  const oneTimeOrderQuantity = useSelector((state) => state.product.oneTimeOrderQuantity);
+  const monthlyOrderQuantity = useSelector((state) => state.product.monthlyOrderQuantity);
+  const startDate = useSelector((state) => state.product.monthlyStartDate);
+  const endDate = useSelector((state) => state.product.monthlyEndDate);
+
+
   return (
     <View
       style={{
@@ -30,9 +40,13 @@ const BookedItem = () => {
           {/* Address */}
           <View
             style={styles.addressSection}
-            onPress={() => console.log("added address")}
           >
-            <Text style={styles.addressSectionTitle}>Delivery Address</Text>
+            <View style={styles.addressHeader}>
+              <Text style={styles.addressSectionTitle}>Delivery Address</Text>
+              <TouchableOpacity onPress={() => { navigation.navigate('UpdateAddress') }}>
+                <Text style={styles.editBtn}>edit</Text>
+              </TouchableOpacity>
+            </View>
             <View style={styles.addressSectionValue}>
               <Text style={styles.address}>
                 xyz plaza B257 Sundarland housing society Nagar xxxxxxxxxx
@@ -41,12 +55,7 @@ const BookedItem = () => {
             </View>
 
             <View style={styles.addressPhoneSection}>
-              <Icon
-                name="call-outline"
-                type="ionicon"
-                size={16}
-                color={colors.lightText}
-              />
+
               <Text selectable style={styles.phoneValue}>
                 91+ 98219210288
               </Text>
@@ -54,20 +63,25 @@ const BookedItem = () => {
           </View>
 
           {/* Monthly Subcription*/}
-          <View style={styles.monthlySubscriptionSection}>
-            <Text style={styles.monthlySubscriptionSectionTitle}>
-              Monthly subscription delivery
-            </Text>
-            <Text style={styles.startDate}>Start From: </Text>
-            <Text style={styles.endDate}>End in: </Text>
-          </View>
+          {selectedPlanType === "Monthly" && (
+
+
+            <View style={styles.monthlySubscriptionSection}>
+              <Text style={styles.monthlySubscriptionSectionTitle}>
+                Monthly subscription delivery
+              </Text>
+              <Text style={styles.dateTitle}>Start Date: <Text style={styles.highlightDate}>{startDate}</Text></Text>
+              <Text style={styles.dateTitle}>End Date: <Text style={styles.highlightDate}>{endDate}</Text></Text>
+            </View>
+          )
+          }
 
           {/* Pricing Details*/}
           <View style={styles.pricingSection}>
-            <BookedItemPricing Title={"MRP"} Price={40} />
+            <BookedItemPricing Title={"MRP"} Price={selectedProduct.price} />
             <BookedItemPricing Title={"Discount"} Price={5} />
             <BookedItemPricing Title={"Tax"} Price={1.5} />
-            <BookedItemPricing Title={"Quantity"} Price={3} />
+            <BookedItemPricing Title={"Quantity"} Price={selectedPlanType === "Monthly" ? monthlyOrderQuantity : oneTimeOrderQuantity} />
             <BookedItemPricing Title={"Total Amount"} Price={40.4} />
           </View>
 
@@ -88,21 +102,24 @@ const styles = StyleSheet.create({
   bookItemContainer: {
     paddingHorizontal: 15,
     marginBottom: 20,
-    display: "flex",
     flexDirection: "column",
     gap: 8,
     paddingTop: 15,
   },
+  addressHeader: {
+    flexDirection: "row",
+    gap: 10
+  },
+  editBtn: {
+    color: colors.primary,
+    fontFamily:fonts.Semibold,
+  },
   addressSection: {
-    backgroundColor: colors.white,
+    // backgroundColor: "red",
     width: "100%",
     height: "auto",
-    display: "flex",
     flexDirection: "column",
     gap: 4,
-    borderRadius: 12,
-    // borderWidth: 1,
-    // borderColor: colors.outline,
     paddingHorizontal: 8,
     paddingVertical: 4,
   },
@@ -141,8 +158,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     gap: 4,
-    borderRadius: 12,
-    borderWidth: 0.4,
+    borderTopWidth: 0.4,
     borderColor: colors.outline,
     paddingHorizontal: 8,
     paddingVertical: 4,
@@ -152,15 +168,14 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: fonts.Bold,
   },
-  startDate: {
+  dateTitle: {
     color: colors.lightText,
-    fontFamily: fonts.Semibold,
+    fontFamily: fonts.Medium,
     fontSize: 14,
   },
-  endDate: {
-    color: colors.lightText,
+  highlightDate: {
+    color: colors.primary,
     fontFamily: fonts.Semibold,
-    fontSize: 14,
   },
   pricingSection: {
     backgroundColor: colors.white,
@@ -170,9 +185,8 @@ const styles = StyleSheet.create({
     flexDirection: "cloumn",
     gap: 4,
     justifyContent: "space-between",
-    borderRadius: 12,
-    //     borderWidth: 1,
-    //     borderColor: colors.outline,
+    borderTopWidth: 0.4,
+    borderColor: colors.outline,
     paddingHorizontal: 8,
     paddingVertical: 6,
   },

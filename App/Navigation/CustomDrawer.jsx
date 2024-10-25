@@ -3,7 +3,7 @@ import React, { version } from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import { Icon } from "@rneui/themed";
-import { colors } from "./../../theme/colors/colors";
+import { colors } from "../../theme/colors/colors";
 import {
   Title,
   Drawer,
