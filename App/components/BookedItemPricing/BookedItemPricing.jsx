@@ -17,14 +17,14 @@ export default BookedItemPricing = ({ Title, Price }) => {
         style={{
           color: colors.lightText,
           fontSize: 14,
-          fontFamily: fonts.Bold,
+          fontFamily: fonts.Medium,
         }}
       >
         {Title}
       </Text>
       <Text
         style={{
-          color: colors.lightText,
+          color: colors.primary,
           fontSize: 14,
           fontFamily: fonts.Semibold,
           textAlign: "center",

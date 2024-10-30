@@ -34,7 +34,7 @@ const productSlice = createSlice({
       state.selectedProduct = action.payload;
     },
     clearSelectedProduct: (state) => {
-      state.selectedProduct = null;
+      state.selectedProduct = {};
     },
 
     setSelectedPlanType: (state, action) => {

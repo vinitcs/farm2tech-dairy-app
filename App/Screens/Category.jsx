@@ -1,7 +1,6 @@
-import { StyleSheet, View } from "react-native";
-import React, { useCallback, useEffect, useState } from "react";
+import { StyleSheet, View, ScrollView } from "react-native";
+import React, { useCallback, useState } from "react";
 import { useFocusEffect, useRoute } from "@react-navigation/native";
-import { ScrollView } from "react-native-gesture-handler";
 import MilkProductSlider from "../components/MilkProductSlider/MilkProductSlider";
 import Product from "../components/ProductCard/Product";
 import { colors } from "../../theme/colors/colors";
@@ -29,7 +28,6 @@ const Category = () => {
       contentContainerStyle={styles.scrollViewContent}
       bounces={false}
       showsVerticalScrollIndicator={false}
-      style={styles.scrollViewContent}
     >
       <View style={styles.categoryContainer}>
         <MilkProductSlider onProductSelect={handleProductSelect} />

@@ -44,7 +44,7 @@ const MonthlySelectCalendar = ({onDateChange}) => {
   if (selectedEndDate) {
     customDatesStyles.push({
       date: selectedEndDate,
-      style: { backgroundColor: colors.endDate, textColor: colors.white },
+      style: { backgroundColor: colors.highlight, textColor: colors.white },
       containerStyle: [],
     });
   }

@@ -11,25 +11,30 @@ const BookedProductCard = () => {
      const oneTimeOrderQuantity = useSelector((state) => state.product.oneTimeOrderQuantity);
      const monthlyOrderQuantity = useSelector((state) => state.product.monthlyOrderQuantity);
 
+     // Check if selectedProduct is not null or undefined
+     if (!selectedProduct) {
+          return null; // Return null if no product is selected to avoid rendering the component
+     }
+
      return (
           <View >
                {/* {productDataAndQuantity.map((item, idx) => ( */}
-                    <View style={styles.box}>
-                         <View>
-                              <Image source={selectedProduct.uri} style={styles.logo} />
-                         </View>
-                         <View
-                         // style={{backgroundColor:'pink'}}
-                         >
-                              <Text style={styles.text}>{selectedProduct.name}</Text>
-                              <View style={{ flexDirection: 'row', gap: 6, marginTop: 6, }}>
-                                   <Text style={styles.litreText}>{selectedProduct.litre}L</Text>
-                                   <Text style={styles.QuantityText}>QTY: {selectedPlanType === "Monthly" ? monthlyOrderQuantity : oneTimeOrderQuantity}</Text>
-                              </View>
-                              <Text style={styles.priceText}>{'\u20B9'} {selectedProduct.price}</Text>
-                              <Text style={styles.selectedPlan}>Selected Plan: <Text style={styles.highlightSelectedPlan}>{selectedPlanType}</Text></Text>
-                         </View>
+               <View style={styles.box}>
+                    <View>
+                         <Image source={selectedProduct.uri} style={styles.logo} />
                     </View>
+                    <View
+                    // style={{backgroundColor:'pink'}}
+                    >
+                         <Text style={styles.text}>{selectedProduct.name}</Text>
+                         <View style={{ flexDirection: 'row', gap: 6, marginTop: 6, }}>
+                              <Text style={styles.litreText}>{selectedProduct.litre}L</Text>
+                              <Text style={styles.QuantityText}>QTY: {selectedPlanType === "Monthly" ? monthlyOrderQuantity : oneTimeOrderQuantity}</Text>
+                         </View>
+                         <Text style={styles.priceText}>{'\u20B9'} {selectedProduct.price}</Text>
+                         <Text style={styles.selectedPlan}>Selected Plan: <Text style={styles.highlightSelectedPlan}>{selectedPlanType}</Text></Text>
+                    </View>
+               </View>
                {/* ))} */}
           </View>
      )

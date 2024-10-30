@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import React from "react";
 import {
   CardStyleInterpolators,
@@ -6,14 +6,16 @@ import {
 } from "@react-navigation/stack";
 
 import MainParent from "../../DefaultScreens/MainParent";
-// import Delivery from "../../Screens/Delivery";
-// import Notification from "../../Screens/Notification";
 import ProductInfo from "../../Screens/ProductInfo";
 import SelectPlan from "../../Screens/SelectPlan";
 import UpdateAddress from "../../Screens/UpdateAddress";
 import BookedItem from "../../Screens/BookedItem";
-import Header from "../../components/Header";
+import Header from "../../components/Header/Header";
 import Search from "../../Screens/Search";
+import EditOrder from "../../Screens/EditOrder";
+import Notification from "../../Screens/Notification";
+import AboutUs from "../../Screens/AboutUs";
+import ContactUs from "../../Screens/ContactUs";
 
 // import Header from '../components/Header';
 
@@ -31,7 +33,7 @@ const AppNavigation = () => {
       <Stack.Screen
         name="MainParent"
         component={MainParent}
-      // options={{headerShown:false}}
+        // options={{headerShown:false}}
       />
 
       <Stack.Screen
@@ -56,17 +58,17 @@ const AppNavigation = () => {
         name="SelectPlan"
         component={SelectPlan}
         options={{
-          headerShown: true,  // Manage header in SelectPlan screen   
+          headerShown: true, // Manage header in SelectPlan screen
         }}
-      // options={({ route }) => ({
-      //   headerShown: true,
-      //   header: () => (
-      //     <Header
-      //       goBackIcon={true}
-      //       title={route.params?.selectedPlanType || "Default Plan"}
-      //     />
-      //   ),
-      // })}
+        // options={({ route }) => ({
+        //   headerShown: true,
+        //   header: () => (
+        //     <Header
+        //       goBackIcon={true}
+        //       title={route.params?.selectedPlanType || "Default Plan"}
+        //     />
+        //   ),
+        // })}
       />
       <Stack.Screen
         name="UpdateAddress"
@@ -76,7 +78,7 @@ const AppNavigation = () => {
           header: () => <Header goBackIcon={true} title="Update Address" />,
         }}
       />
-      
+
       <Stack.Screen
         name="BookedItem"
         component={BookedItem}
@@ -86,21 +88,44 @@ const AppNavigation = () => {
         }}
       />
 
-      {/* <Stack.Screen
+      <Stack.Screen
+        name="EditOrder"
+        component={EditOrder}
+        options={{
+          headerShown: true,
+          header: () => <Header goBackIcon={true} title="Edit Order" />,
+        }}
+      />
+
+      <Stack.Screen
         name="Notification"
-        // options={{
-        //      headerShown: false,
-        //      gestureEnabled: true,
-        //      gestureDirection: "vertical",
-        //      cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS
-        //    }}
         component={Notification}
-      /> */}
-      {/* <Stack.Screen name="Delivery" component={Delivery} /> */}
+        options={{
+          headerShown: true,
+          header: () => <Header goBackIcon={true} title="Notification" />,
+        }}
+      />
+
+      <Stack.Screen
+        name="AboutUs"
+        component={AboutUs}
+        options={{
+          headerShown: true,
+          header: () => <Header goBackIcon={true} title="About Us" />,
+        }}
+      />
+
+      <Stack.Screen
+        name="ContactUs"
+        component={ContactUs}
+        options={{
+          headerShown: true,
+          header: () => <Header goBackIcon={true} title="Contact Us" />,
+        }}
+      />
     </Stack.Navigator>
   );
 };
 
 export default AppNavigation;
 
-const styles = StyleSheet.create({});

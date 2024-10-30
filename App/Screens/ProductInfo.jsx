@@ -1,11 +1,10 @@
-import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Alert, ScrollView } from "react-native";
 import Modal from "react-native-modal";
 import React, { useContext, useState } from "react";
 import { Icon } from "@rneui/themed";
 import { fonts } from "../../theme/fonts/fonts";
 import { colors } from "../../theme/colors/colors";
 import { useNavigation } from "@react-navigation/native";
-import { ScrollView } from "react-native-gesture-handler";
 import DisplayButton from "../components/Button/DisplayButton";
 import { useDispatch, useSelector } from "react-redux";
 import SelectedProductCard from "../components/ProductCard/SelectedProductCard";

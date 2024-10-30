@@ -1,8 +1,6 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import React from 'react';
-// import {  } from 'react-native-gesture-handler';
 import { Icon } from '@rneui/themed';
-import { colors } from '../../../theme/colors/colors';
 import { useNavigation } from '@react-navigation/native';
 
 const GoBackIcon = ({color}) => {

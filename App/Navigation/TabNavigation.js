@@ -5,12 +5,11 @@ import { fonts } from "../../theme/fonts/fonts";
 import { colors } from "../../theme/colors/colors";
 import Home from "../Screens/Home";
 import Cart from "../Screens/Cart";
-// import Search from "../Screens/Search";
 import Orders from "../Screens/Orders";
 import Category from "../Screens/Category";
 import Profile from "../Screens/Profile";
 
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 import logo from "../../assets/logo.png";
 import { useSelector } from "react-redux";
 
@@ -25,6 +24,9 @@ const Tab = createBottomTabNavigator();
 const TabNavigation = () => {
   const cartItems = useSelector((state) => state.product.cartItems);
   const cartItemCount = cartItems.length;
+
+  // const orderItems = useSelector((state) => state.orders.orders);
+  // const orderItemCount = orderItems.length;
 
   return (
     <Tab.Navigator
@@ -108,6 +110,11 @@ const TabNavigation = () => {
         options={{
           headerShown: true,
           header: () => <Header menuIcon={true} title="Orders" />,
+          // tabBarBadge: orderItemCount > 0 ? orderItemCount : null,
+          // tabBarBadgeStyle: {
+          //   backgroundColor: colors.lightText,
+          //   color: colors.white
+          // }
         }}
       />
       <Tab.Screen

@@ -1,13 +1,12 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, ScrollView } from "react-native";
 import React from "react";
 import { colors } from "../../theme/colors/colors";
-import { ScrollView } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 import DisplayButton from "../components/Button/DisplayButton";
 import UserInput from "../components/Credentials/UserInput";
 import { fonts } from "../../theme/fonts/fonts";
 
-const Address = () => {
+const UpdateAddress = () => {
   const navigation = useNavigation();
   return (
     <ScrollView
@@ -43,7 +42,7 @@ const Address = () => {
 
         <DisplayButton
           Title={"Update"}
-          onPressChanges={() => navigation.navigate("BookedItem")}
+          onPressChanges={() => navigation.goBack()}
           color={"primary"}
         />
       </View>
@@ -51,7 +50,7 @@ const Address = () => {
   );
 };
 
-export default Address;
+export default UpdateAddress;
 
 const styles = StyleSheet.create({
   scrollViewContent: {

@@ -1,8 +1,6 @@
 import React, { useCallback, useState } from "react";
-import { View, StyleSheet, ScrollView, SafeAreaView } from "react-native";
+import { View, StyleSheet, ScrollView, SafeAreaView, Text } from "react-native";
 import MilkProductSlider from "../components/MilkProductSlider/MilkProductSlider";
-import About from "../components/About";
-import Contact from "../components/Contact";
 import DummySearch from "../components/Search/DummySearch";
 import { colors } from "../../theme/colors/colors";
 import BannerSlider from "../components/Banner/BannerSlider";
@@ -17,7 +15,7 @@ const Home = () => {
     setSelectProduct(product);
     navigation.navigate("Category", { selectProduct: product });
     // console.log("Selected product:", product);
-  },[navigation]);
+  }, [navigation]);
 
   return (
     <SafeAreaView>
@@ -32,9 +30,10 @@ const Home = () => {
             <DummySearch />
             <MilkProductSlider onProductSelect={handleProductSelect} />
             <PopularProduct />
-            <About />
-            <Contact />
           </View>
+          <Text style={styles.copyrightText}>
+            Copyrights 2024. Farm2Tech. All Rights Reserved.
+          </Text>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -58,6 +57,12 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     gap: 20,
     marginTop: 30,
+  },
+  copyrightText: {
+    fontSize: 10,
+    color: colors.lightText,
+    textAlign: "center",
+    marginTop:15,
   },
 });
 

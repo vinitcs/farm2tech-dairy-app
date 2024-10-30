@@ -1,12 +1,11 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from "react-native";
 import React from "react";
-import { ScrollView } from "react-native-gesture-handler";
 import { colors } from "../../theme/colors/colors.js";
 import { fonts } from "../../theme/fonts/fonts.js";
 // import { productDataAndQuantity } from "../components/ProductCard/ProductInfoData";
 import { Icon } from "@rneui/themed";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromCart } from "../../redux/slice/productSlice.js";
+import { removeFromCart, setSelectedProduct } from "../../redux/slice/productSlice.js";
 import { useNavigation } from "@react-navigation/native";
 
 const Cart = () => {
@@ -19,6 +18,12 @@ const Cart = () => {
     dispatch(removeFromCart(product));
   };
 
+  const handleProductSelect = (product) => {
+    dispatch(setSelectedProduct(product));
+    navigation.navigate("ProductInfo");
+  }
+
+
   return (
     <ScrollView
       contentContainerStyle={styles.scrollViewContent}
@@ -26,48 +31,52 @@ const Cart = () => {
       showsVerticalScrollIndicator={false}
     >
       <View style={styles.cartContainer}>
-        {cartItems.length === 0 ? <Text style={styles.emptyCartDisplayMsg}>Looks like your cart is empty. Explore our products to fill it up!</Text> : cartItems.map((item, idx) => (
-          <TouchableOpacity
-            style={styles.box}
-            key={idx}
-            onPress={() => {
-              navigation.navigate("ProductInfo");
-            }}
-          >
-            <View>
-              <Image source={item.uri} style={styles.logo} />
-            </View>
-            <View
-            // style={{backgroundColor:'pink'}}
+        {cartItems.length !== 0 ?
+          cartItems.map((item, index) => (
+            <TouchableOpacity
+              style={styles.box}
+              key={index}
+              onPress={() => {
+                handleProductSelect(item);
+              }}
             >
-              <Text style={styles.text}>{item.name}</Text>
-              <Text style={styles.priceText}>
-                {"\u20B9"} {item.price}
-              </Text>
-
-              <View style={{ flexDirection: "row", gap: 6, marginTop: 6 }}>
-                <Text style={styles.litreText}>{item.litre}L</Text>
-                {/* <Text style={styles.QuantityText}>QTY: {item.qty}</Text> */}
+              <View>
+                <Image source={item.uri} style={styles.logo} />
               </View>
-            </View>
-
-            <View style={styles.actionBtnSection}>
-              <TouchableOpacity
-                style={styles.closeBtn}
-                onPress={() => {
-                  handleRemoveFromCart(item.id);
-                }}
+              <View
+              // style={{backgroundColor:'pink'}}
               >
-                <Icon
-                  name="close-outline"
-                  type="ionicon"
-                  color={colors.lightText}
-                  size={26}
-                />
-              </TouchableOpacity>
-            </View>
-          </TouchableOpacity>
-        ))}
+                <Text style={styles.text}>{item.name}</Text>
+                <Text style={styles.priceText}>
+                  {"\u20B9"} {item.price}
+                </Text>
+
+                <View style={{ flexDirection: "row", gap: 6, marginTop: 6 }}>
+                  <Text style={styles.litreText}>{item.litre}L</Text>
+                  {/* <Text style={styles.QuantityText}>QTY: {item.qty}</Text> */}
+                </View>
+              </View>
+
+              <View style={styles.actionBtnSection}>
+                <TouchableOpacity
+                  style={styles.closeBtn}
+                  onPress={() => {
+                    handleRemoveFromCart(item.id);
+                  }}
+                >
+                  <Icon
+                    name="close-outline"
+                    type="ionicon"
+                    color={colors.lightText}
+                    size={26}
+                  />
+                </TouchableOpacity>
+              </View>
+            </TouchableOpacity>
+          ))
+          :
+          <Text style={styles.emptyCartDisplayMsg}>Looks like your cart is empty. Explore our products to fill it up!</Text>
+        }
       </View>
     </ScrollView>
   );
@@ -95,11 +104,8 @@ const styles = StyleSheet.create({
     borderWidth: 0.4,
     borderColor: colors.outline,
     justifyContent: "flex-start",
-    width: "100%",
-    height: "auto",
     flexDirection: "row",
     gap: 10,
-    zIndex: 1,
     position: "relative",
   },
 
@@ -171,10 +177,10 @@ const styles = StyleSheet.create({
     zIndex: 3,
     padding: 6,
   },
-  emptyCartDisplayMsg:{
-    fontSize:12,
-    textAlign:"center",
-    margin:"auto",
-    color:colors.lightText
+  emptyCartDisplayMsg: {
+    fontSize: 12,
+    textAlign: "center",
+    margin: "auto",
+    color: colors.lightText
   }
 });

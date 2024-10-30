@@ -1,28 +1,37 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, ScrollView, View } from 'react-native';
 import React from 'react';
-import { Appbar } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
-
+import { colors } from '../../theme/colors/colors';
 
 const Notification = () => {
      const navigation = useNavigation();
-     const _goBack = () => { navigation.goBack(); };
-     const _handleSearch = () => console.log('Searching');
-     const _handleMore = () => console.log('Shown more');
-
      return (
-
-          <Appbar.Header>
-               <Appbar.BackAction onPress={_goBack} />
-               <Appbar.Content title="Notification" />
-               <Appbar.Action icon="magnify" onPress={_handleSearch} />
-               <Appbar.Action icon="dots-vertical" onPress={_handleMore} />
-          </Appbar.Header>
-
+          <ScrollView
+               contentContainerStyle={styles.scrollViewContent}
+               bounces={false}
+               showsVerticalScrollIndicator={false}
+          >
+               <View style={styles.notificationContainer}>
+                    <Text>Notification</Text>
+               </View>
+          </ScrollView>
 
      );
 }
 
 export default Notification
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+     scrollViewContent: {
+          flexGrow: 1,
+     },
+
+     notificationContainer: {
+          flexGrow: 1,
+          backgroundColor: colors.white,
+          paddingHorizontal: 15,
+          paddingVertical: 15,
+          height: "100%",
+          gap: 15,
+     },
+})

@@ -12,28 +12,26 @@ const SelectedProductCard = () => {
      // console.log("product=>", selectedProduct);
 
      return (
-          <View>
-               <View style={styles.box}>
-                    <View>
-                         <Image source={selectedProduct.uri} style={styles.logo} />
+          <View style={styles.box}>
+               <View>
+                    <Image source={selectedProduct.uri} style={styles.logo} />
+               </View>
+               <View
+               // style={{backgroundColor:'pink'}}
+               >
+                    <Text style={styles.text}>{selectedProduct.name}</Text>
+                    <Text style={styles.litreText}>{selectedProduct.litre}L</Text>
+                    <View style={{ flexDirection: 'row', gap: 6, marginTop: 6, }}>
+                         <Text style={styles.priceText}>{'\u20B9'} {selectedProduct.price}.0</Text>
+                         <Text style={styles.priceStrikeThroughText}>{'\u20B9'} {selectedProduct.price}.0</Text>
+                         <Text style={styles.priceOffText}>{selectedProduct.price}% off</Text>
                     </View>
-                    <View
-                    // style={{backgroundColor:'pink'}}
-                    >
-                         <Text style={styles.text}>{selectedProduct.name}</Text>
-                         <Text style={styles.litreText}>{selectedProduct.litre}L</Text>
-                         <View style={{ flexDirection: 'row', gap: 6, marginTop: 6, }}>
-                              <Text style={styles.priceText}>{'\u20B9'} {selectedProduct.price}.0</Text>
-                              <Text style={styles.priceStrikeThroughText}>{'\u20B9'} {selectedProduct.price}.0</Text>
-                              <Text style={styles.priceOffText}>{selectedProduct.price}% off</Text>
-                         </View>
 
-                         {selectedPlanType === "One Time Order" ? (
-                              <Text style={styles.offerText}>Buy and get Rs.{selectedProduct.price} in per unit</Text>
-                         ) : (
-                              <Text style={styles.offerText}>Subscribe to save {selectedProduct.price}Rs in per unit</Text>
-                         )}
-                    </View>
+                    {selectedPlanType === "One Time Order" ? (
+                         <Text style={styles.offerText}>Buy and get Rs.{selectedProduct.price} in per unit</Text>
+                    ) : (
+                         <Text style={styles.offerText}>Subscribe to save {selectedProduct.price}Rs in per unit</Text>
+                    )}
                </View>
           </View>
      )

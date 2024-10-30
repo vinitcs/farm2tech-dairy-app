@@ -3,9 +3,9 @@ import {
   View,
   Text,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import React from "react";
-import { ScrollView } from "react-native-gesture-handler";
 import { colors } from "../../theme/colors/colors";
 import { fonts } from "../../theme/fonts/fonts";
 import ProfileAvatar from "../components/Avatar/ProfileAvatar";

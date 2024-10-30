@@ -1,15 +1,14 @@
-import { StyleSheet, Text, View, BackHandler } from "react-native";
+import { StyleSheet, Text, View, BackHandler,ScrollView } from "react-native";
 import React, { useCallback, useLayoutEffect } from "react";
 import {
   useFocusEffect,
   useNavigation,
   useRoute,
 } from "@react-navigation/native";
-import OneTimeOrder from "../components/SelectPlan/OneTimeOrder";
-import Monthly from "../components/SelectPlan/Monthly";
-import { ScrollView } from "react-native-gesture-handler";
+import OneTimeOrderPlan from "../components/SelectPlan/OneTimeOrderPlan";
+import MonthlyPlan from "../components/SelectPlan/MonthlyPlan";
 import { colors } from "../../theme/colors/colors";
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 import { useDispatch } from "react-redux";
 import { clearMonthlyAndEndDate, clearMonthlyOrderQuantity, clearOneTimeOrderQuantity, clearSelectedPlanType } from "../../redux/slice/productSlice";
 
@@ -63,9 +62,9 @@ const SelectPlan = () => {
   let displayComponent;
 
   if (selectedPlanType === "One Time Order") {
-    displayComponent = <OneTimeOrder />;
+    displayComponent = <OneTimeOrderPlan />;
   } else if (selectedPlanType === "Monthly") {
-    displayComponent = <Monthly />;
+    displayComponent = <MonthlyPlan />;
   } else {
     displayComponent = <Text>Default Component</Text>;
   }

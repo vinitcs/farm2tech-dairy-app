@@ -1,9 +1,8 @@
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 import { Icon } from "@rneui/themed";
-import { colors } from "../../theme/colors/colors";
+import { colors } from "../../../theme/colors/colors";
 
 const Header = ({
   menuIcon = false,

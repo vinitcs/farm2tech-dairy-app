@@ -11,7 +11,7 @@ import SelectedProductCard from "../ProductCard/SelectedProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import { setMonthlyAndEndDate, setMonthlyOrderQuantity } from "../../../redux/slice/productSlice";
 
-const Monthly = () => {
+const MonthlyPlan = () => {
   console.log("Monthly Plan rendered+++");
 
   const navigation = useNavigation();
@@ -53,18 +53,18 @@ const Monthly = () => {
             setEndDate(endDate);
           }}
         />
-        <Text style={styles.dateDisplayTitle}>
-          Start Date:
+        <View style={styles.dateDisplayBox}>
+          <Text style={styles.dateDisplayTitle}>Start Date:</Text>
           <Text style={styles.startDateValue}>
             {startDate ? startDate.toDateString() : ""}
           </Text>
-        </Text>
-        <Text style={styles.dateDisplayTitle}>
-          End Date:
+        </View>
+        <View style={styles.dateDisplayBox}>
+          <Text style={styles.dateDisplayTitle}>End Date:</Text>
           <Text style={styles.endDateValue}>
             {endDate ? endDate.toDateString() : ""}
           </Text>
-        </Text>
+        </View>
       </View>
 
       <DisplayButton
@@ -76,7 +76,7 @@ const Monthly = () => {
   );
 };
 
-export default Monthly;
+export default MonthlyPlan;
 
 const styles = StyleSheet.create({
   monthlyContainer: {
@@ -91,18 +91,20 @@ const styles = StyleSheet.create({
     gap: 4,
     // marginTop:20,
   },
+  dateDisplayBox:{
+    flexDirection:"row",
+    gap:6,
+  },
   dateDisplayTitle: {
     color: colors.lightText,
-    fontFamily: fonts.Semibold,
-    fontSize: 14,
-    letterSpacing: 1,
+    fontFamily: fonts.Bold,
   },
   startDateValue: {
     color: colors.primary,
-    fontFamily: fonts.Semibold,
+    fontFamily: fonts.Bold,
   },
   endDateValue: {
-    color: colors.primary,
+    color: colors.lightText,
     fontFamily: fonts.Bold,
   },
 });

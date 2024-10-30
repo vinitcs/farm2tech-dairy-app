@@ -4,12 +4,11 @@ import { colors } from "../../../theme/colors/colors";
 import CountQuantity from "../Count/CountQuantity";
 import DisplayButton from "../Button/DisplayButton";
 import { useNavigation } from "@react-navigation/native";
-// import OneTimeOrderProductCard from "../ProductCard/OneTimeOrderProductCard";
 import SelectedProductCard from "../ProductCard/SelectedProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import { setOneTimeOrderQuantity } from "../../../redux/slice/productSlice";
 
-const OneTimeOrder = () => {
+const OneTimeOrderPlan = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const oneTimeOrderQuantity = useSelector(
@@ -22,7 +21,6 @@ const OneTimeOrder = () => {
 
   return (
     <View style={styles.oneTimeOrderContainer}>
-      {/* <OneTimeOrderProductCard /> */}
       <SelectedProductCard />
       <CountQuantity
         title={"Select quantity"}
@@ -42,7 +40,7 @@ const OneTimeOrder = () => {
   );
 };
 
-export default OneTimeOrder;
+export default OneTimeOrderPlan;
 
 const styles = StyleSheet.create({
   oneTimeOrderContainer: {

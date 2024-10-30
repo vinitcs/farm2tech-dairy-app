@@ -1,6 +1,5 @@
-import { StyleSheet, View, Dimensions } from "react-native";
-import React, { version } from "react";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { StyleSheet, View, Dimensions, TouchableOpacity } from "react-native";
+import React from "react";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import { Icon } from "@rneui/themed";
 import { colors } from "../../theme/colors/colors";
@@ -74,14 +73,25 @@ const CustomDrawer = ({ navigation, props }) => {
               onPress={() => navigation.navigate("Orders")}
             />
             <Drawer.Item
+              icon="bell-outline"
+              label="Notification"
+              onPress={() => navigation.navigate("Notification")}
+            />
+            <Drawer.Item
               icon="account-circle-outline"
               label="Account"
               onPress={() => navigation.navigate("Profile")}
             />
-            {/* <Drawer.Item
-                                        label="Contact"
-                                        onPress={() => navigation.navigate('Contact')}
-                                   /> */}
+            <Drawer.Item
+              icon="information-outline"
+              label="About Us"
+              onPress={() => navigation.navigate('AboutUs')}
+            />
+            <Drawer.Item
+              icon="phone-outline"
+              label="Contact Us"
+              onPress={() => navigation.navigate('ContactUs')}
+            />
           </Drawer.Section>
         </View>
       </DrawerContentScrollView>
@@ -91,7 +101,7 @@ const CustomDrawer = ({ navigation, props }) => {
           <Drawer.Item
             icon="logout"
             label="Logout"
-            //  onPress={() => navigation.navigate("Contact")}
+          //  onPress={() => navigation.navigate("Contact")}
           />
         ) : (
           <Drawer.Item
