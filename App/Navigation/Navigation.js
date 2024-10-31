@@ -2,7 +2,6 @@ import { StyleSheet, ActivityIndicator, View } from "react-native";
 import React from "react";
 import App from "./App/App";
 import Auth from "./Auth/Auth";
-import { AuthContext } from "../context/auth/auth.context";
 import { useCustomFonts } from "../hooks/Fonts/useCustomFonts";
 import { colors } from "../../theme/colors/colors";
 import { NavigationContainer } from "@react-navigation/native";

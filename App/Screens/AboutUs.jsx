@@ -2,7 +2,6 @@ import { StyleSheet, Text, ScrollView, View, Image } from 'react-native';
 import React from 'react';
 import { colors } from '../../theme/colors/colors';
 import { fonts } from '../../theme/fonts/fonts';
-
 const AboutUs = () => {
      return (
           <ScrollView

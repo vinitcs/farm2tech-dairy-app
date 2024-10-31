@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, setSelectedProduct } from "../../../redux/slice/productSlice";
 
 const Product = ({ searchQuery, selectedProduct, hideTitle = false }) => {
-  console.log("Product ReRendered ****");
+  // console.log("Product ReRendered ****");
   const navigation = useNavigation();
   const dispatch = useDispatch();
 

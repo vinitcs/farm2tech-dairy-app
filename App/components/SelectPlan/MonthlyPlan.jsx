@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setMonthlyAndEndDate, setMonthlyOrderQuantity } from "../../../redux/slice/productSlice";
 
 const MonthlyPlan = () => {
-  console.log("Monthly Plan rendered+++");
+  // console.log("Monthly Plan rendered+++");
 
   const navigation = useNavigation();
   const dispatch = useDispatch();

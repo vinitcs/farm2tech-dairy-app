@@ -3,7 +3,7 @@ import { View, StyleSheet, ScrollView, SafeAreaView, Text } from "react-native";
 import MilkProductSlider from "../components/MilkProductSlider/MilkProductSlider";
 import DummySearch from "../components/Search/DummySearch";
 import { colors } from "../../theme/colors/colors";
-import BannerSlider from "../components/Banner/BannerSlider";
+import Carousel from "../components/Carousel/Carousel";
 import PopularProduct from "../components/ProductCard/PopularProduct";
 import { useNavigation } from "@react-navigation/native";
 
@@ -25,7 +25,7 @@ const Home = () => {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.homeContainer}>
-          <BannerSlider />
+          <Carousel />
           <View style={styles.sectionContainer}>
             <DummySearch />
             <MilkProductSlider onProductSelect={handleProductSelect} />
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: colors.lightText,
     textAlign: "center",
-    marginTop:15,
+    marginTop: 15,
   },
 });
 

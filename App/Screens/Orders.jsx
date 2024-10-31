@@ -11,7 +11,7 @@ const Orders = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const ordersItem = useSelector((state) => state.orders.orders);
-  console.log("orders --> ", ordersItem);
+  // console.log("orders --> ", ordersItem);
 
   const handleOrderProductSelected = (order) => {
     dispatch(setSelectedOrderProduct(order));

@@ -13,8 +13,8 @@ import { productSliderData } from "./ProductSliderContent";
 import { useNavigation } from "@react-navigation/native";
 
 const MilkProductSlider = memo(({ onProductSelect }) => {
+  // console.log("MilkProductSlider ReRendered ####");
   const navigation = useNavigation();
-  console.log("MilkProductSlider ReRendered ####");
 
   const handPress = useCallback(
     (item) => {

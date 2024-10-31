@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TouchableOpacity, Alert, ScrollView } from "react-native";
 import Modal from "react-native-modal";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Icon } from "@rneui/themed";
 import { fonts } from "../../theme/fonts/fonts";
 import { colors } from "../../theme/colors/colors";
@@ -117,7 +117,7 @@ const ProductInfo = () => {
             <View style={styles.productDelaimer}>
               <Text style={styles.productDelaimerTitle}>Declaimer</Text>
               <Text style={styles.productDeclaimerPara}>
-              {selectedProduct.declaimer}
+                {selectedProduct.declaimer}
               </Text>
             </View>
             <DisplayButton

@@ -6,12 +6,12 @@ import {
   Image,
   Dimensions,
 } from "react-native";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState, memo } from "react";
 import { colors } from "../../../theme/colors/colors";
 
 const screenWidth = Dimensions.get("screen").width;
 
-const BannerSlider = () => {
+const Carousel = () => {
   const flatListRef = useRef();
   const [activeIndex, setActiveIndex] = useState(0);
   const sliderImgData = [
@@ -118,7 +118,7 @@ const BannerSlider = () => {
   );
 };
 
-export default React.memo(BannerSlider);
+export default memo(Carousel);
 
 const styles = StyleSheet.create({
   bannerSliderContainer: { alignItems: "center" },

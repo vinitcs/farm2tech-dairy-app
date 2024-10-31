@@ -5,7 +5,7 @@ import { fonts } from "../../theme/fonts/fonts";
 import Product from "../components/ProductCard/Product";
 
 const Search = () => {
-  console.log("Search Rerendered ----");
+  // console.log("Search Rerendered ----");
 
   const [searchQuery, setSearchQuery] = useState("");
   const onChangeSearch = (query) => setSearchQuery(query);

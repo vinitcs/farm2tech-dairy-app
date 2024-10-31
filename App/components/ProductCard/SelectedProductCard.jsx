@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 const SelectedProductCard = () => {
      const selectedProduct = useSelector((state) => state.product.selectedProduct);
      const selectedPlanType = useSelector((state) => state.product.selectedPlanType);
-     console.log("plan=>", selectedPlanType);
+     // console.log("plan=>", selectedPlanType);
      // console.log("product=>", selectedProduct);
 
      return (
