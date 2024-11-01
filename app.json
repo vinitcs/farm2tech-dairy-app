@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "farm2techapp",
+    "name": "farm2tech",
     "slug": "farm2techapp",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -24,8 +24,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.farm2tech.app",
-      "versionCode": 1
+      "package": "com.farm2tech.app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -38,6 +37,14 @@
         "projectId": "44467e1c-f2ec-4604-8698-476e73921f08"
       }
     },
-    "owner": "vinitchavan"
+    "owner": "vinitchavan",
+    "updates": {
+      "enabled": true,
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/44467e1c-f2ec-4604-8698-476e73921f08"
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    }
   }
 }
