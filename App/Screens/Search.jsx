@@ -2,7 +2,7 @@ import { ScrollView, StyleSheet, TextInput, View } from "react-native";
 import React, { useState } from "react";
 import { colors } from "../../theme/colors/colors";
 import { fonts } from "../../theme/fonts/fonts";
-import Product from "../components/ProductCard/Product";
+import ProductDisplayCard from "../components/ProductCard/ProductDisplayCard";
 
 const Search = () => {
   // console.log("Search Rerendered ----");
@@ -29,7 +29,9 @@ const Search = () => {
         bounces={false}
         showsVerticalScrollIndicator={false}
       >
-        {searchQuery.length > 0 && <Product hideTitle={true} searchQuery={searchQuery} />}
+        {searchQuery.length > 0 && (
+          <ProductDisplayCard searchQuery={searchQuery} hideTitle={true} />
+        )}
       </ScrollView>
     </View>
   );

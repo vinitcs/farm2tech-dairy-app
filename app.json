@@ -3,7 +3,7 @@
     "name": "farm2tech",
     "slug": "farm2techapp",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "light",

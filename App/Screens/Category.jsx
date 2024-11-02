@@ -2,8 +2,8 @@ import { StyleSheet, View, ScrollView } from "react-native";
 import React, { useCallback, useState } from "react";
 import { useFocusEffect, useRoute } from "@react-navigation/native";
 import MilkProductSlider from "../components/MilkProductSlider/MilkProductSlider";
-import Product from "../components/ProductCard/Product";
 import { colors } from "../../theme/colors/colors";
+import ProductDisplayCard from "../components/ProductCard/ProductDisplayCard";
 
 const Category = () => {
   const route = useRoute();
@@ -20,7 +20,6 @@ const Category = () => {
   const handleProductSelect = useCallback((product) => {
     setSelectProduct(product);
     // console.log("Selected product in Category:", product);
-    console.log("Selected product in Category:");
   }, []);
 
   return (
@@ -31,7 +30,11 @@ const Category = () => {
     >
       <View style={styles.categoryContainer}>
         <MilkProductSlider onProductSelect={handleProductSelect} />
-        <Product selectedProduct={selectProduct} />
+        <ProductDisplayCard
+          selectedProduct={selectProduct}
+          title={selectProduct ? selectProduct.name : "Products"}
+        />
+
       </View>
     </ScrollView>
   );

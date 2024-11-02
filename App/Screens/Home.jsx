@@ -4,8 +4,8 @@ import MilkProductSlider from "../components/MilkProductSlider/MilkProductSlider
 import DummySearch from "../components/Search/DummySearch";
 import { colors } from "../../theme/colors/colors";
 import Carousel from "../components/Carousel/Carousel";
-import PopularProduct from "../components/ProductCard/PopularProduct";
 import { useNavigation } from "@react-navigation/native";
+import ProductDisplayCard from "../components/ProductCard/ProductDisplayCard";
 
 const Home = () => {
   const [selectProduct, setSelectProduct] = useState(null);
@@ -29,7 +29,7 @@ const Home = () => {
           <View style={styles.sectionContainer}>
             <DummySearch />
             <MilkProductSlider onProductSelect={handleProductSelect} />
-            <PopularProduct />
+            <ProductDisplayCard title={"Popular Product"} />
           </View>
           <Text style={styles.copyrightText}>
             Copyrights 2024. Farm2Tech. All Rights Reserved.
