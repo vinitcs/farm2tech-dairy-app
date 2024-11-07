@@ -6,7 +6,6 @@ import CountQuantity from "../Count/CountQuantity";
 import MonthlySelectCalendar from "../Calendar/MonthlySelectCalendar";
 import { useNavigation } from "@react-navigation/native";
 import DisplayButton from "../Button/DisplayButton";
-// import MonthlyProductCard from "../ProductCard/MonthlyProductCard";
 import SelectedProductCard from "../ProductCard/SelectedProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import { setMonthlyAndEndDate, setMonthlyOrderQuantity } from "../../../redux/slice/productSlice";
@@ -39,7 +38,6 @@ const MonthlyPlan = () => {
 
   return (
     <View style={styles.monthlyContainer}>
-      {/* <MonthlyProductCard/> */}
       <SelectedProductCard />
       <CountQuantity
         title={"Select per day quantity"}
@@ -81,6 +79,7 @@ export default MonthlyPlan;
 const styles = StyleSheet.create({
   monthlyContainer: {
     gap: 25,
+    paddingVertical: 15,
     marginBottom: 20,
   },
   calendarSection: {

@@ -32,7 +32,7 @@ const Home = () => {
             <ProductDisplayCard title={"Popular Product"} />
           </View>
           <Text style={styles.copyrightText}>
-            Copyrights 2024. Farm2Tech. All Rights Reserved.
+            Copyrights 2024. Milk2Market. All Rights Reserved.
           </Text>
         </View>
       </ScrollView>

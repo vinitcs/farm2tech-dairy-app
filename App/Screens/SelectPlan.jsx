@@ -89,6 +89,5 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     height: "100%",
     paddingHorizontal: 15,
-    paddingTop: 15,
   },
 });

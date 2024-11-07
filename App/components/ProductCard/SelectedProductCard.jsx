@@ -13,26 +13,27 @@ const SelectedProductCard = () => {
 
      return (
           <View style={styles.box}>
-               <View>
+               <View style={styles.productInfo}>
                     <Image source={selectedProduct.uri} style={styles.logo} />
-               </View>
-               <View
-               // style={{backgroundColor:'pink'}}
-               >
-                    <Text style={styles.text}>{selectedProduct.name}</Text>
-                    <Text style={styles.litreText}>{selectedProduct.litre}L</Text>
-                    <View style={{ flexDirection: 'row', gap: 6, marginTop: 6, }}>
-                         <Text style={styles.priceText}>{'\u20B9'} {selectedProduct.price}.0</Text>
-                         <Text style={styles.priceStrikeThroughText}>{'\u20B9'} {selectedProduct.price}.0</Text>
-                         <Text style={styles.priceOffText}>{selectedProduct.price}% off</Text>
-                    </View>
+                    <View>
+                         <Text style={styles.text}>{selectedProduct.name}</Text>
+                         <Text style={styles.litreText}>{selectedProduct.litre}L</Text>
+                         <View style={{ flexDirection: 'row', gap: 6, marginTop: 6, }}>
+                              <Text style={styles.priceText}>{'\u20B9'} {selectedProduct.price}.0</Text>
+                              <Text style={styles.priceStrikeThroughText}>{'\u20B9'} {selectedProduct.price}.0</Text>
+                              <Text style={styles.priceOffText}>{selectedProduct.price}% off</Text>
+                         </View>
 
-                    {selectedPlanType === "One Time Order" ? (
-                         <Text style={styles.offerText}>Buy and get Rs.{selectedProduct.price} in per unit</Text>
-                    ) : (
-                         <Text style={styles.offerText}>Subscribe to save {selectedProduct.price}Rs in per unit</Text>
-                    )}
+                         {selectedPlanType === "One Time Order" ? (
+                              <Text style={styles.offerText}>Buy and get Rs.{selectedProduct.price} in per unit</Text>
+                         ) : (
+                              <Text style={styles.offerText}>Subscribe to save {selectedProduct.price}Rs in per unit</Text>
+                         )}
+                    </View>
                </View>
+               {selectedPlanType === "Monthly" && (
+                    <Text style={styles.note}>Note: If you select today's date, you won’t be able to change or update the start date after the order is placed in the order edit.</Text>
+               )}
           </View>
      )
 }
@@ -50,6 +51,9 @@ const styles = StyleSheet.create({
           justifyContent: 'flex-start',
           width: '100%',
           height: 'auto',
+     },
+
+     productInfo: {
           flexDirection: 'row',
           gap: 10,
      },
@@ -104,5 +108,12 @@ const styles = StyleSheet.create({
           fontSize: 12,
           color: colors.primary,
           fontFamily: fonts.Bold,
+     },
+     note: {
+          fontSize: 12,
+          color: colors.lightText,
+          textAlign: "justify",
+          letterSpacing: 0.2,
+          paddingVertical: 10
      },
 })

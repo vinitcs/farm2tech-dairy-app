@@ -41,8 +41,8 @@ const CustomDrawer = ({ navigation, props }) => {
               <ProfileAvatar size={80} />
             </View> */}
           <View style={styles.userInfoText}>
-            <Text style={styles.userName}>Vinit Sunil Chavan</Text>
-            <Text style={styles.memberText}>Member since 20 sep 2024</Text>
+            <Text style={styles.userName}>Profile name</Text>
+            <Text style={styles.memberText}>Member since 20 Oct 2024</Text>
           </View>
         </View>
         <View style={styles.drawerSection}>

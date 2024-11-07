@@ -22,7 +22,7 @@ const ContactUs = () => {
                          </Text>
 
                          <Text style={styles.mailId} selectable={true}>
-                              farm2tech@gmail.com
+                              Milk2Market@gmail.com
                          </Text>
 
                          <Text style={styles.mailDescription}>
@@ -38,7 +38,7 @@ const ContactUs = () => {
                                    size={18}
                                    color={colors.lightText}
                               />
-                              <Text style={styles.addressText}>Farm2Tech, Khed, Ratnagiri, 415605</Text>
+                              <Text style={styles.addressText}>Milk2Market, Khed, Ratnagiri, 415605</Text>
                          </View>
                          <View style={styles.addressContent}>
                               <Icon

@@ -15,7 +15,7 @@ const AboutUs = () => {
                          style={styles.homeImg}
                     />
                     <Text style={styles.aboutUsDescription}>
-                         Farm2Tech leverages digital technologies in dairy to promote rural development by improving farmers' access to information, markets, and modern practices. The initiative aims to address challenges, explore opportunities, and assess the impact of digitalization on rural communities, while providing training to support technology adoption for sustainable growth.
+                         Milk2Market leverages digital technologies in dairy to promote rural development by improving farmers' access to information, markets, and modern practices. The initiative aims to address challenges, explore opportunities, and assess the impact of digitalization on rural communities, while providing training to support technology adoption for sustainable growth.
                     </Text>
                </View>
           </ScrollView>
